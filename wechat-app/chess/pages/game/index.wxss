@@ -1,0 +1,78 @@
+@import '../../common.wxss';
+.game-page { padding: 8px 12px 68px; }
+.game-page button, .chat-dock button, .chat-panel button { min-height: 44px; border-radius: 8px; font-size: 15px; padding: 8px 12px; }
+.connecting { padding: 30px 0; text-align: center; }
+.compact-error { margin: 4px 0; padding: 6px 9px; font-size: 12px; }
+.player { display: flex; align-items: center; gap: 8px; min-height: 44px; border-bottom: 1px solid #deceb7; }
+.top-player { margin-bottom: 4px; }.bottom-player { margin-top: 4px; }
+.thinking { border-color: #2f5648; }
+.player-info { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.player .avatar { width: 32px; height: 32px; font-size: 21px; }
+.player-name { min-width: 0; max-width: 170px; font-weight: 600; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side-label { display: block; color: #716a5f; font-weight: 400; font-size: 10px; line-height: 1.4; }
+.countdown { font-size: 22px; font-weight: 600; font-family: "SFMono-Regular", "Menlo", monospace; }
+.settings-entry { color: #2f5648; background: transparent; border-left: 1px solid #deceb7; }
+#game-settings-btn { width: 56px !important; min-width: 56px !important; max-width: 56px !important; flex: 0 0 56px; margin: 0 !important; padding: 0; white-space: nowrap; }
+.red { color: #a8322e; }.black { color: #252c26; }
+.chess-stage { position: relative; margin: 0 auto; overflow: hidden; }
+.board-frame { margin: 0 auto; background: #d8b889; box-shadow: inset 0 0 0 1px #9f7950, inset 0 0 0 4px #c8a97d; border-radius: 4px; }
+.board-grid { position: relative; }
+.board-line { position: absolute; background: #725334; pointer-events: none; }
+.horizontal { left: 0; width: 100%; height: 1px; transform: translateY(-.5px); }
+.vertical { width: 1px; transform: translateX(-.5px); }
+.vertical.top { top: 0; height: 44.4444%; }.vertical.bottom { top: 55.5556%; height: 44.4444%; }.vertical.full { height: 100%; top: 0; }
+.palace { position: absolute; height: 1px; width: 35.35534%; background: #725334; transform-origin: 0 0; pointer-events: none; }
+.upper-one { left: 37.5%; top: 0; transform: rotate(45deg); }.upper-two { left: 62.5%; top: 0; transform: rotate(135deg); }
+.lower-one { left: 37.5%; top: 77.7778%; transform: rotate(45deg); }.lower-two { left: 62.5%; top: 77.7778%; transform: rotate(135deg); }
+.river-name { position: absolute; top: 44.4444%; height: 11.1111%; width: 100%; display: flex; align-items: center; justify-content: space-around; color: #6d4d2e; letter-spacing: 4px; pointer-events: none; }
+.point { position: absolute; transform: translate(-50%, -50%); display: flex; justify-content: center; align-items: center; }
+.piece { border: 1.5px solid currentColor; border-radius: 50%; display: flex; justify-content: center; align-items: center; background: #f1ddb8; font-weight: 700; line-height: 1; box-shadow: 0 1.5px 1px #907049; }
+.selected-piece { background: #fff8de; outline: 2px solid #2f5648; }.capture-target { box-shadow: 0 0 0 3px #2f564866; }
+.destination { width: 11px; height: 11px; border-radius: 50%; background: #2f5648; box-shadow: 0 0 0 4px #f1ddb888; }
+.last-mark { width: 12px; height: 12px; border: 2px solid #a8322e; }.last-point .piece { background: #f8eacd; }
+.turn-row { height: 26px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.status { color: #2f5648; font-size: 16px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.connection { color: #716a5f; font-size: 10px; flex-shrink: 0; }
+.main-actions { display: flex; gap: 8px; height: 48px; padding-bottom: 4px; }
+#game-resign-btn, #game-leave-btn { flex: 1 1 0; width: 0 !important; min-width: 0 !important; max-width: none !important; height: 44px !important; min-height: 44px !important; margin: 0 !important; padding: 0 12px !important; white-space: nowrap; }
+#game-resign-btn { color: #a8322e; }#game-leave-btn { color: #2f5648; }
+.ready-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }.rule-link { flex: 1; color: #2f5648; font-size: 13px; }
+#game-ready-btn { width: 176px !important; min-width: 176px !important; max-width: 176px !important; flex: 0 0 176px; margin: 0 !important; white-space: nowrap; }
+.agreement { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 12px; }.agreement text { flex: 1; }.game-page .agreement button { width: 52px !important; min-width: 52px; max-width: 52px; flex: 0 0 52px; margin: 0 !important; padding: 0; }
+.chess-motion { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.carried-piece, .flying-piece { position: absolute; transition-property: left, top, transform, opacity; transition-timing-function: ease-in-out; pointer-events: none; }
+.carried-piece { transform: translate(-50%, -50%); }.lifted-piece { box-shadow: 0 6px 7px #72533466; }
+.chess-hand { position: absolute; width: 48px; height: 65px; left: 50%; top: 50%; transform: translate(-47%, -100%) rotate(-10deg); transform-origin: 47% 100%; transition: opacity 160ms; filter: drop-shadow(1px 2px 1px #72533444); }
+.hand-released { opacity: 0; }.hand-palm, .hand-wrist, .hand-finger, .hand-thumb { position: absolute; background: #edc59e; border: 1px solid #ac7858; }
+.hand-palm { left: 9px; top: 18px; width: 28px; height: 32px; border-radius: 11px 11px 9px 9px; }
+.hand-wrist { left: 13px; top: 0; width: 22px; height: 27px; border-bottom: 0; border-radius: 5px 5px 0 0; }
+.hand-finger { width: 9px; height: 24px; top: 37px; border-radius: 6px; }.first-finger { left: 9px; transform: rotate(5deg); }.second-finger { left: 19px; top: 39px; height: 26px; }.third-finger { left: 29px; top: 37px; height: 24px; transform: rotate(-6deg); }
+.hand-thumb { left: 34px; top: 25px; width: 11px; height: 27px; border-radius: 8px; transform: rotate(-34deg); }.hand-fold { position: absolute; left: 16px; top: 31px; width: 16px; height: 1px; background: #ac785866; transform: rotate(8deg); }
+
+.sound-error { font-size: 11px; }
+.chat-dock { position: fixed; z-index: 5; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-top: 1px solid #deceb7; background: #f6f0e5; }
+#chat-toggle-btn { flex: 1 1 0; width: 0 !important; min-width: 0 !important; max-width: none !important; height: 44px !important; margin: 0 !important; padding: 0 12px !important; color: #2f5648; }
+#reaction-toggle-btn { flex: 0 0 44px; width: 44px !important; min-width: 44px !important; max-width: 44px !important; height: 44px !important; margin: 0 !important; padding: 0 !important; border-radius: 50%; font-size: 25px; }
+.chat-unread { display: inline-block; margin-left: 6px; padding: 0 6px; min-width: 18px; border-radius: 12px; background: #a8322e; color: #fff9ee; font-size: 12px; line-height: 20px; }
+.chat-backdrop { position: fixed; inset: 0; z-index: 6; background: #252c2638; }
+.chat-panel { position: fixed; z-index: 7; left: 12px; right: 12px; padding: 12px; border: 1px solid #beaa8e; border-radius: 14px; background: #f6f0e5; box-shadow: 0 8px 28px #35251444; }
+.chat-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; color: #2f5648; font-size: 19px; font-weight: 600; }
+#chat-close-btn { width: 36px !important; min-width: 36px !important; max-width: 36px !important; height: 36px !important; min-height: 36px !important; margin: 0 !important; padding: 0 !important; font-size: 24px; line-height: 34px; }
+.chat-records { height: 230px; max-height: 40vh; border-top: 1px solid #deceb7; border-bottom: 1px solid #deceb7; }
+.chat-empty { padding: 26px 0; text-align: center; font-size: 14px; }
+.chat-message { padding: 10px 4px; border-bottom: 1px solid #deceb755; }
+.chat-name { display: block; margin-bottom: 4px; font-size: 12px; color: #716a5f; }
+.chat-own .chat-name { color: #2f5648; }
+.chat-text { display: block; font-size: 16px; line-height: 1.5; white-space: pre-wrap; word-break: break-all; }
+.chat-composer { display: flex; align-items: center; gap: 8px; padding-top: 10px; }
+#chat-input { flex: 1 1 0; min-width: 0; height: 44px; padding: 0 10px; border: 1px solid #deceb7; border-radius: 8px; background: #fff9ee; font-size: 15px; }
+#chat-send-btn { flex: 0 0 60px; width: 60px !important; min-width: 60px !important; max-width: 60px !important; height: 44px !important; margin: 0 !important; padding: 0 !important; }
+.reaction-menu { position: fixed; z-index: 7; left: 12px; right: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px; border: 1px solid #beaa8e; border-radius: 14px; background: #f6f0e5; box-shadow: 0 8px 28px #35251444; }
+.reaction-menu button.reaction-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100% !important; min-width: 0 !important; max-width: none !important; min-height: 76px; margin: 0 !important; padding: 8px 4px; border-radius: 10px; font-size: 14px; line-height: 1.4; }
+.reaction-emoji { font-size: 30px; line-height: 1.5; }.reaction-hint { grid-column: 1 / -1; text-align: center; font-size: 11px; }
+.chat-subtitle { position: absolute; z-index: 5; top: 30%; left: 12px; right: 12px; padding: 10px 12px; border-radius: 12px; background: #fff9eee8; box-shadow: 0 2px 10px #35251444; pointer-events: none; font-size: 22px; line-height: 1.4; color: #252c26; white-space: pre-wrap; word-break: break-all; animation: chat-float 3600ms linear both; }
+.subtitle-name { font-weight: 700; color: #2f5648; }.chat-subtitle.long-subtitle { animation-name: chat-window-fade; }
+.long-subtitle .subtitle-window { max-height: 92.4px; overflow: hidden; }
+.long-subtitle .subtitle-content { animation: chat-long-float linear both; }
+@keyframes chat-float { 0% { opacity: 0; transform: translateY(14px); } 12% { opacity: 1; transform: translateY(0); } 85% { opacity: 1; transform: translateY(-24px); } 100% { opacity: 0; transform: translateY(-36px); } }
+@keyframes chat-window-fade { 0% { opacity: 0; } 8%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes chat-long-float { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + 92.4px)); } }

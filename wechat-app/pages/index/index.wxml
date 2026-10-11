@@ -1,0 +1,26 @@
+<view class="feature-grid">
+  <view class="feature-card cut-card" bindtap="goCut">
+    <view class="feature-icon">📐</view>
+    <view class="feature-title">玻璃裁切计算</view>
+    <view class="feature-desc">原片排版优化 / 利用率计算 / 裁切预览图</view>
+  </view>
+
+  <view class="feature-card ito-card" bindtap="goInput">
+    <view class="feature-icon">🔥</view>
+    <view class="feature-title">ITO方阻热力分析</view>
+    <view class="feature-desc">拍照OCR识别 / 热力分布图 / 数据统计导出</view>
+  </view>
+
+  <view class="feature-card chess-card" bindtap="goChess">
+    <view class="feature-icon chess-piece">帅</view>
+    <view class="feature-title">象棋</view>
+    <view class="feature-desc">狗哥下象棋 / AI对战 / 家人对战</view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="section-title">ITO方阻热力分析</view>
+  <button type="primary" bindtap="goInput">录入数据</button>
+  <button bindtap="goResult">查看热力图</button>
+  <button bindtap="goSettings">参数设置</button>
+</view>

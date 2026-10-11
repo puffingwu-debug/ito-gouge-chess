@@ -1,0 +1,6 @@
+page{background:#f5f7fa;color:#172033;font-size:28rpx}
+.card{background:#fff;margin:24rpx;padding:28rpx;border-radius:18rpx;box-shadow:0 4rpx 18rpx rgba(0,0,0,.05)}
+button{margin-top:18rpx}
+.title{font-size:38rpx;font-weight:700}
+.muted{color:#6b7280}
+.danger{color:#d71920;font-weight:700}

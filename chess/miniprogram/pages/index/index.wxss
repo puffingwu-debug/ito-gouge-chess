@@ -1,0 +1,16 @@
+.home { padding-top: 38rpx; }
+.brand { font-size: 82rpx; font-weight: 700; line-height: 1.16; letter-spacing: 5rpx; margin: 18rpx 0 24rpx; }
+.river { display: flex; justify-content: space-between; font-size: 28rpx; letter-spacing: 8rpx; padding: 24rpx 5rpx 16rpx; margin-top: 24rpx; border-top: 2rpx solid #bda582; color: #7b5c39; }
+.dev-note { color: #a8322e; background: #f4e5da; border-radius: 8rpx; padding: 12rpx 16rpx; font-size: 24rpx; margin: 16rpx 0; }
+.identity { margin: 20rpx 0 26rpx; }
+.edit-button { min-height: 88rpx; font-size: 25rpx; padding: 12rpx 22rpx; }
+.login { margin: 20rpx 0 26rpx; width: 100%; }
+.menu-card { width: 100%; display: flex; justify-content: space-between; align-items: center; min-height: 158rpx; text-align: left; padding: 28rpx 30rpx; border: 2rpx solid #deceb7; border-radius: 16rpx; margin-top: 18rpx; background: #fbf7ef; }
+.menu-title { font-size: 39rpx; font-weight: 700; }
+.menu-detail { margin-top: 8rpx; font-size: 25rpx; color: #716a5f; }
+.menu-piece { width: 88rpx; height: 88rpx; display: flex; align-items: center; justify-content: center; border: 3rpx solid #a8322e; border-radius: 50%; color: #a8322e; font-size: 45rpx; background: #ead5b2; }
+.family .menu-piece { border-color: #2f5648; color: #2f5648; }
+.settings { min-height: 130rpx; }
+.arrow { color: #94754e; font-size: 54rpx; }
+.home-foot { text-align: center; margin-top: 36rpx; color: #8c7d68; font-size: 23rpx; }
+.resume-panel { border-color: #2f5648; }.resume-panel .panel-title { margin-bottom: 6rpx; }.retry-recent { margin-top: 14rpx; }

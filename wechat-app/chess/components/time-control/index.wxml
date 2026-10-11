@@ -1,0 +1,15 @@
+<view class="time-control">
+  <view class="mode-row">
+    <button class="mode {{control.mode === 'normal' ? 'chosen' : ''}}" data-mode="normal" bindtap="mode" disabled="{{disabled}}">普通棋</button>
+    <button class="mode {{control.mode === 'rapid' ? 'chosen' : ''}}" data-mode="rapid" bindtap="mode" disabled="{{disabled}}">快棋</button>
+  </view>
+  <block wx:if="{{control.mode === 'normal'}}">
+    <view class="control-row"><text>每步最长等待</text><view class="value-row"><input type="number" value="{{control.perMoveSeconds || ''}}" data-field="perMoveSeconds" bindblur="number" disabled="{{disabled || control.perMoveSeconds === null}}"/><text>秒</text></view></view>
+    <view class="switch-row"><text>每步不限时</text><switch checked="{{control.perMoveSeconds === null}}" data-field="perMoveSeconds" bindchange="unlimited" disabled="{{disabled}}" color="#2f5648"/></view>
+    <view class="control-row"><text>每人总思考时长</text><view class="value-row"><input type="digit" value="{{control.totalSeconds === null ? '' : control.totalSeconds / 60}}" data-field="totalSeconds" bindblur="number" disabled="{{disabled || control.totalSeconds === null}}"/><text>分</text></view></view>
+    <view class="switch-row"><text>总思考时长不限</text><switch checked="{{control.totalSeconds === null}}" data-field="totalSeconds" bindchange="unlimited" disabled="{{disabled}}" color="#2f5648"/></view>
+    <view class="control-row"><text>总时长用尽后每步</text><view class="value-row"><input type="number" value="{{control.overtimeSeconds}}" data-field="overtimeSeconds" bindblur="number" disabled="{{disabled}}"/><text>秒</text></view></view>
+  </block>
+  <view wx:else class="control-row"><text>每步必须完成走棋</text><view class="value-row"><input type="number" value="{{control.rapidSeconds}}" data-field="rapidSeconds" bindblur="number" disabled="{{disabled}}"/><text>秒</text></view></view>
+  <view class="hint">到时由程序代走合法一步；每人累计思考用时独立统计。普通棋同时设置多个期限时，以先到期的期限为准。</view>
+</view>

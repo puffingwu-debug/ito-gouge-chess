@@ -1,0 +1,39 @@
+<view class="page settings-page">
+  <view wx:if="{{gameError}}" class="error">{{gameError}}</view>
+  <block wx:if="{{game}}">
+    <view class="row"><view><view class="eyebrow">{{game.mode === 'ai' ? 'AI 对战' : '第 ' + game.tableId + ' 桌'}} · {{spectator ? '旁观' : (myColor === 'red' ? '红方' : '黑方')}}</view><view class="title game-title">对局设置</view></view><button id="return-game-btn" class="green" bindtap="returnGame">返回棋盘</button></view>
+    <view class="panel"><view class="row"><view class="panel-title">棋桌操作</view><text class="muted">{{connection}}</text></view>
+      <view class="muted">{{game.status === 'active' ? '设置期间棋局仍在计时。' : (game.status === 'waiting' ? '确认时长后，双方准备开局。' : outcomeText)}}</view>
+      <view class="actions"><button class="outline" bindtap="flip" disabled="{{!spectator}}">{{spectator ? '翻转棋盘' : '自己一方在下'}} · {{perspective === 'red' ? '红方' : '黑方'}}在下</button><button class="outline" bindtap="leaveTable" disabled="{{gameBusy}}">{{spectator ? '离开旁观' : '离开棋桌'}}</button></view>
+      <view wx:if="{{!spectator && game.status === 'active'}}" class="actions"><button class="outline" bindtap="undo" disabled="{{gameBusy || !!game.undo || !game.history.length}}">申请悔棋</button><button class="outline" bindtap="draw" disabled="{{gameBusy || !!game.draw}}">和棋</button><button class="outline danger" bindtap="resign" disabled="{{gameBusy}}">认输</button></view>
+      <button wx:if="{{!spectator && game.status === 'finished'}}" class="primary full-button" bindtap="rematch" disabled="{{gameBusy}}">再来一局</button>
+      <view wx:if="{{game.status === 'finished'}}" class="muted detail-hint">{{game.outcome.rule}}</view>
+      <view wx:if="{{game.status === 'active' && !spectator}}" class="muted detail-hint">离开后计时继续，可从首页回来接着下。创建或加入另一盘，旧局会自动判负。</view>
+    </view>
+    <view wx:if="{{game.undo && !spectator}}" class="panel agreement-panel"><view class="panel-title">{{canRespondUndo ? '对方申请悔棋' : '等待悔棋回复'}} · {{undoSeconds}} 秒</view><view class="muted">等待时继续计时，悔棋不退累计用时。</view><view wx:if="{{canRespondUndo}}" class="actions"><button class="green" bindtap="undoRespond" data-accept="true" disabled="{{gameBusy || !undoSeconds}}">同意</button><button class="outline" bindtap="undoRespond" data-accept="false" disabled="{{gameBusy || !undoSeconds}}">拒绝</button></view></view>
+    <view wx:if="{{game.draw && !spectator}}" class="panel agreement-panel"><view class="panel-title">{{canRespondDraw ? '对方申请和棋' : '等待和棋回复'}} · {{drawSeconds}} 秒</view><view class="muted">等待时继续计时，新落子后申请失效。</view><view wx:if="{{canRespondDraw}}" class="actions"><button class="green" bindtap="drawRespond" data-accept="true" disabled="{{gameBusy || !drawSeconds}}">同意</button><button class="outline" bindtap="drawRespond" data-accept="false" disabled="{{gameBusy || !drawSeconds}}">拒绝</button></view></view>
+    <view class="panel"><view class="panel-title">本盘计时</view><view class="muted">{{gameControlText}}</view><view class="clock-row"><text class="red">红方</text><text>累计 {{clock.red.used}}</text><text>总剩余 {{clock.red.total}}</text></view><view class="clock-row"><text class="black">黑方</text><text>累计 {{clock.black.used}}</text><text>总剩余 {{clock.black.total}}</text></view><view class="muted">{{game.turn === 'red' ? '红方' : '黑方'}}本手剩余 {{clock[game.turn].remaining}} · {{clock[game.turn].phase}}</view><view class="muted detail-hint">各自累计思考时间；达到本手截止时间后，服务器自动走一手合法棋。总时长用尽后按设定的每步时间继续。</view>
+      <block wx:if="{{game.status === 'waiting'}}"><view class="ready-status"><text>红方{{game.ready.red ? '已准备' : '未准备'}}</text><text>黑方{{game.ready.black ? '已准备' : '未准备'}}</text></view><time-control wx:if="{{!spectator && game.ownerId === userId}}" value="{{gameControl}}" bindchange="gameControl" disabled="{{gameBusy || game.ready[myColor]}}"/><button wx:if="{{!spectator}}" class="green full-button" bindtap="ready" disabled="{{gameBusy || game.ready[myColor]}}">{{game.ready[myColor] ? '已准备，等待对方' : '确认规则并准备'}}</button></block>
+    </view>
+    <view wx:if="{{game.mode === 'ai'}}" class="panel"><view class="panel-title">AI 对手</view><view class="muted">难度 {{game.difficulty}} / 5 · {{game.aiSource === 'deepseek' ? 'DeepSeek 选棋' : '本地棋力引擎'}}{{game.aiThinking ? ' · 正在思考' : ''}}</view><view wx:if="{{game.aiDetail}}" class="muted detail-hint">{{game.aiDetail}}</view></view>
+    <view class="panel"><view class="row"><view class="panel-title">棋谱</view><text class="muted">{{history.length}} 步</text></view><view class="muted">红方：{{historyPlayers.red ? historyPlayers.red.name : '空位'}} · 黑方：{{historyPlayers.black ? historyPlayers.black.name : '空位'}}</view><scroll-view class="history" scroll-y="true"><view wx:if="{{!history.length}}" class="muted">开局后在这里记录每一步。</view><view wx:for="{{history}}" wx:key="index" class="history-row"><text class="move-number">{{item.index}}</text><text class="{{item.color}}">{{item.colorText}}</text><text class="move-notation">{{item.moveText}}</text><text class="source">{{item.sourceText}}</text></view></scroll-view></view>
+    <view class="panel"><view class="panel-title">规则与聊天</view><view class="muted">按《世界象棋规则》执行合法走法、将军、将死、困毙、长将长捉与自然限着裁决。悔棋需对方同意；可申请协商和棋或自然限着提和。</view><view class="muted detail-hint">玩家同桌支持棋手和旁观者文字聊天。棋盘底部打开聊天记录，点击或长按 🙂 选择互动表情；消息也会显示在棋盘上。白旗只是聊天表情，不会认输。聊天时棋局继续计时，进入设置或后台后暂停接收。</view></view>
+    <view class="section-heading">资料与偏好</view>
+  </block>
+  <view wx:if="{{hasGame && !game}}" class="muted">正在读取棋局…</view>
+
+  <view class="eyebrow">让家人认出你</view><view class="title">我的资料</view><view class="subtitle">选择头像，填写昵称。资料保存后用于棋桌展示。</view>
+  <form bindsubmit="save">
+    <view class="panel">
+      <button class="avatar-button" open-type="chooseAvatar" bindchooseavatar="avatar" disabled="{{busy}}"><image wx:if="{{avatar}}" class="profile-avatar" src="{{avatar}}"/><view wx:else class="profile-avatar avatar-fallback">棋</view><view class="avatar-caption">选择头像</view></button>
+      <view class="field"><text class="field-label">昵称</text><input name="name" type="nickname" value="{{name}}" bindinput="name" bindblur="name" placeholder="点击填写微信昵称，也可以自己改" maxlength="24" disabled="{{busy}}"/></view>
+      <view wx:if="{{error}}" class="error">{{error}}</view><button class="primary save" form-type="submit" disabled="{{busy}}" loading="{{busy}}">保存资料</button><view wx:if="{{saved}}" class="muted saved">家人在棋桌上会看到你的新资料。</view>
+    </view>
+  </form>
+  <view class="panel"><view class="row"><view><view class="panel-title">观棋默认红方在下</view><view class="muted">对弈时始终自己一方在下</view></view><switch color="#2f5648" checked="{{boardSide === 'red'}}" bindchange="orientation"/></view></view>
+  <view class="panel"><view class="panel-title">默认棋局时长</view><view class="muted preference-hint">自动保存，用于下一盘 AI 对局和新棋桌的默认规则；当前进行中的棋局继续使用已确认规则。</view><time-control value="{{control}}" bindchange="control"/></view>
+  <view class="panel"><view class="row"><view><view class="panel-title">落子声音</view><view class="muted">收到已确认落子后播放，默认关闭</view></view><switch color="#2f5648" checked="{{moveSound}}" bindchange="moveSound"/></view></view>
+  <view wx:if="{{development}}" class="panel muted">当前为本地开发账号，微信登录与线上同桌聊天需要真实 AppID 和后台配置后验证。</view>
+  <view class="panel"><view class="panel-title">隐私与数据</view><view class="muted">头像和昵称用于棋桌展示，文字与表情展示给同桌成员。</view><button id="privacy-guide-btn" class="outline" bindtap="privacy">用户隐私保护指引</button></view>
+  <button class="outline logout" bindtap="logout" disabled="{{busy}}">退出当前账号</button>
+</view>

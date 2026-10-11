@@ -1,0 +1,9 @@
+node_modules/
+.env
+data/
+.data/
+dist/
+verification/*.png
+verification/*.json
+miniprogram/project.private.config.json
+project.private.config.json

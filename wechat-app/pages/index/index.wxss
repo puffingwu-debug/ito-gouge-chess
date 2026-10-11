@@ -1,0 +1,11 @@
+.feature-grid{display:flex;flex-direction:column;gap:24rpx;padding:24rpx}
+.feature-card{background:#fff;border-radius:18rpx;padding:40rpx 32rpx;box-shadow:0 4rpx 18rpx rgba(0,0,0,.05);display:flex;flex-direction:column;align-items:center}
+.feature-card:active{opacity:.8}
+.cut-card{border-left:8rpx solid #3b82f6}
+.ito-card{border-left:8rpx solid #07c160}
+.chess-card{border-left:8rpx solid #a8322e}
+.chess-piece{width:88rpx;height:88rpx;border:3rpx solid #a8322e;border-radius:50%;background:#f6e6c6;color:#a8322e;font-family:"Songti SC",serif;font-size:52rpx;display:flex;align-items:center;justify-content:center}
+.feature-icon{font-size:64rpx;margin-bottom:12rpx}
+.feature-title{font-size:34rpx;font-weight:700;color:#172033;margin-bottom:8rpx}
+.feature-desc{font-size:24rpx;color:#6b7280}
+.section-title{font-size:32rpx;font-weight:700;margin-bottom:16rpx}

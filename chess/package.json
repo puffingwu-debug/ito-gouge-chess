@@ -1,0 +1,23 @@
+{
+  "name": "gouge-xiangqi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "狗哥下象棋 · 家庭中国象棋",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --env-file-if-exists=.env server/index.js",
+    "test": "node --test tests/*.test.js",
+    "build": "node scripts/build.js",
+    "build:host": "node scripts/build-host.mjs",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "dependencies": {
+    "@cloudbase/js-sdk": "3.10.1",
+    "@cloudbase/signature-nodejs": "2.2.0",
+    "ws": "8.22.0"
+  },
+  "engines": {
+    "node": ">=22.9"
+  }
+}

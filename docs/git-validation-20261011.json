@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-11",
+  "tests": {
+    "tests": 499,
+    "pass": 499,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "standaloneBuild": "passed",
+  "integratedBuild": {
+    "javascriptFiles": 32,
+    "mainPages": 6,
+    "chessPages": 5,
+    "compilation": {
+      "wcc": "通过",
+      "wcsc": "通过"
+    }
+  },
+  "credentialScan": "Known hardcoded OCR credentials removed from the Git copy; private runtime configuration, data and caches excluded."
+}

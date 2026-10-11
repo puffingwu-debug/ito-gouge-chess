@@ -1,0 +1,14 @@
+.avatar-button { width: 100%; display: flex; flex-direction: column; padding: 12rpx 0 22rpx; gap: 18rpx; background: transparent; }
+.profile-avatar { width: 148rpx; height: 148rpx; border-radius: 50%; background: #d8b889; }
+.avatar-caption { font-size: 26rpx; color: #2f5648; }
+.save { width: 100%; margin-top: 26rpx; }.saved { margin-top: 16rpx; text-align: center; }
+.logout { margin-top: 28rpx; width: 100%; }
+.preference-hint { margin-bottom: 22rpx; }
+
+.settings-page button { min-height: 44px; }.game-title { margin-bottom: 0; font-size: 40rpx; }
+.full-button { margin-top: 22rpx; width: 100%; }.detail-hint { margin-top: 18rpx; }
+.settings-page .panel-title { margin-bottom: 12rpx; }.danger { color: #a8322e; }
+.red { color: #a8322e; }.black { color: #252c26; }.clock-row { display: flex; gap: 18rpx; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #deceb7; font-size: 25rpx; }
+.ready-status { display: flex; gap: 24rpx; margin: 22rpx 0; font-size: 26rpx; color: #716a5f; }
+.history { height: 360rpx; }.history-row { display: flex; gap: 18rpx; padding: 16rpx 0; border-top: 1rpx solid #e5d9c8; font-size: 26rpx; }
+.move-number { color: #8c7d68; width: 45rpx; }.move-notation { flex: 1; }.source { color: #716a5f; font-size: 23rpx; }

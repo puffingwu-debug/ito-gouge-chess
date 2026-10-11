@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ai/index",
+    "pages/lobby/index",
+    "pages/game/index",
+    "pages/settings/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "狗哥下象棋",
+    "navigationBarBackgroundColor": "#f6f0e5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f0e5"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

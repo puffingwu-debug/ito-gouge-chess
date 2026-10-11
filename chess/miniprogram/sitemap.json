@@ -1,0 +1,1 @@
+{ "desc": "家人对战大厅不提供搜索索引", "rules": [{ "action": "disallow", "page": "*" }] }

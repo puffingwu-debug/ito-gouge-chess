@@ -1,0 +1,13 @@
+Page({
+  goChess(){wx.navigateTo({url:'/chess/pages/index/index'})},
+  goCut(){wx.navigateTo({url:'/pages/cut/cut'})},
+  goInput(){wx.navigateTo({url:'/pages/input/input'})},
+  goResult(){wx.navigateTo({url:'/pages/result/result'})},
+  goSettings(){wx.navigateTo({url:'/pages/settings/settings'})},
+  onShareAppMessage(){
+    return{title:'ITO方阻热力分析工具',path:'/pages/index/index'};
+  },
+  onShareTimeline(){
+    return{title:'ITO方阻热力分析工具'};
+  }
+});

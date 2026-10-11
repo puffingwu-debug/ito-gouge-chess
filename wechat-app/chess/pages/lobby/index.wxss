@@ -1,0 +1,9 @@
+@import '../../common.wxss';
+.table-name { font-size: 38rpx; font-weight: 600; }
+.seats { display: flex; align-items: center; justify-content: space-between; margin: 26rpx 0 18rpx; }
+.seat { display: flex; flex-direction: column; gap: 10rpx; width: 42%; overflow: hidden; }
+.seat:last-child { text-align: right; }
+.seat-label { font-size: 24rpx; }
+.red { color: #a8322e; }.black { color: #252c26; }
+.vs { color: #9d815e; font-size: 34rpx; }
+.table-card .actions button { font-size: 26rpx; padding: 20rpx 10rpx; }

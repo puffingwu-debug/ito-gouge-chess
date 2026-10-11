@@ -1,0 +1,7 @@
+{$CHESS_DOMAIN} {
+    reverse_proxy chess:8787 {
+        transport http {
+            keepalive 2s
+        }
+    }
+}

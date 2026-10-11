@@ -1,0 +1,1031 @@
+[
+  {
+    "path": "wechat-app/preview.html",
+    "bytes": 52103,
+    "sha256": "75781ffd4d6ed74c9aa75804675a373fa6668b108b4c884fd4fbb8f11a62f324",
+    "note": "Removed hardcoded OCR credentials and related credential initialization in Git copy only."
+  },
+  {
+    "path": "wechat-app/server.py",
+    "bytes": 3718,
+    "sha256": "7a0b49d474eb4a890374ec49f948e158cf51d22171363ac4a4c8c0d74709601b",
+    "note": "Hardcoded Baidu OCR credentials replaced with server environment variables in Git copy only."
+  },
+  {
+    "path": "wechat-app/app.json",
+    "bytes": 660,
+    "sha256": "183e7dfb41c016b695815627cbe3578e542b8768f58c953a09291341ff289241"
+  },
+  {
+    "path": "wechat-app/project.config.json",
+    "bytes": 1223,
+    "sha256": "07848b66216ef4f0019911349ae63e65df0670ffac196c109a095222c9338e93"
+  },
+  {
+    "path": "wechat-app/index.js",
+    "bytes": 418,
+    "sha256": "82779a92ec500ff96f4cc1ad01cfe52fd7ae1005a9c73e301a0f5efb94d2fd1a"
+  },
+  {
+    "path": "wechat-app/analysis.js",
+    "bytes": 2132,
+    "sha256": "4e12f6ca398b5a4c5d1b81f2d955593397856ce3cfb6e764a25e1bfda086c81a"
+  },
+  {
+    "path": "wechat-app/README.md",
+    "bytes": 5731,
+    "sha256": "aa4fbb65a7d4bd19463b319ebd0232338ffb0cd71e6ba5e5276d113b1e2e6a64"
+  },
+  {
+    "path": "wechat-app/app.wxss",
+    "bytes": 290,
+    "sha256": "35c5fbf625d8212b821f54dd09b1ba0746cf3f97b8c16848afbcf50841e06313"
+  },
+  {
+    "path": "wechat-app/result.wxml",
+    "bytes": 3091,
+    "sha256": "ee2b061c6065b237e00e73b64a48c71161b7649ba6a2162c8a94e221b2ec465f"
+  },
+  {
+    "path": "wechat-app/sitemap.json",
+    "bytes": 58,
+    "sha256": "7f2c9a33a038d7848a457a9170100b2fb34c4df42e2c73cfea6f7ba39a155f28"
+  },
+  {
+    "path": "wechat-app/result.js",
+    "bytes": 18570,
+    "sha256": "42336298a3635dad4e972f84a174a9a26dd70ce38a2bab8a2708175457012578"
+  },
+  {
+    "path": "wechat-app/app.js",
+    "bytes": 998,
+    "sha256": "db2d959b4597011fd3bf1b50dd359737a04b58b563a12d0183e5c7622b504c2f"
+  },
+  {
+    "path": "wechat-app/settings.js",
+    "bytes": 1966,
+    "sha256": "b532c3e7235f031da7d43e74cf2d183aa98e8382a03833ea4785d17a32af8361"
+  },
+  {
+    "path": "wechat-app/input.js",
+    "bytes": 6761,
+    "sha256": "faaaca7ba59a6f3de5ebb217e564ab52801a0494465eee6ff0a9add906a5cb3f"
+  },
+  {
+    "path": "wechat-app/utils/pdf-maker.js",
+    "bytes": 2841,
+    "sha256": "0e71bd7b83cf7eb23a58bda2e3b3180a490fce889f511e3b97911f4923b6259c"
+  },
+  {
+    "path": "wechat-app/utils/calculation.js",
+    "bytes": 7857,
+    "sha256": "69ac2c5395179378e7741cf311a8e9d031b85aab62e3b17e3ad03a06db2ff808"
+  },
+  {
+    "path": "wechat-app/utils/importer.js",
+    "bytes": 393,
+    "sha256": "315d8f98f096545fec8556e0436b5875811b5a68443467a46593f404202cf141"
+  },
+  {
+    "path": "wechat-app/utils/analysis.js",
+    "bytes": 2132,
+    "sha256": "4e12f6ca398b5a4c5d1b81f2d955593397856ce3cfb6e764a25e1bfda086c81a"
+  },
+  {
+    "path": "wechat-app/utils/privacy.js",
+    "bytes": 350,
+    "sha256": "a78c938b1f0336ede8af9cedd82b697be5948e93f6e208501221f427048a9a13"
+  },
+  {
+    "path": "wechat-app/chess/session.js",
+    "bytes": 3129,
+    "sha256": "8e112b1812a33cf537758f386c90614cbeaeb2630770e257c3f232d7a16c4fb7"
+  },
+  {
+    "path": "wechat-app/chess/config.js",
+    "bytes": 177,
+    "sha256": "0ae6fc527a6fb12818a63d7848e9a06290acfb10fad03a10f5b2b2a95a046ee0"
+  },
+  {
+    "path": "wechat-app/chess/common.wxss",
+    "bytes": 2341,
+    "sha256": "06c5ab5c48ed0c261a821f8fb17900db4f05f78f39e16eb160448b9c9aab6303"
+  },
+  {
+    "path": "wechat-app/pages/settings/settings.json",
+    "bytes": 41,
+    "sha256": "bec3f54a64780f5bc8b3a88e624d61e51f3605173b0a9dfd5f12a59acd0c6bca"
+  },
+  {
+    "path": "wechat-app/pages/settings/settings.wxss",
+    "bytes": 54,
+    "sha256": "cd1596b2e6b5ff2516766fc85b6a0124aa2f11275848d8d2d0de7be059f59941"
+  },
+  {
+    "path": "wechat-app/pages/settings/settings.wxml",
+    "bytes": 1222,
+    "sha256": "82d71fe56d353623203d43dffbf84a6b0271b6e701e8b0678cc9d3b2476c29bd"
+  },
+  {
+    "path": "wechat-app/pages/settings/settings.js",
+    "bytes": 2213,
+    "sha256": "218b894b264a2b6fe9bb4d791977377cc8da8d96473a7289d54f8c7dcc692b3b"
+  },
+  {
+    "path": "wechat-app/pages/result/result.json",
+    "bytes": 108,
+    "sha256": "fb1b052bc7db9e8f14edba07d512d4ce1b902099f0ec7bfb82423e00d731f983"
+  },
+  {
+    "path": "wechat-app/pages/result/result.wxss",
+    "bytes": 1226,
+    "sha256": "c0a1ad25dd93712496893ff1a7b43f4a8986194fd58b8d27d65a7506a25e1d79"
+  },
+  {
+    "path": "wechat-app/pages/result/result.wxml",
+    "bytes": 3091,
+    "sha256": "ee2b061c6065b237e00e73b64a48c71161b7649ba6a2162c8a94e221b2ec465f"
+  },
+  {
+    "path": "wechat-app/pages/result/result.js",
+    "bytes": 18871,
+    "sha256": "e5f03e230e8fc96a095a42c3b88fbcd251c0141db3894885849ece75bae521e1"
+  },
+  {
+    "path": "wechat-app/pages/input/input.json",
+    "bytes": 41,
+    "sha256": "cc65ec474353d1ddce70e9a509efb87af28aacfe554d741c20e33a736c103c1d"
+  },
+  {
+    "path": "wechat-app/pages/input/input.wxml",
+    "bytes": 2602,
+    "sha256": "af2e20f145fb26243b444f534169fdc09d75ce219d7f18bfe6d6c856b51430a7"
+  },
+  {
+    "path": "wechat-app/pages/input/input.js",
+    "bytes": 6774,
+    "sha256": "06d6f43725409af1ef71833817aac79cea8637a02879b722e968a19036d45de2"
+  },
+  {
+    "path": "wechat-app/pages/input/input.wxss",
+    "bytes": 1170,
+    "sha256": "455cc7a69f0c19e8e2beb3b5bab6151b9beaa8605612deee2914c1a802231a8f"
+  },
+  {
+    "path": "wechat-app/pages/cut-preview/cut-preview.js",
+    "bytes": 3553,
+    "sha256": "c0dfcba8bdb1c07cb838753f9c210bca3f172db067c069c3b9f2b6711ad9492e"
+  },
+  {
+    "path": "wechat-app/pages/cut-preview/cut-preview.json",
+    "bytes": 48,
+    "sha256": "a76b43bbde44be8fbcabba781e30d376b6953e974399ea1657d1cb17abb1cabd"
+  },
+  {
+    "path": "wechat-app/pages/cut-preview/cut-preview.wxss",
+    "bytes": 1061,
+    "sha256": "a38670b6f8ebf95d815d35a7db313d50c2f8656be3077303031dd1a6c5d6463b"
+  },
+  {
+    "path": "wechat-app/pages/cut-preview/cut-preview.wxml",
+    "bytes": 1327,
+    "sha256": "899f74d75dc0cb4c34233924e06dcec7e73380e572d14e96ee31721e6ea77b3f"
+  },
+  {
+    "path": "wechat-app/pages/cut/cut.js",
+    "bytes": 12739,
+    "sha256": "ad8581ae5e3d2c8234f4a555f268bd41a13a4b59497b7a515da16211daba3155"
+  },
+  {
+    "path": "wechat-app/pages/cut/cut.wxss",
+    "bytes": 7011,
+    "sha256": "a1d86143d480ccf8514f832f66c5c3a8ab530aa26579df3a82ae33c0bbd1d83e"
+  },
+  {
+    "path": "wechat-app/pages/cut/cut.wxml",
+    "bytes": 7288,
+    "sha256": "8fec73e75900bb7817afd88a6c9a824f91dcc556b120a0883b652937cc9af3a6"
+  },
+  {
+    "path": "wechat-app/pages/cut/cut.json",
+    "bytes": 48,
+    "sha256": "2a908a57f65b58d24f5159cba259e9519de345e1f78fd18b4c5b326972819493"
+  },
+  {
+    "path": "wechat-app/pages/index/index.wxml",
+    "bytes": 1070,
+    "sha256": "fad5f6a7afe5c7252653152161f52e2e451d353f1346f8d07731fa4b5cec6d93"
+  },
+  {
+    "path": "wechat-app/pages/index/index.js",
+    "bytes": 480,
+    "sha256": "c0d4f2ddd38b8b7040a8cd7bbc0f51ff59b208ebfba834078abf2118ec12caf7"
+  },
+  {
+    "path": "wechat-app/pages/index/index.wxss",
+    "bytes": 862,
+    "sha256": "89f2e2a6b466e48d08d77a3bc42943b97e7628b0a194ec52676985fccdf7a5b1"
+  },
+  {
+    "path": "wechat-app/pages/index/index.json",
+    "bytes": 22,
+    "sha256": "37d7cfe6b3bb4a51e3a730a96b791a62d3178bedc4112629d397b14f764a8973"
+  },
+  {
+    "path": "wechat-app/chess/utils/recent-game.js",
+    "bytes": 1798,
+    "sha256": "4395e6800abff7940a40e4977eb14ff8e45d10c4a7f13561eb6226ef2b5f5d3a"
+  },
+  {
+    "path": "wechat-app/chess/utils/preferences.js",
+    "bytes": 546,
+    "sha256": "889903bd362f78778fb4f2d68bd3f7a097c6ce5dcdbf3d184ac03bb699d97774"
+  },
+  {
+    "path": "wechat-app/chess/utils/board.js",
+    "bytes": 965,
+    "sha256": "f5564fe796000668b78569fbe97a47b5f343b4c80a67168daf5e72acc0c337ae"
+  },
+  {
+    "path": "wechat-app/chess/utils/time.js",
+    "bytes": 1865,
+    "sha256": "38ed63686fbf4abd689e237930abe19b9c02c52578216197cd626c287704a085"
+  },
+  {
+    "path": "wechat-app/chess/utils/chess-motion.js",
+    "bytes": 3267,
+    "sha256": "a75ee1d9a9db1c26ecf703207f55a789e3d10781599d3c5a61e741f48cbeb476"
+  },
+  {
+    "path": "wechat-app/chess/utils/privacy.js",
+    "bytes": 350,
+    "sha256": "a78c938b1f0336ede8af9cedd82b697be5948e93f6e208501221f427048a9a13"
+  },
+  {
+    "path": "wechat-app/chess/assets/move.wav",
+    "bytes": 3792,
+    "sha256": "d7df6fe00aae6c745f9404d30319421ee5aad706d926b486e9e848975541d6b9"
+  },
+  {
+    "path": "wechat-app/chess/services/cloud.js",
+    "bytes": 462,
+    "sha256": "aab768dbdabfc907c8d3c90d575658f00308f3281e97f856cabc369a4e0ded58"
+  },
+  {
+    "path": "wechat-app/chess/services/deployment.js",
+    "bytes": 2685,
+    "sha256": "f5f9e7d8c6168fd8ec0c2087683e1f45d432051067a51897c76d9e7b8502a913"
+  },
+  {
+    "path": "wechat-app/chess/services/socket.js",
+    "bytes": 5695,
+    "sha256": "92c41fd66efbbed2548d68d2cce5aedc2652230c198c0b120dd5dea30dff55f1"
+  },
+  {
+    "path": "wechat-app/chess/services/avatars.js",
+    "bytes": 1723,
+    "sha256": "d01245b34b4de41c3943ad22fb773dc42cb076154033d74a950efaa45f76f497"
+  },
+  {
+    "path": "wechat-app/chess/services/voice-controller.js",
+    "bytes": 4607,
+    "sha256": "8dc1a7e9fc69e15d759e5da72ad29de979a5cecdbbe18ed22734c14bfc90ef49"
+  },
+  {
+    "path": "wechat-app/chess/services/chat.js",
+    "bytes": 5450,
+    "sha256": "304d1b349efa50b46b5104594395da8a7ea44e39556c782196afb9387f2f777f"
+  },
+  {
+    "path": "wechat-app/chess/services/voice.js",
+    "bytes": 7473,
+    "sha256": "1475d4a7f5439a16db08fe0ad034bb94bb969b54ddbc0f6c0c79c2e3dd324db0"
+  },
+  {
+    "path": "wechat-app/chess/services/api.js",
+    "bytes": 2175,
+    "sha256": "9fa6f30514a5dd755d2080793fd6629fcf4faba2560e492861be367a771e3d08"
+  },
+  {
+    "path": "wechat-app/chess/pages/settings/index.wxml",
+    "bytes": 8857,
+    "sha256": "3c88ad687e4218909297f47a8a5a31d1cd72aae052ef20c7f537af62c6c4fa52"
+  },
+  {
+    "path": "wechat-app/chess/pages/settings/index.js",
+    "bytes": 16977,
+    "sha256": "16047af3b730a6dd0a68979ca2315a8a88391f3d0b75a17de6c38b749eed1d82"
+  },
+  {
+    "path": "wechat-app/chess/pages/settings/index.wxss",
+    "bytes": 1492,
+    "sha256": "8102eff1e5c5c0f4e2fbd47baabbf2cc26e449bbaa47b8da9a8312dad465b770"
+  },
+  {
+    "path": "wechat-app/chess/pages/settings/index.json",
+    "bytes": 242,
+    "sha256": "ff150579667da4b9b6d836d13bd9145ef59ec08749a2f2315af7c24afdb034c2"
+  },
+  {
+    "path": "wechat-app/chess/pages/lobby/index.wxml",
+    "bytes": 1646,
+    "sha256": "de2b3dcab5d483d074b7c2677a86c87d8b8ab5caade747fdcfa55fd99fd8a939"
+  },
+  {
+    "path": "wechat-app/chess/pages/lobby/index.js",
+    "bytes": 3411,
+    "sha256": "6839db4354fad07923a076454cd71ece268e0cdf0b7011aa3968c30d34922681"
+  },
+  {
+    "path": "wechat-app/chess/pages/lobby/index.wxss",
+    "bytes": 513,
+    "sha256": "4730fdc0914251c35e3a6cfee6b42e9861013347a880ba99263fa80b64e930c5"
+  },
+  {
+    "path": "wechat-app/chess/pages/lobby/index.json",
+    "bytes": 227,
+    "sha256": "39c6a2025f6d6e03eb8e5dad30380ed087101d9fa79a9bdcea0d1ec59ecc536e"
+  },
+  {
+    "path": "wechat-app/chess/pages/game/index.wxml",
+    "bytes": 9654,
+    "sha256": "6c2a4ed1bf120affd037e4dc01ac56cb4e1173737baeb751459e327b7456a872"
+  },
+  {
+    "path": "wechat-app/chess/pages/game/index.js",
+    "bytes": 27386,
+    "sha256": "1a1ecbbfc5b043c2de906ebfeb2495457032a81488266281625298e161c06993"
+  },
+  {
+    "path": "wechat-app/chess/pages/game/index.wxss",
+    "bytes": 10158,
+    "sha256": "3a69840d7f288f6cabc80c2244e7c0e8d914394dddd37a83d1c932899cfa4e0f"
+  },
+  {
+    "path": "wechat-app/chess/pages/game/index.json",
+    "bytes": 155,
+    "sha256": "51551bf6267d5ce3ab7f63e1193b234c6f721fbed45c76bd90edde79a708f373"
+  },
+  {
+    "path": "wechat-app/chess/pages/ai/index.wxml",
+    "bytes": 1247,
+    "sha256": "2d35d506ebd701f05e79ac21b753bb365ba82a0f2549d519001fdeadb3d0d9a9"
+  },
+  {
+    "path": "wechat-app/chess/pages/ai/index.js",
+    "bytes": 2320,
+    "sha256": "f925162081e4ebb55da5820b9dca92530b3b356f881f96b631ff7c8a27493064"
+  },
+  {
+    "path": "wechat-app/chess/pages/ai/index.wxss",
+    "bytes": 776,
+    "sha256": "d4cb57971221cfd6f3a965bb265bea1e3c48fdfe1a3d7c9d469d5a3f2d9ddd51"
+  },
+  {
+    "path": "wechat-app/chess/pages/ai/index.json",
+    "bytes": 245,
+    "sha256": "fa3c05b2a08c6d732b48523b0eb8d35d9492c9a9d1ca69d37b717d512bfa651f"
+  },
+  {
+    "path": "wechat-app/chess/pages/index/index.wxml",
+    "bytes": 2497,
+    "sha256": "78bb8cec67ca018b18039bb00f70f7977ab8ed044627ebe8e41f5b5529af1d78"
+  },
+  {
+    "path": "wechat-app/chess/pages/index/index.js",
+    "bytes": 4287,
+    "sha256": "dc17552dab668458edb5e1e9bb3a18ae9805729a8bce0d070549eb10f094bbc7"
+  },
+  {
+    "path": "wechat-app/chess/pages/index/index.wxss",
+    "bytes": 1849,
+    "sha256": "07302a7e8c0df1f8e85627ac1de0d50f9c326e04931b2da1c97c30b5f68f6cc5"
+  },
+  {
+    "path": "wechat-app/chess/pages/index/index.json",
+    "bytes": 164,
+    "sha256": "68cd0097cdc60251e60549d17a9a0c80e860ff0cdb05aafe97c25fc64afbb1ae"
+  },
+  {
+    "path": "wechat-app/chess/components/time-control/index.wxml",
+    "bytes": 2121,
+    "sha256": "d8ddcb9576977468d9750c25871910152c6bde25feb5a50f79ba538b78dc03da"
+  },
+  {
+    "path": "wechat-app/chess/components/time-control/index.js",
+    "bytes": 1104,
+    "sha256": "11729413760c2ba365130d56e54834ef2cac810e57ac69f9405be590dda0b648"
+  },
+  {
+    "path": "wechat-app/chess/components/time-control/index.wxss",
+    "bytes": 853,
+    "sha256": "62192644f8e29a1c5a38cfecdc7167a05fba87309f44aae2755bced41047731c"
+  },
+  {
+    "path": "wechat-app/chess/components/time-control/index.json",
+    "bytes": 22,
+    "sha256": "e7b657f5a4b032a68e9e084639b3a5564ce552896d269c3f8c4463bf7a7fa3b5"
+  },
+  {
+    "path": "wechat-app/components/heatmap/heatmap.json",
+    "bytes": 18,
+    "sha256": "5f0c700cc36dc094e14d245415390f4661d744ddd561090b64fcfcca416536db"
+  },
+  {
+    "path": "wechat-app/components/heatmap/heatmap.js",
+    "bytes": 3645,
+    "sha256": "850490b7f8e2b95ceff1429528fed49bdc5644ef18b5c61ae666c51d46e170e3"
+  },
+  {
+    "path": "wechat-app/components/heatmap/heatmap.wxss",
+    "bytes": 66,
+    "sha256": "4ca5896179313a34e48c593d40e5d97bbd24718049c1befa4ebbf0396267da26"
+  },
+  {
+    "path": "wechat-app/components/heatmap/heatmap.wxml",
+    "bytes": 80,
+    "sha256": "9851027e2e17296d9c64ea30f6574a2918fc76eeeac3a95554ed6b07d840990f"
+  },
+  {
+    "path": "wechat-app/cloudfunctions/ocr/index.js",
+    "bytes": 2740,
+    "sha256": "2cda2cc35e32e304c5310215fca26aa2e67f391205e0bfaf09f5d594a1f653ad",
+    "note": "Hardcoded Baidu OCR credentials replaced with server environment variables in Git copy only."
+  },
+  {
+    "path": "wechat-app/cloudfunctions/ocr/package.json",
+    "bytes": 188,
+    "sha256": "d2d1c02cd35404e0533dba1dd6813566bdadca213f1c9e2f23227c1d0eaa89a1"
+  },
+  {
+    "path": "wechat-app/cloudfunctions/gouge-chess-chat/config.json",
+    "bytes": 67,
+    "sha256": "88e0de9824b31b431b750581e866b40bd3580a4fd80f487a2c88c4052ebf88f1"
+  },
+  {
+    "path": "wechat-app/cloudfunctions/gouge-chess-chat/index.js",
+    "bytes": 4214,
+    "sha256": "5e2a03b5806d36e58598aa6fc6c8d9eb27fe278832d4648d882f83b7bd725d04"
+  },
+  {
+    "path": "wechat-app/cloudfunctions/gouge-chess-chat/package.json",
+    "bytes": 202,
+    "sha256": "202b5a878a358df60d26088b97de523c8fe49eb5306e933c26725ee5459f2297"
+  },
+  {
+    "path": "wechat-app/cloudfunctions/gouge-chess-chat/handler.cjs",
+    "bytes": 8279,
+    "sha256": "8ca0dfa6271628c7a8a3e29156505b23a9bd4b2addcfdfbd41cad1339babc64b"
+  },
+  {
+    "path": "chess/Dockerfile",
+    "bytes": 382,
+    "sha256": "9f8985b79675ede2bd71e913461cd72ff25eb7125160247652f5e3461d48f5d8"
+  },
+  {
+    "path": "chess/project.config.json",
+    "bytes": 558,
+    "sha256": "d2b1a692171d46e82a328e8c253accc08aa5c8ddb291e35bb2ad22baf42be5a8"
+  },
+  {
+    "path": "chess/README.md",
+    "bytes": 7084,
+    "sha256": "18ea2939decd2fe2d41e63512803131ddc44f61ab67cdd80f87c001cdd7206a4"
+  },
+  {
+    "path": "chess/.dockerignore",
+    "bytes": 188,
+    "sha256": "d7fd4f8e0f04b943416e4a7007cf487cda910cff2a5cccc982ddf95cf9c8bfbc"
+  },
+  {
+    "path": "chess/.gitignore",
+    "bytes": 145,
+    "sha256": "a8a620792dec677e56f8511ffbeef89c4c9b32656791e01a0c78c1520e8e8942"
+  },
+  {
+    "path": "chess/package-lock.json",
+    "bytes": 25166,
+    "sha256": "748a69534225e4a6c1c3edf98550b0000659822447a206dcc8bed84b47af20b9"
+  },
+  {
+    "path": "chess/package.json",
+    "bytes": 641,
+    "sha256": "e4a4463f337244b3380aa52b05672486d0f2eb4d968bdf526ada8eba04d95527"
+  },
+  {
+    "path": "chess/.env.example",
+    "bytes": 787,
+    "sha256": "d21d78c71870a8527c7f6f0b90d2db24da5fa13f23261415342b830023e1a8e8"
+  },
+  {
+    "path": "chess/core/clock.js",
+    "bytes": 2636,
+    "sha256": "0e28ac4e64c00d907d9d90bcadd1a4907c6258c6e55e1607a786e86d338f5f83"
+  },
+  {
+    "path": "chess/core/xiangqi.js",
+    "bytes": 16394,
+    "sha256": "542c6947d892f11f6e4a0b88babdeee8b562effa9c852d20835676ccb981ab6b"
+  },
+  {
+    "path": "chess/web/hand.svg",
+    "bytes": 661,
+    "sha256": "b2698ae14875ad2272c86eb3abfa5f376b4596bec4e067fc07a12abb9d5a7e42"
+  },
+  {
+    "path": "chess/web/index.html",
+    "bytes": 1389,
+    "sha256": "c60d4bd1822c253491f3b7867f985005d921d4269936d328b19bfd11113927f6"
+  },
+  {
+    "path": "chess/web/chess-motion.js",
+    "bytes": 3735,
+    "sha256": "3c0772dbc6cc641e6c4fd2be8475877584c31e3d3672569401dcf38008c0f337"
+  },
+  {
+    "path": "chess/web/style.css",
+    "bytes": 19480,
+    "sha256": "add6510236e78544e48a08b5520166c94896431f461e946c5c780400d44af7a9"
+  },
+  {
+    "path": "chess/web/app.js",
+    "bytes": 54292,
+    "sha256": "a61c1dd7591eae09b95adc9acf751fdb6d401b85c65215742d26eadd40e14515"
+  },
+  {
+    "path": "chess/web/favicon.svg",
+    "bytes": 276,
+    "sha256": "abf5556233c9e8a74ca3b08709b615bcec1ea4f26e928f9ab4054f824963b46e"
+  },
+  {
+    "path": "chess/deploy/README.md",
+    "bytes": 5919,
+    "sha256": "a60fe432a1511980534ac1e1bc1a70edaca5052a19a084ae2c10d06e6b054c58"
+  },
+  {
+    "path": "chess/deploy/.gitignore",
+    "bytes": 25,
+    "sha256": "5f3747a703eaf89bbefcf890b351681deb43bb33b36897ea987329bd2dda8994"
+  },
+  {
+    "path": "chess/deploy/production.env.example",
+    "bytes": 633,
+    "sha256": "21aec452875cad011414ce0f63007005d0e8aca642c47e6576df76ffe66a06a4"
+  },
+  {
+    "path": "chess/deploy/compose.yml",
+    "bytes": 1722,
+    "sha256": "42e974a08530cf4ddacd15275b8d6d30a6df2f144f4f307f8fc262db7af5f3eb"
+  },
+  {
+    "path": "chess/tests/chat-backend.test.js",
+    "bytes": 17976,
+    "sha256": "daf11571a001cd74aae0ac225b81f27c6c45dfc1ff13a26ed5783afce38914d8"
+  },
+  {
+    "path": "chess/tests/integration-cloud-client.test.js",
+    "bytes": 29445,
+    "sha256": "105ef9acfe56a0622a256f97d70ac2b7b7c7ce20ebc03d69c78c8bdcee7786cc"
+  },
+  {
+    "path": "chess/tests/integration-chess-behavior.test.js",
+    "bytes": 10117,
+    "sha256": "9bfc54c2fbcd405cdd380747ae8e4be8327a6f0eca24632e69d9266376fe4bd7"
+  },
+  {
+    "path": "chess/tests/server.test.js",
+    "bytes": 44200,
+    "sha256": "5d531ca7c7a244f7812fcfd3762b58f5a5a0a651461f56addd7cd19c474e1a1b"
+  },
+  {
+    "path": "chess/tests/ai.test.js",
+    "bytes": 4227,
+    "sha256": "733ec38d91200df3908dba7b2f18f901cbde39ef96ef9dd0a91256d345d2df7c"
+  },
+  {
+    "path": "chess/tests/integration-chess-races.test.js",
+    "bytes": 15988,
+    "sha256": "12f18d4f8892809107dba9b8d08c20d6a4f1ff79f79ef198d3f3d16dcda757b0"
+  },
+  {
+    "path": "chess/tests/chat-ui.test.js",
+    "bytes": 14068,
+    "sha256": "75e395f5924f3a320b87c240f64928f08c8b2b331e65cdde2d67b69f366bd406"
+  },
+  {
+    "path": "chess/tests/integration-cloud-release.test.js",
+    "bytes": 3085,
+    "sha256": "6651fb1b912fd55e6478acb2b603eca7c8ed37660c89d4f7b1a4cee67deb300c"
+  },
+  {
+    "path": "chess/tests/voice.test.js",
+    "bytes": 17984,
+    "sha256": "f1214f65d9f11cc145617876d7a97e05f6115e5f2a080f60e3814d640db314f1"
+  },
+  {
+    "path": "chess/tests/deploy.test.js",
+    "bytes": 8500,
+    "sha256": "ed227b5e77d58b4f4214e27ec0d18c1b6abd49d67d6fae8c8a699479ea12c9bd"
+  },
+  {
+    "path": "chess/tests/host-privacy.test.js",
+    "bytes": 5946,
+    "sha256": "302ff93f43901ef357d129c8d0c1981983b8c5fb7be03582dc2b893e65a192bc"
+  },
+  {
+    "path": "chess/tests/cloud-storage.test.js",
+    "bytes": 19369,
+    "sha256": "880f0801505c5aab8b69ed8171867c702efcfb6782f63a1b8821c64751dc12c1"
+  },
+  {
+    "path": "chess/tests/miniprogram.test.js",
+    "bytes": 32717,
+    "sha256": "48fb4ee8f183b77056a6de469cc5afaa03eb45f2f1facdeaecb5a99252a38c03"
+  },
+  {
+    "path": "chess/tests/profile-privacy.test.js",
+    "bytes": 6953,
+    "sha256": "1b244311a7ef6ad64cc5a8691a0c7da92cbfa5ecf64c8b48f1067fe8e83a2677"
+  },
+  {
+    "path": "chess/tests/integration-release.test.js",
+    "bytes": 7123,
+    "sha256": "a0009b9e972007dc9812568d1613dfc7f441469f2be0ec582558c76aa619031d"
+  },
+  {
+    "path": "chess/tests/integration-cloud-smoke.test.js",
+    "bytes": 5092,
+    "sha256": "1976c8840ca5362f082d6f632998da8d10cd852088a32ba4e36f184f9c5897ac"
+  },
+  {
+    "path": "chess/tests/miniprogram-motion.test.js",
+    "bytes": 18034,
+    "sha256": "b9af40bc15b6472b6908ab3a7b1863e8c0af85b02127c7bafe22fe9b0fbdaa1d"
+  },
+  {
+    "path": "chess/tests/web-motion.test.js",
+    "bytes": 4801,
+    "sha256": "a72baed05daea52032e8da40ee40992482c512a78c2b9f894b9c50e5d3586abc"
+  },
+  {
+    "path": "chess/tests/chat-client.test.js",
+    "bytes": 11357,
+    "sha256": "dbc8f44f56d38677861c098df217653d520c0dabfcf379a71d3bb8a63fcd29ad",
+    "note": "Integrated host path uses ITO_HOST_ROOT or the repository wechat-app directory."
+  },
+  {
+    "path": "chess/tests/core.test.js",
+    "bytes": 46753,
+    "sha256": "79221fbd957b21c86bbc2a046ed69ce840257f1f8df0e537501964a52208a18d"
+  },
+  {
+    "path": "chess/tests/integration-cloud-ai-smoke.test.js",
+    "bytes": 17838,
+    "sha256": "fb2a7fe814cdedf027e458298256b5a65a8ff7a1a9447a193477b267d46ab49f"
+  },
+  {
+    "path": "chess/tests/integration-host.test.js",
+    "bytes": 15887,
+    "sha256": "3e70f484eef2b09327db85cb23d73d4d146eea8cebeb1d4c55e480fa779bb245"
+  },
+  {
+    "path": "chess/server/ai.js",
+    "bytes": 5106,
+    "sha256": "2bf7eb91437996b767cb24e47addd33e50d59547ac6248ea183e310d783562b7"
+  },
+  {
+    "path": "chess/server/cloud-storage.js",
+    "bytes": 7593,
+    "sha256": "3e6c9c49b4d57555f300c89958e3662e4f0277c16dfd64e3e8b931d40367aa1d"
+  },
+  {
+    "path": "chess/server/index.js",
+    "bytes": 1091,
+    "sha256": "27eac1e5a71e4bb5e9fd6752509b096781fdc77b15db82f1991ef401cd39d036"
+  },
+  {
+    "path": "chess/server/search-worker.js",
+    "bytes": 238,
+    "sha256": "6bf43d3a208215dc5e29de655319ae78ac4667e32f95312b9b380ca73adcc110"
+  },
+  {
+    "path": "chess/server/app.js",
+    "bytes": 43227,
+    "sha256": "ca89ec1115860a06dc3fddaf76d2dc96902eab82e01369390e8e067c2cadd0fb"
+  },
+  {
+    "path": "chess/docs/WECHAT.md",
+    "bytes": 12766,
+    "sha256": "fd314f3632f5aa23d76ee36c9382b7f19ce303ebe5047474d2ace4b4c9333e00"
+  },
+  {
+    "path": "chess/docs/ONLINE-RECOVERY.txt",
+    "bytes": 2573,
+    "sha256": "a38202171bc5f6413e0551090376f30ae505cca99f87df888dd1980b9c908246"
+  },
+  {
+    "path": "chess/docs/CONTRACT.md",
+    "bytes": 5949,
+    "sha256": "50b6cd9cf1d3de9a9c96e03b94d54ac3a30704facc00d559a7b48bf7580e4aa6"
+  },
+  {
+    "path": "chess/docs/VERIFICATION.md",
+    "bytes": 8406,
+    "sha256": "d79a8d8efc82e8b652f0c93dd71e19ff689314b99b013b0c8c1e76fbc2849bcc"
+  },
+  {
+    "path": "chess/docs/LOW-BUDGET-RECOVERY.txt",
+    "bytes": 3564,
+    "sha256": "1ada61cace041c06542d8ddf173cd3b6dc302d2d35ee5457960fcf53e7873229"
+  },
+  {
+    "path": "chess/docs/RULES.md",
+    "bytes": 6434,
+    "sha256": "444c9f0f297d9588b0f02bfd50b631adf8440837660ce04a7eab8d67778909b1"
+  },
+  {
+    "path": "chess/docs/DESIGN.md",
+    "bytes": 1410,
+    "sha256": "b283b2da12a6dfd2dc05b199dc3053c7d39463b7a24f9a873840a46949212363"
+  },
+  {
+    "path": "chess/docs/UI.md",
+    "bytes": 2491,
+    "sha256": "328ce3d8d522e931e92be54c2dcc41046fe1654d3db059a13fccbbf2c0f94f81"
+  },
+  {
+    "path": "chess/scripts/wechat-cloud-ai-smoke.fn.js",
+    "bytes": 13044,
+    "sha256": "6a1cb2798127830dbbf6975252747c8cca2fc18a7af187a279e1a9c29494bc11"
+  },
+  {
+    "path": "chess/scripts/build-host.mjs",
+    "bytes": 4166,
+    "sha256": "2e0685d22ac74c954aeec9d436988136f38cea6d764433f4b10b0d9e65971ff9"
+  },
+  {
+    "path": "chess/scripts/verify-native-connection.py",
+    "bytes": 1309,
+    "sha256": "c488696ed3cad3552fea31512bf580880e05b6eb3ad62656cedfcac763692125"
+  },
+  {
+    "path": "chess/scripts/build.js",
+    "bytes": 3528,
+    "sha256": "12257c9b5181cf3fa0f0824c4693ed6d5c7eb4cca52045fe00f80c33435ea84c"
+  },
+  {
+    "path": "chess/scripts/check-release.mjs",
+    "bytes": 3908,
+    "sha256": "eaf2a504b897fcd94f8afa4423f97976138317d3928d3e14620bf17ad2e181a7"
+  },
+  {
+    "path": "chess/scripts/wechat-host-acceptance.py",
+    "bytes": 17915,
+    "sha256": "8e5bf39a0b6fefbf101521566e61967c8ab642d1562153c10e0d3b7d8ab8dbdd"
+  },
+  {
+    "path": "chess/scripts/wechat-cloud-smoke.fn.js",
+    "bytes": 5962,
+    "sha256": "9cbb005988719863cbc502cb5129d001e67b55454e94eb416cf00dee6b49b372"
+  },
+  {
+    "path": "chess/scripts/browser-acceptance.mjs",
+    "bytes": 30419,
+    "sha256": "7c2f28bf5c90bbebf755b609f10f8c7806b40fe4ceb19255d557ea054eb4a859"
+  },
+  {
+    "path": "chess/miniprogram/app.json",
+    "bytes": 428,
+    "sha256": "fe881e1c0ee8cb91f960c524ebd5a89a65b3965cb039530b0ebf5d56dadff421"
+  },
+  {
+    "path": "chess/miniprogram/project.config.json",
+    "bytes": 261,
+    "sha256": "17dab38606aee9adb81206680435f062607dd490d2b9efc5457e7afc42aad0e1"
+  },
+  {
+    "path": "chess/miniprogram/config.js",
+    "bytes": 156,
+    "sha256": "a84dbb1da1a39015b1f5b2ac8b8e279edfaf924d5c8532ee6ae361e75067337b"
+  },
+  {
+    "path": "chess/miniprogram/app.wxss",
+    "bytes": 2341,
+    "sha256": "06c5ab5c48ed0c261a821f8fb17900db4f05f78f39e16eb160448b9c9aab6303"
+  },
+  {
+    "path": "chess/miniprogram/sitemap.json",
+    "bytes": 104,
+    "sha256": "2557a32b7bb619efba455388971c1257bb3b12cccd999b3eb606b7888dbe385a"
+  },
+  {
+    "path": "chess/miniprogram/app.js",
+    "bytes": 1607,
+    "sha256": "22a7ae8ccb542e58587f1bed09bb786816462f45fe99599d59c998891a09055a"
+  },
+  {
+    "path": "chess/miniprogram/utils/recent-game.js",
+    "bytes": 891,
+    "sha256": "d2407f19a164effb4b88f09cf4546de6097f40f0993a36f53b2906d647438c06"
+  },
+  {
+    "path": "chess/miniprogram/utils/preferences.js",
+    "bytes": 546,
+    "sha256": "889903bd362f78778fb4f2d68bd3f7a097c6ce5dcdbf3d184ac03bb699d97774"
+  },
+  {
+    "path": "chess/miniprogram/utils/board.js",
+    "bytes": 965,
+    "sha256": "f5564fe796000668b78569fbe97a47b5f343b4c80a67168daf5e72acc0c337ae"
+  },
+  {
+    "path": "chess/miniprogram/utils/time.js",
+    "bytes": 1865,
+    "sha256": "38ed63686fbf4abd689e237930abe19b9c02c52578216197cd626c287704a085"
+  },
+  {
+    "path": "chess/miniprogram/utils/chess-motion.js",
+    "bytes": 3267,
+    "sha256": "a75ee1d9a9db1c26ecf703207f55a789e3d10781599d3c5a61e741f48cbeb476"
+  },
+  {
+    "path": "chess/miniprogram/utils/privacy.js",
+    "bytes": 350,
+    "sha256": "a78c938b1f0336ede8af9cedd82b697be5948e93f6e208501221f427048a9a13"
+  },
+  {
+    "path": "chess/miniprogram/assets/move.wav",
+    "bytes": 3792,
+    "sha256": "d7df6fe00aae6c745f9404d30319421ee5aad706d926b486e9e848975541d6b9"
+  },
+  {
+    "path": "chess/miniprogram/services/socket.js",
+    "bytes": 2087,
+    "sha256": "696bed882233badf1a4c685372a5c1bdd8713ed1a9d451f423e88c933427956f"
+  },
+  {
+    "path": "chess/miniprogram/services/voice-controller.js",
+    "bytes": 4607,
+    "sha256": "8dc1a7e9fc69e15d759e5da72ad29de979a5cecdbbe18ed22734c14bfc90ef49"
+  },
+  {
+    "path": "chess/miniprogram/services/chat.js",
+    "bytes": 5393,
+    "sha256": "d09cfec06f8ce32f44656603320885c77d5f120c27c961d14337026c636c3606"
+  },
+  {
+    "path": "chess/miniprogram/services/voice.js",
+    "bytes": 7371,
+    "sha256": "2895162f7ca6d839fdaba30003f6fe5f032b795f8e2f12467ef8a95da63144a6"
+  },
+  {
+    "path": "chess/miniprogram/services/api.js",
+    "bytes": 1482,
+    "sha256": "dd7c571afa3c5be6ed27891310cb692ec7cdaf14e6518b971f69c3ca0dab4dfe"
+  },
+  {
+    "path": "chess/miniprogram/pages/settings/index.wxml",
+    "bytes": 8810,
+    "sha256": "dbf5eb82c212fe59f1252cc257df2e509949cdb9d67c3fcb01e2ef1687e7d807"
+  },
+  {
+    "path": "chess/miniprogram/pages/settings/index.js",
+    "bytes": 14660,
+    "sha256": "8697fe7c2cdb4c63f1803dcb8edd636b70ac979991eaa1215a14ef3700b14ec3"
+  },
+  {
+    "path": "chess/miniprogram/pages/settings/index.wxss",
+    "bytes": 1267,
+    "sha256": "99f1659b6eb0c23e88b6816fede02fcc78520364561be391ed195d4e9331c2b1"
+  },
+  {
+    "path": "chess/miniprogram/pages/settings/index.json",
+    "bytes": 112,
+    "sha256": "230a63eb9156782ebaf20d559187e2bd3e2e9658d14c4b5ce55dcd4802898747"
+  },
+  {
+    "path": "chess/miniprogram/pages/lobby/index.wxml",
+    "bytes": 1646,
+    "sha256": "de2b3dcab5d483d074b7c2677a86c87d8b8ab5caade747fdcfa55fd99fd8a939"
+  },
+  {
+    "path": "chess/miniprogram/pages/lobby/index.js",
+    "bytes": 2120,
+    "sha256": "baa9cd53e0a0804c301b1b9d1b49a5013a9b8cf763b18aa6d5e961e650255bb3"
+  },
+  {
+    "path": "chess/miniprogram/pages/lobby/index.wxss",
+    "bytes": 484,
+    "sha256": "1621db3af124065a0d2073389a0b87e7c5345d6cbd574ec7d21cf54306121566"
+  },
+  {
+    "path": "chess/miniprogram/pages/lobby/index.json",
+    "bytes": 107,
+    "sha256": "597e960d37b35f3541129769a383a497f045ff90aeb1ad16e6f3a4bb19ff5a61"
+  },
+  {
+    "path": "chess/miniprogram/pages/game/index.wxml",
+    "bytes": 9654,
+    "sha256": "6c2a4ed1bf120affd037e4dc01ac56cb4e1173737baeb751459e327b7456a872"
+  },
+  {
+    "path": "chess/miniprogram/pages/game/index.js",
+    "bytes": 25538,
+    "sha256": "5b9b2e74f881a44452b5c6c394d0f493c3c272d768209baee8abb631cfaf61b0"
+  },
+  {
+    "path": "chess/miniprogram/pages/game/index.wxss",
+    "bytes": 10129,
+    "sha256": "97d9749d4b8939a446b524489751bf349cac73d6f6af4b3c13ce09dada97e9a9"
+  },
+  {
+    "path": "chess/miniprogram/pages/game/index.json",
+    "bytes": 39,
+    "sha256": "aeb2098a206b475b3d9b86afdb36b05ff43225994bed3aaa8107b13960bc01cc"
+  },
+  {
+    "path": "chess/miniprogram/pages/ai/index.wxml",
+    "bytes": 1247,
+    "sha256": "2d35d506ebd701f05e79ac21b753bb365ba82a0f2549d519001fdeadb3d0d9a9"
+  },
+  {
+    "path": "chess/miniprogram/pages/ai/index.js",
+    "bytes": 1573,
+    "sha256": "4e3bfa1dc417f7446f7487decee5ae3bf9c45fe712373632a316b48ce7c031d0"
+  },
+  {
+    "path": "chess/miniprogram/pages/ai/index.wxss",
+    "bytes": 659,
+    "sha256": "239d1f6f50dbe579c726ac0d44e44dc0a6d46b21a3f71727b92685a521280652"
+  },
+  {
+    "path": "chess/miniprogram/pages/ai/index.json",
+    "bytes": 115,
+    "sha256": "2da8fcbd3d82c1102bb84aaf260e268caadc4f1dd15e94bfcc70ea69dace334a"
+  },
+  {
+    "path": "chess/miniprogram/pages/index/index.wxml",
+    "bytes": 2364,
+    "sha256": "ee4e1662f9794d2ccc63dd5ba50dc033e2c5d3dbc85eafcd3beb8ce4da849b0a"
+  },
+  {
+    "path": "chess/miniprogram/pages/index/index.js",
+    "bytes": 2466,
+    "sha256": "7f0219d73cd9c4f784c1afeb967492fd571c9f3f33072cf0d20bc8e5f2f105a2"
+  },
+  {
+    "path": "chess/miniprogram/pages/index/index.wxss",
+    "bytes": 1556,
+    "sha256": "6523d93dce118eda7cbdfbabff3e8d6bc21a246adf93914010446fed3f63041b"
+  },
+  {
+    "path": "chess/miniprogram/pages/index/index.json",
+    "bytes": 48,
+    "sha256": "c56c0b4a97b530e1e8721a83ff8f8b656385a5ef03928395fe6e8ed92cf8f722"
+  },
+  {
+    "path": "chess/miniprogram/components/time-control/index.wxml",
+    "bytes": 2121,
+    "sha256": "d8ddcb9576977468d9750c25871910152c6bde25feb5a50f79ba538b78dc03da"
+  },
+  {
+    "path": "chess/miniprogram/components/time-control/index.js",
+    "bytes": 1104,
+    "sha256": "11729413760c2ba365130d56e54834ef2cac810e57ac69f9405be590dda0b648"
+  },
+  {
+    "path": "chess/miniprogram/components/time-control/index.wxss",
+    "bytes": 853,
+    "sha256": "62192644f8e29a1c5a38cfecdc7167a05fba87309f44aae2755bced41047731c"
+  },
+  {
+    "path": "chess/miniprogram/components/time-control/index.json",
+    "bytes": 22,
+    "sha256": "e7b657f5a4b032a68e9e084639b3a5564ce552896d269c3f8c4463bf7a7fa3b5"
+  },
+  {
+    "path": "chess/deploy/caddy/Caddyfile",
+    "bytes": 117,
+    "sha256": "8c25a231914075f28f2aad412b43202620764570a8fd5baef56bbda993a7f995"
+  },
+  {
+    "path": "chess/cloudfunctions/gouge-chess-chat/config.json",
+    "bytes": 67,
+    "sha256": "88e0de9824b31b431b750581e866b40bd3580a4fd80f487a2c88c4052ebf88f1"
+  },
+  {
+    "path": "chess/cloudfunctions/gouge-chess-chat/index.js",
+    "bytes": 4214,
+    "sha256": "5e2a03b5806d36e58598aa6fc6c8d9eb27fe278832d4648d882f83b7bd725d04"
+  },
+  {
+    "path": "chess/cloudfunctions/gouge-chess-chat/package.json",
+    "bytes": 202,
+    "sha256": "202b5a878a358df60d26088b97de523c8fe49eb5306e933c26725ee5459f2297"
+  },
+  {
+    "path": "chess/cloudfunctions/gouge-chess-chat/handler.cjs",
+    "bytes": 8279,
+    "sha256": "8ca0dfa6271628c7a8a3e29156505b23a9bd4b2addcfdfbd41cad1339babc64b"
+  }
+]

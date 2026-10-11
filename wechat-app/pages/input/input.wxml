@@ -1,0 +1,52 @@
+<!-- OCR识别功能暂时关闭 -->
+<view class="card" wx:if="{{ocrEnabled}}">
+  <view class="title">手机拍照识别</view>
+  <view class="muted">选择/拍摄方阻数据照片，云函数OCR自动识别数值。识别结果需人工确认后保存。</view>
+  <button type="primary" bindtap="takePhoto">拍照/选图</button>
+  <image wx:if="{{imgUrl}}" src="{{imgUrl}}" mode="aspectFit" class="preview-img"/>
+  <view wx:if="{{ocrLoading}}" class="ocr-loading">
+    <text>正在OCR识别中...</text>
+  </view>
+</view>
+
+<view class="card">
+  <view class="title">玻璃配置（自动保存）</view>
+  <view class="config-row">
+    <text class="config-label">玻璃长(mm)</text>
+    <input class="config-input" type="number" value="{{glassLen}}" bindinput="onGlassLen" placeholder="1200"/>
+    <text class="config-label">宽(mm)</text>
+    <input class="config-input" type="number" value="{{glassWid}}" bindinput="onGlassWid" placeholder="600"/>
+  </view>
+  <view class="config-row">
+    <text class="config-label">长方向点位</text>
+    <picker class="config-picker" range="{{pointRange}}" value="{{rowPickerIdx}}" bindchange="onRows">
+      <view class="picker-text">{{rows}} 个</view>
+    </picker>
+    <text class="config-label">宽方向点位</text>
+    <picker class="config-picker" range="{{pointRange}}" value="{{colPickerIdx}}" bindchange="onCols">
+      <view class="picker-text">{{cols}} 个</view>
+    </picker>
+  </view>
+  <view class="muted">修改点位数量会重建录入网格</view>
+</view>
+
+<view class="card">
+  <view class="title">数据编码</view>
+  <input class="code-input" value="{{code}}" bindinput="onCode" placeholder="0817-01-001"/>
+  <view class="muted">格式：日期-批次-流水，如 0817-01-001。保存后流水自动+1</view>
+</view>
+
+<view class="card">
+  <view class="title">方阻数据录入（{{rows}}×{{cols}}={{rows * cols}}个点）</view>
+  <view class="grid-table">
+    <view class="grid-header">
+      <view class="grid-corner"></view>
+      <view class="grid-header-cell" wx:for="{{colHeaders}}" wx:key="*this">{{item}}</view>
+    </view>
+    <view class="grid-row" wx:for="{{gridRows}}" wx:key="r" wx:for-item="row">
+      <view class="grid-row-label">{{row.label}}</view>
+      <input wx:for="{{row.cells}}" wx:key="c" wx:for-item="cell" type="digit" value="{{cell.value}}" data-r="{{row.r}}" data-c="{{cell.c}}" bindinput="onCellValue" focus="{{focusR === row.r && focusC === cell.c}}" class="grid-cell" placeholder="0.00"/>
+    </view>
+  </view>
+  <button type="primary" bindtap="saveText">保存为一片玻璃</button>
+</view>

@@ -1,0 +1,28 @@
+page { background: #f6f0e5; color: #252c26; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 30rpx; }
+view, button, input { box-sizing: border-box; }
+button { min-height: 88rpx; border-radius: 16rpx; font-size: 30rpx; line-height: 1.4; display: flex; align-items: center; justify-content: center; margin: 0; padding: 20rpx 24rpx; background: #eee4d3; color: #252c26; }
+button::after { border: 0; }
+button[disabled] { opacity: .45; color: #252c26; }
+button.primary { background: #a8322e; color: #fff9ef; }
+button.green { background: #2f5648; color: #fff9ef; }
+button.outline { border: 2rpx solid #cbb899; background: transparent; }
+.page { padding: 34rpx 30rpx 50rpx; padding-bottom: calc(50rpx + env(safe-area-inset-bottom)); }
+.serif, .title { font-family: "Songti SC", "STSong", "SimSun", serif; }
+.title { font-size: 48rpx; font-weight: 700; margin: 6rpx 0 18rpx; }
+.subtitle { color: #716a5f; font-size: 27rpx; line-height: 1.7; }
+.eyebrow { color: #2f5648; font-size: 23rpx; letter-spacing: 4rpx; }
+.panel { background: #fbf7ef; border: 2rpx solid #deceb7; border-radius: 18rpx; padding: 28rpx; margin-top: 24rpx; }
+.panel-title { font-size: 33rpx; font-weight: 600; margin-bottom: 18rpx; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16rpx; }
+.actions { display: flex; gap: 16rpx; margin-top: 22rpx; }
+.actions button { flex: 1; }
+.muted { color: #716a5f; font-size: 25rpx; line-height: 1.6; }
+.error { color: #a8322e; background: #f7e3db; border-radius: 12rpx; padding: 18rpx 22rpx; margin: 18rpx 0; font-size: 26rpx; line-height: 1.6; }
+.pill { display: inline-block; color: #2f5648; background: #e5ebdf; padding: 8rpx 16rpx; border-radius: 30rpx; font-size: 23rpx; }
+.field { margin-top: 22rpx; }
+.field-label { display: block; color: #514e44; font-size: 27rpx; margin-bottom: 12rpx; }
+input { width: 100%; min-height: 90rpx; border: 2rpx solid #deceb7; border-radius: 12rpx; padding: 18rpx 22rpx; background: #fffaf2; }
+.avatar { width: 88rpx; height: 88rpx; border-radius: 50%; background: #d8b889; }
+.avatar-fallback { display: flex; align-items: center; justify-content: center; font-family: "Songti SC", serif; font-size: 36rpx; color: #a8322e; }
+.spacer { height: 20rpx; }
+.section-heading { font-size: 30rpx; font-weight: 600; margin: 34rpx 0 16rpx; }

@@ -1,0 +1,10 @@
+@import '../../common.wxss';
+.difficulty-grid { display: flex; flex-direction: column; gap: 12rpx; }
+button.difficulty:not([size='mini']) { width: 100%; display: flex; justify-content: space-between; text-align: left; background: #fbf7ef; border: 2rpx solid #deceb7; min-height: 112rpx; }
+button.difficulty.selected:not([size='mini']) { background: #2f5648; border-color: #2f5648; color: #fff; }
+.level-name { font-size: 32rpx; font-weight: 600; }
+.level-detail { color: #716a5f; font-size: 24rpx; margin-top: 6rpx; }
+.difficulty > text { font-size: 42rpx; color: #2f5648; font-family: "Songti SC", serif; }
+.difficulty.selected .level-detail { color: #e5ebdf; }
+.difficulty.selected > text { color: #fff; }
+button.start:not([size='mini']) { margin-top: 28rpx; width: 100%; }

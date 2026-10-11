@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITO方阻热力分析 - 小程序预览</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif}
+
+.phone-frame{width:375px;height:720px;background:#000;border-radius:44px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative}
+.phone-screen{width:100%;height:100%;background:#f5f7fa;border-radius:32px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#000;border-radius:0 0 18px 18px;z-index:100}
+
+.status-bar{height:44px;background:#fff;display:flex;justify-content:space-between;align-items:flex-end;padding:0 24px 6px;font-size:14px;font-weight:600;color:#000;flex-shrink:0}
+.status-bar .time{font-size:15px}
+.status-bar .icons{display:flex;gap:5px;align-items:center}
+.status-bar .icons span{font-size:13px}
+
+.nav-bar{height:44px;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;border-bottom:1px solid #f0f0f0}
+.nav-bar .title{font-size:17px;font-weight:600;color:#172033}
+.nav-bar .back{position:absolute;left:12px;font-size:24px;color:#172033;cursor:pointer;line-height:1}
+.nav-bar .back:active{opacity:.5}
+
+.page-content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.page-content::-webkit-scrollbar{display:none}
+
+.card{background:#fff;margin:12px;padding:14px;border-radius:12px;box-shadow:0 2px 9px rgba(0,0,0,.05)}
+.card .title{font-size:19px;font-weight:700;margin-bottom:6px}
+.card .muted{color:#6b7280;font-size:13px;margin-bottom:6px}
+.card .rule{font-size:14px;line-height:1.8}
+
+button{display:block;width:100%;margin-top:9px;padding:10px;border:none;border-radius:8px;font-size:15px;text-align:center;cursor:pointer;transition:opacity .2s}
+button:active{opacity:.7}
+button.primary{background:#07c160;color:#fff}
+button.default{background:#f2f3f5;color:#172033}
+
+textarea{width:100%;height:110px;background:#f7f8fa;padding:9px;border:1px solid #e8e8e8;border-radius:8px;font-size:14px;font-family:monospace;resize:none;margin:9px 0}
+input[type=text],input[type=number],input[type=digit]{width:100%;background:#f7f8fa;padding:9px;border:1px solid #e8e8e8;border-radius:8px;font-size:14px;margin:6px 0}
+
+.danger{color:#d71920;font-weight:700}
+.radio-group{display:flex;gap:15px;font-size:14px;padding:6px 0}
+.radio-group label{display:flex;align-items:center;gap:4px;cursor:pointer}
+input[type=radio]{transform:scale(.85)}
+
+.picker{margin-top:11px;padding:9px;background:#f7f8fa;border-radius:8px;font-size:14px}
+
+.heatmap-wrap{width:100%;margin:9px 0}
+.heatmap-canvas{width:100%;height:215px;background:#fff;border-radius:8px}
+
+.stats-line{font-size:14px;padding:6px 0}
+.stats-row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:#4b5563}
+.stats-row .val{font-weight:600;color:#172033}
+
+.slider-wrap{margin:9px 0}
+.slider-wrap input[type=range]{width:100%}
+.slider-val{font-size:14px;color:#07c160;font-weight:600;margin-top:4px}
+
+.empty{text-align:center;padding:40px 20px;color:#9ca3af;font-size:14px}
+.toast{position:fixed;bottom:120px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.75);color:#fff;padding:8px 20px;border-radius:8px;font-size:14px;z-index:999;animation:toast 2s ease forwards}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,10px)}15%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-10px)}}
+
+.tab-bar{height:0;flex-shrink:0}
+
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}
+.home-grid .item{background:#f7f8fa;border-radius:8px;padding:14px;text-align:center;cursor:pointer;transition:background .2s}
+.home-grid .item:active{background:#e8e8e8}
+.home-grid .item .icon{font-size:28px;margin-bottom:4px}
+.home-grid .item .label{font-size:13px;color:#4b5563}
+
+.sheet-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.color-bar{width:100%;height:16px;border-radius:4px;margin:6px 0;background:linear-gradient(to right,rgb(30,100,220),rgb(70,180,245),rgb(245,245,120),rgb(255,150,30),rgb(215,25,32))}
+.color-labels{display:flex;justify-content:space-between;font-size:11px;color:#6b7280}
+
+/* OCR 相关样式 */
+.ocr-canvas-wrap{position:relative;width:100%;margin:8px 0;border-radius:8px;overflow:hidden;background:#f7f8fa;display:none}
+.ocr-canvas-wrap.show{display:block}
+.ocr-canvas-wrap canvas{display:block;width:100%;cursor:crosshair;touch-action:none}
+.ocr-toolbar{display:flex;gap:6px;margin:6px 0;flex-wrap:wrap}
+.ocr-toolbar button{flex:1;min-width:70px;padding:7px 10px;font-size:13px;margin:0;white-space:nowrap}
+.ocr-status{font-size:13px;color:#6b7280;margin:6px 0}
+.ocr-progress{width:100%;height:6px;background:#e8e8e8;border-radius:3px;margin:6px 0;overflow:hidden;display:none}
+.ocr-progress.show{display:block}
+.ocr-progress-bar{height:100%;background:#07c160;border-radius:3px;width:0;transition:width .3s}
+.ocr-loading{display:flex;align-items:center;gap:8px;color:#07c160;font-size:13px}
+.ocr-loading .spinner{width:16px;height:16px;border:2px solid #07c160;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hidden-file{display:none}
+.batch-result{background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:8px;margin:6px 0;font-size:13px}
+.batch-result .sheet-title{font-weight:700;color:#166534;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.batch-result .sheet-title .del{color:#d71920;cursor:pointer;font-size:16px}
+.batch-result .nums{font-family:monospace;font-size:13px;white-space:pre;color:#172033;line-height:1.6}
+.batch-result textarea{width:100%;height:70px;background:#fff;border:1px solid #d1d5db;border-radius:6px;padding:6px;font-family:monospace;font-size:13px;margin-top:4px;resize:none}
+.batch-summary{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px;margin:6px 0;font-size:13px;color:#9a3412}
+.region-hint{font-size:12px;color:#6b7280;margin:4px 0;font-style:italic}
+</style>
+</head>
+<body>
+
+<div class="phone-frame">
+<div class="phone-screen">
+<div class="notch"></div>
+<div class="status-bar">
+<span class="time" id="statusTime">9:41</span>
+<span class="icons"><span>📶</span><span>🔋</span></span>
+</div>
+<div class="nav-bar" id="navBar">
+<span class="back" id="navBack" style="display:none" onclick="goBack()">‹</span>
+<span class="title" id="navTitle">ITO方阻热力分析</span>
+</div>
+<div class="page-content" id="pageContent"></div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script>
+// ========== 模拟小程序全局数据 ==========
+const app = {
+  globalData: {
+    settings: {scaleMin:8, scaleMax:14, abnormalPct:10, lowResistanceHot:true},
+    sheets: []
+  }
+};
+
+// 从 localStorage 读取
+try {
+  const s = localStorage.getItem('itoSettings');
+  if(s) app.globalData.settings = JSON.parse(s);
+  const d = localStorage.getItem('itoSheets');
+  if(d) app.globalData.sheets = JSON.parse(d);
+} catch(e){}
+
+function setStorage(key, val){
+  localStorage.setItem(key, JSON.stringify(val));
+}
+
+function showToast(title){
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = title;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 2000);
+}
+
+function showModal(title, content){
+  alert(title + '\n\n' + content);
+}
+
+// ========== 分析工具 ==========
+function stats(values){
+  const v = values.flat().map(Number).filter(Number.isFinite);
+  const avg = v.reduce((a,b)=>a+b,0)/v.length;
+  const max = Math.max(...v), min = Math.min(...v);
+  const non = (max-min)/(max+min)*100;
+  return {avg, max, min, nonUniformity:non, uniformity:100-non};
+}
+
+function enrich(matrix, pct){
+  const s = stats(matrix), band = pct/100;
+  return {
+    stats: s,
+    points: matrix.map((row,r)=>row.map((x,c)=>({
+      r, c, value:Number(x),
+      abnormal: Number(x) < s.avg*(1-band) || Number(x) > s.avg*(1+band)
+    })))
+  };
+}
+
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function heatValue(resistance,min,max){
+  return (clamp(resistance,min,max)-min)/(max-min||1);
+}
+
+function parseTextMatrix(text){
+  const rows = text.trim().split(/\n+/).map(x=>
+    x.trim().split(/[\s,，;；\t]+/).map(Number).filter(Number.isFinite)
+  );
+  if(rows.length!==3 || rows.some(r=>r.length!==4)){
+    throw new Error('每片玻璃必须识别为3行×4列，共12个方阻数据');
+  }
+  return rows;
+}
+
+// ========== 页面路由 ==========
+let currentPage = 'index';
+let pageHistory = [];
+
+function navigateTo(page){
+  pageHistory.push(currentPage);
+  currentPage = page;
+  renderPage();
+}
+
+function goBack(){
+  if(pageHistory.length>0){
+    currentPage = pageHistory.pop();
+    renderPage();
+  }
+}
+
+const navTitles = {
+  index: 'ITO方阻热力分析',
+  input: '数据录入',
+  result: '热力分布',
+  settings: '参数设置'
+};
+
+function renderPage(){
+  const navBar = document.getElementById('navBar');
+  const navTitle = document.getElementById('navTitle');
+  const navBack = document.getElementById('navBack');
+  const content = document.getElementById('pageContent');
+
+  navTitle.textContent = navTitles[currentPage] || '';
+  navBack.style.display = pageHistory.length>0 ? 'block' : 'none';
+
+  const renderers = {
+    index: renderIndex,
+    input: renderInput,
+    result: renderResult,
+    settings: renderSettings
+  };
+
+  content.innerHTML = '';
+  (renderers[currentPage] || renderIndex)(content);
+
+  // result 页面需要 onShow
+  if(currentPage === 'result'){
+    refreshResult();
+  }
+}
+
+// ========== 首页 ==========
+function renderIndex(container){
+  container.innerHTML = `
+    <div class="card">
+      <div class="title">ITO 方阻热力分析</div>
+      <div class="muted">拍照识别 / Excel导入 / 单片与汇总热力图 / 异常点标红</div>
+      <button class="primary" onclick="navigateTo('input')">录入数据</button>
+      <button class="default" onclick="navigateTo('result')">查看热力图</button>
+      <button class="default" onclick="navigateTo('settings')">参数设置</button>
+    </div>
+    <div class="card">
+      <div class="title" style="font-size:16px">核心规则</div>
+      <div class="rule">• 每片默认 3×4，共12测点</div>
+      <div class="rule">• 方阻越低，热力越高</div>
+      <div class="rule">• 异常阈值默认：单片平均值 ±10%</div>
+      <div class="rule">• 色标量程可固定，例如 8–14 Ω/□</div>
+    </div>
+    <div class="card">
+      <div class="title" style="font-size:16px">当前数据</div>
+      <div class="muted">已保存 ${app.globalData.sheets.length} 片玻璃数据</div>
+      <div class="home-grid">
+        <div class="item" onclick="navigateTo('input')">
+          <div class="icon">📝</div>
+          <div class="label">录入</div>
+        </div>
+        <div class="item" onclick="navigateTo('result')">
+          <div class="icon">🔥</div>
+          <div class="label">热力图</div>
+        </div>
+        <div class="item" onclick="navigateTo('settings')">
+          <div class="icon">⚙️</div>
+          <div class="label">设置</div>
+        </div>
+        <div class="item" onclick="clearAllData()">
+          <div class="icon">🗑️</div>
+          <div class="label">清空</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function clearAllData(){
+  if(confirm('确定清空所有玻璃数据？')){
+    app.globalData.sheets = [];
+    setStorage('itoSheets', []);
+    showToast('已清空');
+    renderPage();
+  }
+}
+
+// ========== 数据录入页 ==========
+let ocrState = {
+  img: null,
+  rotation: 0,
+  scale: 1,
+  cropStart: null,
+  cropEnd: null,
+  cropRect: null,
+  batchResults: []
+};
+
+function renderInput(container){
+  const bk = getBaiduKeys();
+  const hasKeys = bk.apiKey && bk.secretKey;
+  container.innerHTML = `
+    <div class="card" id="baiduKeyCard">
+      <div class="title" style="font-size:16px">百度OCR密钥配置</div>
+      <div class="muted">首次使用需配置。免费注册：cloud.baidu.com → 文字识别 → 创建应用 → 获取API Key和Secret Key</div>
+      <input type="text" id="baiduApiKey" placeholder="API Key" value="${bk.apiKey||''}" />
+      <input type="text" id="baiduSecretKey" placeholder="Secret Key" value="${bk.secretKey||''}" />
+      <button class="primary" onclick="saveBaiduKeys()">保存密钥</button>
+      <div id="baiduKeyStatus" class="muted" style="margin-top:4px">${hasKeys?'✅ 已配置':'⚠️ 未配置'}</div>
+    </div>
+    <div class="card">
+      <div class="title">手机拍照识别</div>
+      <div class="muted">选择方阻数据照片 → 旋转调整方向 → 框选区域或全图识别 → 批量保存</div>
+      <input type="file" id="photoInput" class="hidden-file" accept="image/*" onchange="onPhotoSelected(event)" />
+      <button class="primary" onclick="document.getElementById('photoInput').click()">选择图片</button>
+
+      <div id="ocrCanvasWrap" class="ocr-canvas-wrap">
+        <canvas id="ocrCanvas"></canvas>
+        <canvas id="ocrOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%"></canvas>
+      </div>
+
+      <div class="ocr-toolbar" id="ocrToolbar" style="display:none">
+        <button class="default" onclick="rotateImage(-90)">↺ 左转90°</button>
+        <button class="default" onclick="rotateImage(90)">↻ 右转90°</button>
+        <button class="primary" onclick="ocrFullImage()">全图识别</button>
+        <button class="primary" onclick="ocrCropRegion()">识别框选区域</button>
+      </div>
+      <div class="region-hint" id="regionHint" style="display:none">在图片上拖拽框选一片玻璃的数据区域，然后点「识别框选区域」</div>
+
+      <div id="ocrLoading" class="ocr-status" style="display:none">
+        <div class="ocr-loading"><div class="spinner"></div><span id="ocrLoadingText">正在识别...</span></div>
+      </div>
+      <div id="ocrProgress" class="ocr-progress"><div class="ocr-progress-bar" id="ocrProgressBar"></div></div>
+
+      <div id="batchArea"></div>
+      <div id="batchSaveArea"></div>
+    </div>
+    <div class="card">
+      <div class="title">Excel导入</div>
+      <div class="muted">生产版建议使用 SheetJS(xlsx) 解析 .xlsx；模板为每片3×4数据，可多片连续导入。</div>
+      <button class="default" onclick="chooseExcel()">选择Excel</button>
+    </div>
+    <div class="card">
+      <div class="title">快速手工录入/校对</div>
+      <textarea id="inputText" placeholder="粘贴3行×4列，例如：
+13.15 13.24 12.50 11.53
+12.74 13.11 12.70 11.26
+12.61 12.09 11.73 10.83"></textarea>
+      <input type="text" id="inputName" placeholder="玻璃名称，如 新1 / 17# / 顶" />
+      <button class="primary" onclick="saveText()">保存为一片玻璃</button>
+    </div>
+    <div class="card">
+      <div class="title" style="font-size:16px">快速填充示例</div>
+      <button class="default" onclick="fillDemo('normal')">填充正常数据</button>
+      <button class="default" onclick="fillDemo('abnormal')">填充含异常点数据</button>
+    </div>
+  `;
+  ocrState.batchResults = [];
+}
+
+// ========== 百度OCR ==========
+function getBaiduKeys(){
+  return {
+    apiKey: localStorage.getItem('baidu_api_key') || '',
+    secretKey: localStorage.getItem('baidu_secret_key') || ''
+  };
+}
+
+function saveBaiduKeys(){
+  const apiKey = document.getElementById('baiduApiKey').value.trim();
+  const secretKey = document.getElementById('baiduSecretKey').value.trim();
+  if(!apiKey || !secretKey){
+    showToast('请填写完整的API Key和Secret Key');
+    return;
+  }
+  localStorage.setItem('baidu_api_key', apiKey);
+  localStorage.setItem('baidu_secret_key', secretKey);
+  localStorage.removeItem('baidu_token');
+  localStorage.removeItem('baidu_token_expiry');
+  document.getElementById('baiduKeyStatus').innerHTML = '✅ 已配置';
+  showToast('密钥已保存');
+}
+
+async function getBaiduToken(){
+  const cached = localStorage.getItem('baidu_token');
+  const expiry = localStorage.getItem('baidu_token_expiry');
+  if(cached && expiry && Date.now() < Number(expiry)){
+    return cached;
+  }
+  const res = await fetch('/api/token', {method:'POST'});
+  const data = await res.json();
+  if(data.access_token){
+    localStorage.setItem('baidu_token', data.access_token);
+    localStorage.setItem('baidu_token_expiry', String(Date.now() + 29*24*60*60*1000));
+    return data.access_token;
+  }
+  throw new Error('获取Token失败: ' + (data.error || JSON.stringify(data)));
+}
+
+async function baiduOCR(canvas){
+  const base64 = canvas.toDataURL('image/jpeg', 0.9);
+  const img = base64.replace(/^data:image\/\w+;base64,/, '');
+  const res = await fetch('/api/ocr', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'image=' + encodeURIComponent(img)
+  });
+  const data = await res.json();
+  if(data.error_code){
+    throw new Error('百度OCR错误(' + data.error_code + '): ' + data.error_msg);
+  }
+  if(data.error){
+    throw new Error(data.error + (data.detail ? ': ' + data.detail : ''));
+  }
+  return data;
+}
+
+function onPhotoSelected(event){
+  const file = event.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      ocrState.img = img;
+      ocrState.rotation = 0;
+      ocrState.cropRect = null;
+      ocrState.batchResults = [];
+      drawOcrCanvas();
+      document.getElementById('ocrCanvasWrap').classList.add('show');
+      document.getElementById('ocrToolbar').style.display = 'flex';
+      document.getElementById('regionHint').style.display = 'block';
+      document.getElementById('batchArea').innerHTML = '';
+      document.getElementById('batchSaveArea').innerHTML = '';
+      setupCropEvents();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function drawOcrCanvas(){
+  const canvas = document.getElementById('ocrCanvas');
+  const overlay = document.getElementById('ocrOverlay');
+  const wrap = document.getElementById('ocrCanvasWrap');
+  const img = ocrState.img;
+  if(!img) return;
+
+  const maxW = wrap.offsetWidth || 327;
+  const rotated = (ocrState.rotation % 180 !== 0);
+  const iw = rotated ? img.height : img.width;
+  const ih = rotated ? img.width : img.height;
+  const scale = Math.min(maxW / iw, 400 / ih);
+  const cw = Math.floor(iw * scale);
+  const ch = Math.floor(ih * scale);
+
+  canvas.width = cw;
+  canvas.height = ch;
+  canvas.style.width = '100%';
+  overlay.width = cw;
+  overlay.height = ch;
+  overlay.style.width = '100%';
+
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, cw, ch);
+
+  ctx.save();
+  ctx.translate(cw / 2, ch / 2);
+  ctx.rotate(ocrState.rotation * Math.PI / 180);
+  ctx.scale(scale, scale);
+  ctx.drawImage(img, -img.width / 2, -img.height / 2);
+  ctx.restore();
+
+  ocrState.scale = scale;
+  ocrState.canvasW = cw;
+  ocrState.canvasH = ch;
+  ocrState.cropRect = null;
+  drawOverlay();
+}
+
+function drawOverlay(){
+  const overlay = document.getElementById('ocrOverlay');
+  const ctx = overlay.getContext('2d');
+  ctx.clearRect(0, 0, overlay.width, overlay.height);
+  if(ocrState.cropRect){
+    const r = ocrState.cropRect;
+    ctx.strokeStyle = '#07c160';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6, 4]);
+    ctx.strokeRect(r.x, r.y, r.w, r.h);
+    ctx.fillStyle = 'rgba(7,193,96,0.12)';
+    ctx.fillRect(r.x, r.y, r.w, r.h);
+    ctx.setLineDash([]);
+  }
+}
+
+function setupCropEvents(){
+  const overlay = document.getElementById('ocrOverlay');
+  if(!overlay) return;
+  overlay.onpointerdown = function(e){
+    const rect = overlay.getBoundingClientRect();
+    const sx = overlay.width / rect.width;
+    const sy = overlay.height / rect.height;
+    ocrState.cropStart = {
+      x: (e.clientX - rect.left) * sx,
+      y: (e.clientY - rect.top) * sy
+    };
+    ocrState.cropRect = {x: ocrState.cropStart.x, y: ocrState.cropStart.y, w: 0, h: 0};
+    overlay.setPointerCapture(e.pointerId);
+  };
+  overlay.onpointermove = function(e){
+    if(!ocrState.cropStart) return;
+    const rect = overlay.getBoundingClientRect();
+    const sx = overlay.width / rect.width;
+    const sy = overlay.height / rect.height;
+    const cx = (e.clientX - rect.left) * sx;
+    const cy = (e.clientY - rect.top) * sy;
+    ocrState.cropRect = {
+      x: Math.min(ocrState.cropStart.x, cx),
+      y: Math.min(ocrState.cropStart.y, cy),
+      w: Math.abs(cx - ocrState.cropStart.x),
+      h: Math.abs(cy - ocrState.cropStart.y)
+    };
+    drawOverlay();
+  };
+  overlay.onpointerup = function(e){
+    ocrState.cropStart = null;
+    if(ocrState.cropRect && (ocrState.cropRect.w < 10 || ocrState.cropRect.h < 10)){
+      ocrState.cropRect = null;
+      drawOverlay();
+    }
+  };
+}
+
+function rotateImage(deg){
+  ocrState.rotation = (ocrState.rotation + deg + 360) % 360;
+  drawOcrCanvas();
+}
+
+async function ocrFullImage(){
+  const canvas = document.getElementById('ocrCanvas');
+  ocrState.cropRect = null;
+  drawOverlay();
+  await runOCROnCanvas(canvas, '全图');
+}
+
+async function ocrCropRegion(){
+  if(!ocrState.cropRect || ocrState.cropRect.w < 10){
+    showToast('请先在图片上拖拽框选区域');
+    return;
+  }
+  const canvas = document.getElementById('ocrCanvas');
+  const r = ocrState.cropRect;
+  const cropCanvas = document.createElement('canvas');
+  cropCanvas.width = Math.round(r.w);
+  cropCanvas.height = Math.round(r.h);
+  const cctx = cropCanvas.getContext('2d');
+  cctx.drawImage(canvas, r.x, r.y, r.w, r.h, 0, 0, r.w, r.h);
+  await runOCROnCanvas(cropCanvas, '框选区域');
+}
+
+function preprocessCanvas(srcCanvas){
+  const w = srcCanvas.width, h = srcCanvas.height;
+  const tmp = document.createElement('canvas');
+  // 放大2倍提升小字识别率
+  const scaleUp = 2;
+  tmp.width = w * scaleUp;
+  tmp.height = h * scaleUp;
+  const ctx = tmp.getContext('2d');
+  ctx.drawImage(srcCanvas, 0, 0, w, h, 0, 0, tmp.width, tmp.height);
+
+  const imgData = ctx.getImageData(0, 0, tmp.width, tmp.height);
+  const d = imgData.data;
+  // 灰度 + 对比度增强 + 锐化
+  for(let i = 0; i < d.length; i += 4){
+    let gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+    // 对比度增强
+    gray = (gray - 128) * 1.5 + 128;
+    gray = Math.max(0, Math.min(255, gray));
+    d[i] = d[i+1] = d[i+2] = gray;
+  }
+  ctx.putImageData(imgData, 0, 0);
+  return tmp;
+}
+
+async function runOCROnCanvas(srcCanvas, label){
+  const loading = document.getElementById('ocrLoading');
+  const loadingText = document.getElementById('ocrLoadingText');
+  const progress = document.getElementById('ocrProgress');
+  const progressBar = document.getElementById('ocrProgressBar');
+
+  loading.style.display = 'block';
+  loadingText.textContent = '正在预处理图片...';
+  progress.classList.add('show');
+  progressBar.style.width = '10%';
+
+  try{
+    const processed = preprocessCanvas(srcCanvas);
+
+    loadingText.textContent = '正在上传到百度OCR识别（' + label + '）...';
+    progressBar.style.width = '30%';
+
+    const result = await baiduOCR(processed);
+
+    progressBar.style.width = '90%';
+
+    // 百度OCR返回: { words_result: [{words: "..."}, ...], words_result_num: N }
+    const wordsResult = result.words_result || [];
+    const lines = wordsResult.map(item => item.words);
+    const allNumbers = [];
+    const lineNumbers = [];
+
+    for(const line of lines){
+      const nums = line.match(/\d+\.?\d*/g);
+      if(nums){
+        const parsed = nums.map(Number).filter(n => n > 0 && n < 1000);
+        if(parsed.length > 0){
+          lineNumbers.push(parsed);
+          allNumbers.push(...parsed);
+        }
+      }
+    }
+
+    progressBar.style.width = '100%';
+    loading.style.display = 'none';
+    progress.classList.remove('show');
+
+    if(allNumbers.length === 0){
+      showToast('未识别到数字，请尝试旋转图片或框选更清晰的区域');
+      return;
+    }
+
+    // 按行分组排列，每12个为一片玻璃
+    const sheets = [];
+    let currentSheet = [];
+    let currentRow = [];
+
+    for(const nums of lineNumbers){
+      for(const n of nums){
+        currentRow.push(n);
+        if(currentRow.length === 4){
+          currentSheet.push(currentRow);
+          currentRow = [];
+          if(currentSheet.length === 3){
+            sheets.push(currentSheet);
+            currentSheet = [];
+          }
+        }
+      }
+    }
+    if(currentRow.length > 0) currentSheet.push(currentRow);
+    if(currentSheet.length > 0) sheets.push(currentSheet);
+
+    // 如果按行分组失败，退回按顺序每12个一组
+    if(sheets.length === 0 || sheets.some(s => s.length !== 3 || s.some(r => r.length !== 4))){
+      const flat = allNumbers;
+      const validSheets = [];
+      for(let i = 0; i + 12 <= flat.length; i += 12){
+        const m = [];
+        for(let r = 0; r < 3; r++) m.push(flat.slice(i + r * 4, i + (r + 1) * 4));
+        validSheets.push(m);
+      }
+      if(validSheets.length > 0){
+        sheets.length = 0;
+        sheets.push(...validSheets);
+      }
+    }
+
+    // 添加到批量结果
+    let addedCount = 0;
+    for(const s of sheets){
+      if(s.length === 3 && s.every(r => r.length === 4)){
+        ocrState.batchResults.push({
+          name: '玻璃' + (ocrState.batchResults.length + 1),
+          matrix: s
+        });
+        addedCount++;
+      }
+    }
+
+    renderBatchResults();
+    showToast('识别完成：' + allNumbers.length + '个数字，新增' + addedCount + '片玻璃');
+
+  }catch(e){
+    loading.style.display = 'none';
+    progress.classList.remove('show');
+    showModal('OCR识别失败', e.message);
+  }
+}
+
+function renderBatchResults(){
+  const area = document.getElementById('batchArea');
+  const saveArea = document.getElementById('batchSaveArea');
+
+  if(ocrState.batchResults.length === 0){
+    area.innerHTML = '';
+    saveArea.innerHTML = '';
+    return;
+  }
+
+  let html = '<div class="batch-summary">共识别 ' + ocrState.batchResults.length + ' 片玻璃数据，请逐片核对后保存</div>';
+  ocrState.batchResults.forEach((s, i)=>{
+    const text = s.matrix.map(r => r.map(n => n.toFixed(2)).join(' ')).join('\n');
+    html += `
+      <div class="batch-result">
+        <div class="sheet-title">
+          <span>第 ${i+1} 片</span>
+          <span class="del" onclick="removeBatchSheet(${i})">✕</span>
+        </div>
+        <textarea id="batchText_${i}" oninput="updateBatchSheet(${i}, this.value)">${text}</textarea>
+      </div>
+    `;
+  });
+  area.innerHTML = html;
+
+  saveArea.innerHTML = `
+    <button class="primary" onclick="saveAllBatch()" style="margin-top:8px">全部保存（${ocrState.batchResults.length}片）</button>
+    <button class="default" onclick="clearBatch()">清空重选</button>
+  `;
+}
+
+function updateBatchSheet(idx, text){
+  try{
+    const nums = text.trim().split(/[\s,，;；\t\n]+/).map(Number).filter(Number.isFinite);
+    if(nums.length === 12){
+      const m = [];
+      for(let r = 0; r < 3; r++) m.push(nums.slice(r * 4, (r + 1) * 4));
+      ocrState.batchResults[idx].matrix = m;
+    }
+  }catch(e){}
+}
+
+function removeBatchSheet(idx){
+  ocrState.batchResults.splice(idx, 1);
+  renderBatchResults();
+}
+
+function clearBatch(){
+  ocrState.batchResults = [];
+  ocrState.cropRect = null;
+  drawOverlay();
+  renderBatchResults();
+}
+
+function saveAllBatch(){
+  if(ocrState.batchResults.length === 0){
+    showToast('没有可保存的数据');
+    return;
+  }
+  const sheets = app.globalData.sheets || [];
+  let saved = 0;
+  for(const s of ocrState.batchResults){
+    try{
+      const text = s.matrix.map(r => r.join(' ')).join('\n');
+      const matrix = parseTextMatrix(text);
+      sheets.push({name: s.name || '玻璃' + (sheets.length + 1), matrix});
+      saved++;
+    }catch(e){}
+  }
+  app.globalData.sheets = sheets;
+  setStorage('itoSheets', sheets);
+  showToast('已保存 ' + saved + ' 片玻璃');
+  ocrState.batchResults = [];
+  renderBatchResults();
+}
+
+function chooseExcel(){
+  showModal('Excel解析接口预留', '已选择Excel。正式版请安装xlsx解析库，按模板提取每片3×4数据。');
+}
+
+function fillDemo(type){
+  const text = type==='normal'
+    ? '13.15 13.24 12.50 11.53\n12.74 13.11 12.70 11.26\n12.61 12.09 11.73 10.83'
+    : '13.15 13.24 12.50 11.53\n12.74 9.50 12.70 11.26\n12.61 12.09 11.73 14.80';
+  document.getElementById('inputText').value = text;
+  document.getElementById('inputName').value = type==='normal' ? '正常片-01' : '异常片-01';
+}
+
+function saveText(){
+  const text = document.getElementById('inputText').value;
+  const name = document.getElementById('inputName').value;
+  try{
+    const matrix = parseTextMatrix(text);
+    const sheets = app.globalData.sheets || [];
+    sheets.push({
+      name: name || `玻璃${sheets.length+1}`,
+      matrix
+    });
+    app.globalData.sheets = sheets;
+    setStorage('itoSheets', sheets);
+    showToast('已保存');
+    document.getElementById('inputText').value = '';
+    document.getElementById('inputName').value = '';
+  }catch(e){
+    showModal('数据格式错误', e.message);
+  }
+}
+
+// ========== 热力图页 ==========
+let resultMode = 'all';
+let resultIdx = 0;
+
+function renderResult(container){
+  container.innerHTML = `
+    <div class="card">
+      <div class="title">展示模式</div>
+      <div class="radio-group">
+        <label><input type="radio" name="mode" value="single" ${resultMode==='single'?'checked':''} onchange="onModeChange('single')"/>单片</label>
+        <label><input type="radio" name="mode" value="all" ${resultMode==='all'?'checked':''} onchange="onModeChange('all')"/>汇总</label>
+        <label><input type="radio" name="mode" value="average" ${resultMode==='average'?'checked':''} onchange="onModeChange('average')"/>汇总平均</label>
+      </div>
+      <div id="pickerArea"></div>
+    </div>
+    <div class="card" id="exportCard" style="display:none">
+      <div class="ocr-toolbar">
+        <button class="default" onclick="exportExcel()">📋 导出Excel</button>
+        <button class="default" onclick="exportPDF()">📄 导出PDF</button>
+      </div>
+    </div>
+    <div id="sheetsArea"></div>
+  `;
+  refreshResult();
+}
+
+function onModeChange(mode){
+  resultMode = mode;
+  refreshResult();
+}
+
+function onPick(idx){
+  resultIdx = idx;
+  refreshResult();
+}
+
+function deleteSheet(idx){
+  if(!confirm('确定删除「' + app.globalData.sheets[idx].name + '」？')) return;
+  app.globalData.sheets.splice(idx, 1);
+  if(resultIdx >= app.globalData.sheets.length) resultIdx = Math.max(0, app.globalData.sheets.length - 1);
+  setStorage('itoSheets', app.globalData.sheets);
+  refreshResult();
+  showToast('已删除');
+}
+
+function moveSheet(idx, dir){
+  const sheets = app.globalData.sheets;
+  const newIdx = idx + dir;
+  if(newIdx < 0 || newIdx >= sheets.length) return;
+  [sheets[idx], sheets[newIdx]] = [sheets[newIdx], sheets[idx]];
+  setStorage('itoSheets', sheets);
+  if(resultMode === 'single' && resultIdx === idx) resultIdx = newIdx;
+  else if(resultMode === 'single' && resultIdx === newIdx) resultIdx = idx;
+  refreshResult();
+}
+
+function calcAverageMatrix(sheets){
+  if(sheets.length === 0) return null;
+  const avg = [[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+  for(const s of sheets){
+    for(let r=0; r<3; r++){
+      for(let c=0; c<4; c++){
+        avg[r][c] += Number(s.matrix[r][c]);
+      }
+    }
+  }
+  for(let r=0; r<3; r++){
+    for(let c=0; c<4; c++){
+      avg[r][c] = avg[r][c] / sheets.length;
+    }
+  }
+  return avg;
+}
+
+function refreshResult(){
+  const settings = app.globalData.settings;
+  const sheets = app.globalData.sheets || [];
+  const names = sheets.map(x=>x.name);
+  const pickerArea = document.getElementById('pickerArea');
+  const sheetsArea = document.getElementById('sheetsArea');
+  const exportCard = document.getElementById('exportCard');
+
+  if(!pickerArea || !sheetsArea) return;
+
+  exportCard.style.display = sheets.length > 0 ? 'block' : 'none';
+
+  if(resultMode === 'single'){
+    pickerArea.innerHTML = names.length > 0
+      ? `<div class="picker">当前：${names[resultIdx] || '暂无数据'}</div>`
+      : '<div class="picker">暂无数据，请先录入</div>';
+    if(names.length > 0){
+      pickerArea.innerHTML += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">' +
+        names.map((n,i)=>`<button class="default" style="width:auto;padding:4px 12px;font-size:13px;margin:0;${i===resultIdx?'border:2px solid #07c160;':''}" onclick="onPick(${i})">${n}</button>`).join('') +
+        '</div>';
+    }
+  } else {
+    pickerArea.innerHTML = '';
+  }
+
+  if(sheets.length === 0){
+    sheetsArea.innerHTML = '<div class="empty">暂无数据，请先到「录入数据」页面添加玻璃数据</div>';
+    return;
+  }
+
+  if(resultMode === 'average'){
+    const avgMatrix = calcAverageMatrix(sheets);
+    const a = enrich(avgMatrix, settings.abnormalPct);
+    sheetsArea.innerHTML = `
+      <div class="card">
+        <div class="sheet-name">📊 汇总平均（${sheets.length}片玻璃）</div>
+        <div class="muted" style="margin-bottom:4px">每个点位取所有玻璃的平均值</div>
+        <div class="heatmap-wrap">
+          <canvas class="heatmap-canvas" id="hm_avg"></canvas>
+        </div>
+        <div class="color-bar"></div>
+        <div class="color-labels">
+          <span>${settings.scaleMin} Ω/□ (高热力)</span>
+          <span>${settings.scaleMax} Ω/□ (低热力)</span>
+        </div>
+        <div class="stats-line" style="margin-top:8px">
+          <div class="stats-row"><span>平均方阻</span><span class="val">${a.stats.avg.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>最大值</span><span class="val">${a.stats.max.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>最小值</span><span class="val">${a.stats.min.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>不均匀性</span><span class="val">${a.stats.nonUniformity.toFixed(2)}%</span></div>
+          <div class="stats-row"><span>均匀性</span><span class="val">${a.stats.uniformity.toFixed(2)}%</span></div>
+        </div>
+      </div>
+    `;
+    setTimeout(()=>{
+      const canvas = document.getElementById('hm_avg');
+      if(canvas) drawHeatmap(canvas, avgMatrix, settings);
+    }, 50);
+    return;
+  }
+
+  const selected = resultMode === 'single'
+    ? (sheets[resultIdx] ? [sheets[resultIdx]] : [])
+    : sheets;
+
+  if(selected.length === 0){
+    sheetsArea.innerHTML = '<div class="empty">暂无数据</div>';
+    return;
+  }
+
+  let html = '';
+  selected.forEach((x, idx)=>{
+    const realIdx = resultMode === 'single' ? resultIdx : idx;
+    const a = enrich(x.matrix, settings.abnormalPct);
+    const showControls = resultMode === 'all';
+    html += `
+      <div class="card">
+        <div class="sheet-name" style="display:flex;justify-content:space-between;align-items:center">
+          <span>${x.name}</span>
+          ${showControls ? `<span style="display:flex;gap:4px">
+            <button class="default" style="width:auto;padding:2px 8px;font-size:12px;margin:0" onclick="moveSheet(${realIdx},-1)">↑</button>
+            <button class="default" style="width:auto;padding:2px 8px;font-size:12px;margin:0" onclick="moveSheet(${realIdx},1)">↓</button>
+            <button class="default" style="width:auto;padding:2px 8px;font-size:12px;margin:0;color:#d71920" onclick="deleteSheet(${realIdx})">✕</button>
+          </span>` : ''}
+        </div>
+        <div class="heatmap-wrap">
+          <canvas class="heatmap-canvas" id="hm_${idx}"></canvas>
+        </div>
+        <div class="color-bar"></div>
+        <div class="color-labels">
+          <span>${settings.scaleMin} Ω/□ (高热力)</span>
+          <span>${settings.scaleMax} Ω/□ (低热力)</span>
+        </div>
+        <div class="stats-line" style="margin-top:8px">
+          <div class="stats-row"><span>平均方阻</span><span class="val">${a.stats.avg.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>最大值</span><span class="val">${a.stats.max.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>最小值</span><span class="val">${a.stats.min.toFixed(2)} Ω/□</span></div>
+          <div class="stats-row"><span>不均匀性</span><span class="val">${a.stats.nonUniformity.toFixed(2)}%</span></div>
+          <div class="stats-row"><span>均匀性</span><span class="val">${a.stats.uniformity.toFixed(2)}%</span></div>
+        </div>
+      </div>
+    `;
+  });
+  sheetsArea.innerHTML = html;
+
+  selected.forEach((x, idx)=>{
+    const canvas = document.getElementById('hm_'+idx);
+    if(canvas) drawHeatmap(canvas, x.matrix, settings);
+  });
+}
+
+function drawHeatmap(canvas, matrix, settings){
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.offsetWidth;
+  const h = 215;
+  // 使用实际像素尺寸，不使用ctx.scale（putImageData不受scale影响）
+  const W = w * dpr, H = h * dpr;
+  canvas.width = W;
+  canvas.height = H;
+
+  const m = matrix.map(r=>r.map(Number));
+  const min = Number(settings.scaleMin ?? 8);
+  const max = Number(settings.scaleMax ?? 14);
+  const pct = Number(settings.abnormalPct ?? 10) / 100;
+
+  const vals = m.flat();
+  const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // 12个测点位置（实际像素坐标）
+  const pts = [];
+  for(let r=0; r<3; r++){
+    for(let c=0; c<4; c++){
+      pts.push({
+        x: (c + 0.5) / 4 * W,
+        y: (r + 0.5) / 3 * H,
+        v: m[r][c]
+      });
+    }
+  }
+
+  const iw = Math.max(1, Math.floor(W));
+  const ih = Math.max(1, Math.floor(H));
+  const img = ctx.createImageData(iw, ih);
+
+  function color(t){
+    const stops = [
+      [0, 30, 100, 220],
+      [.25, 70, 180, 245],
+      [.5, 245, 245, 120],
+      [.75, 255, 150, 30],
+      [1, 215, 25, 32]
+    ];
+    const i = Math.min(3, Math.floor(t * 4));
+    const u = t * 4 - i;
+    const a = stops[i], b = stops[i+1];
+    return [1,2,3].map(k=>Math.round(a[k] + (b[k]-a[k]) * u));
+  }
+
+  // IDW 插值
+  for(let y=0; y<ih; y++){
+    for(let x=0; x<iw; x++){
+      let num = 0, den = 0;
+      for(const p of pts){
+        const d2 = (x - p.x)**2 + (y - p.y)**2 + 4;
+        const wt = 1 / d2;
+        num += wt * p.v;
+        den += wt;
+      }
+      const rv = num / den;
+      const t = heatValue(rv, min, max);
+      const rgb = color(t);
+      const i = (y * iw + x) * 4;
+      img.data[i] = rgb[0];
+      img.data[i+1] = rgb[1];
+      img.data[i+2] = rgb[2];
+      img.data[i+3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // 绘制测点数值（按dpr缩放）
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  for(const p of pts){
+    const bad = p.v < avg * (1 - pct) || p.v > avg * (1 + pct);
+
+    ctx.fillStyle = bad ? '#ff3333' : '#fff';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2 * dpr, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 1 * dpr;
+    ctx.stroke();
+
+    const txt = p.v.toFixed(2);
+    ctx.font = (10 * dpr) + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.lineWidth = 1.2 * dpr;
+    ctx.strokeStyle = '#000';
+    ctx.strokeText(txt, p.x, p.y - 11 * dpr);
+
+    ctx.fillStyle = bad ? '#ff4444' : '#fff';
+    ctx.fillText(txt, p.x, p.y - 11 * dpr);
+  }
+}
+
+// ========== 参数设置页 ==========
+function renderSettings(container){
+  const s = app.globalData.settings;
+  const bk = getBaiduKeys();
+  const hasKeys = bk.apiKey && bk.secretKey;
+  container.innerHTML = `
+    <div class="card">
+      <div class="title">热力色标固定量程</div>
+      <div class="muted">最小值（Ω/□）</div>
+      <input type="number" id="setMin" value="${s.scaleMin}" oninput="settingsData.scaleMin=this.value" />
+      <div class="muted">最大值（Ω/□）</div>
+      <input type="number" id="setMax" value="${s.scaleMax}" oninput="settingsData.scaleMax=this.value" />
+    </div>
+    <div class="card">
+      <div class="title">异常点阈值</div>
+      <div class="muted">超出单片平均方阻 ± <span id="pctVal">${s.abnormalPct}</span>% 时，数值标红加粗</div>
+      <div class="slider-wrap">
+        <input type="range" min="1" max="50" step="1" value="${s.abnormalPct}" oninput="document.getElementById('pctVal').textContent=this.value;settingsData.abnormalPct=this.value" />
+      </div>
+    </div>
+    <div class="card">
+      <div class="rule">热力方向：<span class="danger">方阻越低 → 热力越高</span></div>
+      <button class="primary" onclick="saveSettings()">保存设置</button>
+    </div>
+    <div class="card">
+      <div class="title" style="font-size:16px">百度OCR密钥</div>
+      <div class="muted">${hasKeys?'✅ 已配置':'⚠️ 未配置'} — 在「录入数据」页面也可配置</div>
+      <input type="text" id="baiduApiKey2" placeholder="API Key" value="${bk.apiKey||''}" />
+      <input type="text" id="baiduSecretKey2" placeholder="Secret Key" value="${bk.secretKey||''}" />
+      <button class="primary" onclick="saveBaiduKeys2()">保存密钥</button>
+    </div>
+    <div class="card">
+      <div class="title" style="font-size:16px">色标预览</div>
+      <div class="color-bar"></div>
+      <div class="color-labels">
+        <span>低阻/高热</span>
+        <span>高阻/低热</span>
+      </div>
+    </div>
+  `;
+  settingsData.scaleMin = s.scaleMin;
+  settingsData.scaleMax = s.scaleMax;
+  settingsData.abnormalPct = s.abnormalPct;
+}
+
+function saveBaiduKeys2(){
+  const apiKey = document.getElementById('baiduApiKey2').value.trim();
+  const secretKey = document.getElementById('baiduSecretKey2').value.trim();
+  if(!apiKey || !secretKey){
+    showToast('请填写完整的API Key和Secret Key');
+    return;
+  }
+  localStorage.setItem('baidu_api_key', apiKey);
+  localStorage.setItem('baidu_secret_key', secretKey);
+  localStorage.removeItem('baidu_token');
+  localStorage.removeItem('baidu_token_expiry');
+  showToast('密钥已保存');
+}
+
+const settingsData = {scaleMin:8, scaleMax:14, abnormalPct:10};
+
+function saveSettings(){
+  const s = {
+    scaleMin: Number(settingsData.scaleMin),
+    scaleMax: Number(settingsData.scaleMax),
+    abnormalPct: Number(settingsData.abnormalPct),
+    lowResistanceHot: true
+  };
+  if(!(s.scaleMax > s.scaleMin)){
+    showToast('量程设置无效');
+    return;
+  }
+  app.globalData.settings = s;
+  setStorage('itoSettings', s);
+  showToast('已保存');
+}
+
+// ========== 导出功能 ==========
+function exportExcel(){
+  const sheets = app.globalData.sheets || [];
+  if(sheets.length === 0){ showToast('没有数据可导出'); return; }
+
+  const settings = app.globalData.settings;
+  const wb = XLSX.utils.book_new();
+
+  // 单张表格：3×4网格排版，每片玻璃占3行，名称合并
+  const aoa = [
+    ['ITO方阻热力分析报告'],
+    ['导出时间', new Date().toLocaleString('zh-CN')],
+    ['玻璃数量', sheets.length],
+    ['色标量程', settings.scaleMin + ' - ' + settings.scaleMax + ' Ω/□'],
+    ['异常阈值', '±' + settings.abnormalPct + '%'],
+    [],
+    ['玻璃名称', '行/列', 'C1', 'C2', 'C3', 'C4', '平均方阻(Ω/□)', '最大值', '最小值', '不均匀性(%)', '均匀性(%)']
+  ];
+
+  const merges = [
+    {s:{r:0,c:0},e:{r:0,c:10}}
+  ];
+
+  let rowIdx = 7;
+
+  sheets.forEach(s=>{
+    const a = enrich(s.matrix, settings.abnormalPct);
+    const rowLabels = ['R1','R2','R3'];
+    for(let r=0; r<3; r++){
+      const row = [];
+      if(r===0){
+        row.push(s.name);
+      } else {
+        row.push('');
+      }
+      row.push(rowLabels[r]);
+      row.push(Number(s.matrix[r][0]).toFixed(2));
+      row.push(Number(s.matrix[r][1]).toFixed(2));
+      row.push(Number(s.matrix[r][2]).toFixed(2));
+      row.push(Number(s.matrix[r][3]).toFixed(2));
+      if(r===2){
+        row.push(a.stats.avg.toFixed(2));
+        row.push(a.stats.max.toFixed(2));
+        row.push(a.stats.min.toFixed(2));
+        row.push(a.stats.nonUniformity.toFixed(2));
+        row.push(a.stats.uniformity.toFixed(2));
+      } else {
+        row.push('','','','','');
+      }
+      aoa.push(row);
+    }
+    merges.push({s:{r:rowIdx,c:0},e:{r:rowIdx+2,c:0}});
+    merges.push({s:{r:rowIdx,c:6},e:{r:rowIdx+2,c:6}});
+    merges.push({s:{r:rowIdx,c:7},e:{r:rowIdx+2,c:7}});
+    merges.push({s:{r:rowIdx,c:8},e:{r:rowIdx+2,c:8}});
+    merges.push({s:{r:rowIdx,c:9},e:{r:rowIdx+2,c:9}});
+    merges.push({s:{r:rowIdx,c:10},e:{r:rowIdx+2,c:10}});
+    rowIdx += 3;
+  });
+
+  aoa.push([]);
+  rowIdx++;
+
+  if(sheets.length > 0){
+    const avgM = calcAverageMatrix(sheets);
+    const avgStats = enrich(avgM, settings.abnormalPct);
+    aoa.push(['—— 汇总平均（所有玻璃每个点位平均值）——']);
+    merges.push({s:{r:rowIdx,c:0},e:{r:rowIdx,c:10}});
+    rowIdx++;
+
+    const rowLabels = ['R1','R2','R3'];
+    for(let r=0; r<3; r++){
+      const row = [];
+      if(r===0){
+        row.push('汇总平均');
+      } else {
+        row.push('');
+      }
+      row.push(rowLabels[r]);
+      row.push(avgM[r][0].toFixed(2));
+      row.push(avgM[r][1].toFixed(2));
+      row.push(avgM[r][2].toFixed(2));
+      row.push(avgM[r][3].toFixed(2));
+      if(r===2){
+        row.push(avgStats.stats.avg.toFixed(2));
+        row.push(avgStats.stats.max.toFixed(2));
+        row.push(avgStats.stats.min.toFixed(2));
+        row.push(avgStats.stats.nonUniformity.toFixed(2));
+        row.push(avgStats.stats.uniformity.toFixed(2));
+      } else {
+        row.push('','','','','');
+      }
+      aoa.push(row);
+    }
+    merges.push({s:{r:rowIdx,c:0},e:{r:rowIdx+2,c:0}});
+    merges.push({s:{r:rowIdx,c:6},e:{r:rowIdx+2,c:6}});
+    merges.push({s:{r:rowIdx,c:7},e:{r:rowIdx+2,c:7}});
+    merges.push({s:{r:rowIdx,c:8},e:{r:rowIdx+2,c:8}});
+    merges.push({s:{r:rowIdx,c:9},e:{r:rowIdx+2,c:9}});
+    merges.push({s:{r:rowIdx,c:10},e:{r:rowIdx+2,c:10}});
+  }
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws['!cols'] = [
+    {wch:14}, {wch:6},
+    {wch:8},{wch:8},{wch:8},{wch:8},
+    {wch:14},{wch:10},{wch:10},{wch:12},{wch:12}
+  ];
+  ws['!merges'] = merges;
+  XLSX.utils.book_append_sheet(wb, ws, '方阻数据');
+
+  const fname = 'ITO方阻数据_' + new Date().toISOString().slice(0,10) + '.xlsx';
+  XLSX.writeFile(wb, fname);
+  showToast('Excel已导出');
+}
+
+async function exportPDF(){
+  const sheets = app.globalData.sheets || [];
+  if(sheets.length === 0){ showToast('没有数据可导出'); return; }
+
+  const settings = app.globalData.settings;
+  showToast('正在生成PDF...');
+
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF('p', 'mm', 'a4');
+  const pageW = 210, pageH = 297, margin = 10;
+  const contentW = pageW - margin * 2;
+  const gap = 4;
+  let y = margin;
+  let entriesOnPage = 0;
+
+  // 用 html2canvas 渲染标题（避免jsPDF中文乱码）
+  async function renderTitle(){
+    const titleDiv = document.createElement('div');
+    titleDiv.style.cssText = 'position:absolute;left:-9999px;top:0;width:680px;text-align:center;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#fff;padding-bottom:6px';
+    titleDiv.innerHTML = `
+      <div style="font-size:20px;font-weight:bold;color:#172033">ITO方阻热力分析报告</div>
+      <div style="font-size:11px;color:#6b7280;margin-top:4px">导出时间: ${new Date().toLocaleString('zh-CN')}　|　玻璃数量: ${sheets.length}　|　色标量程: ${settings.scaleMin}-${settings.scaleMax} Ω/□　|　异常阈值: ±${settings.abnormalPct}%</div>
+    `;
+    document.body.appendChild(titleDiv);
+    const tc = await html2canvas(titleDiv, {scale:2, useCORS:true, backgroundColor:'#ffffff'});
+    document.body.removeChild(titleDiv);
+    const imgW = contentW;
+    const imgH = tc.height * imgW / tc.width;
+    pdf.addImage(tc.toDataURL('image/png'), 'PNG', margin, y, imgW, imgH);
+    y += imgH + gap;
+  }
+
+  // 逐个渲染玻璃条目
+  async function addEntry(matrix, name, stats, isSummary){
+    const entryDiv = document.createElement('div');
+    entryDiv.style.cssText = 'position:absolute;left:-9999px;top:0;width:680px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;';
+
+    const bgColor = isSummary ? '#fff7ed' : '#f9fafb';
+    const borderColor = isSummary ? '#fed7aa' : '#e5e7eb';
+
+    entryDiv.innerHTML = `
+      <div style="background:${bgColor};padding:6px 14px;border-bottom:1px solid ${borderColor};display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;font-weight:bold;color:#172033">${name}</span>
+        <span style="font-size:11px;color:#6b7280">平均: ${stats.avg.toFixed(2)} Ω/□ | 最大: ${stats.max.toFixed(2)} | 最小: ${stats.min.toFixed(2)} | 不均匀性: ${stats.nonUniformity.toFixed(2)}% | 均匀性: ${stats.uniformity.toFixed(2)}%</span>
+      </div>
+      <div style="padding:6px 14px">
+        <canvas class="entry-canvas" style="width:100%;height:220px"></canvas>
+        <div style="display:flex;height:10px;border-radius:3px;margin:4px 0;background:linear-gradient(to right,rgb(30,100,220),rgb(70,180,245),rgb(245,245,120),rgb(255,150,30),rgb(215,25,32))"></div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:#6b7280;padding-bottom:4px">
+          <span>${settings.scaleMin} Ω/□ (高热力)</span>
+          <span>${settings.scaleMax} Ω/□ (低热力)</span>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(entryDiv);
+
+    const canvas = entryDiv.querySelector('.entry-canvas');
+    Object.defineProperty(canvas, 'offsetWidth', {value: 652});
+    drawHeatmap(canvas, matrix, settings);
+
+    const entryCanvas = await html2canvas(entryDiv, {scale:2, useCORS:true, backgroundColor:'#ffffff'});
+    document.body.removeChild(entryDiv);
+
+    const imgW = contentW;
+    const imgH = entryCanvas.height * imgW / entryCanvas.width;
+
+    // 每页3条，满3条换页
+    if(entriesOnPage >= 3){
+      pdf.addPage();
+      y = margin;
+      entriesOnPage = 0;
+    }
+
+    const imgData = entryCanvas.toDataURL('image/png');
+    pdf.addImage(imgData, 'PNG', margin, y, imgW, imgH);
+    y += imgH + gap;
+    entriesOnPage++;
+  }
+
+  try{
+    await renderTitle();
+
+    for(let i = 0; i < sheets.length; i++){
+      const s = sheets[i];
+      const a = enrich(s.matrix, settings.abnormalPct);
+      await addEntry(s.matrix, s.name, a.stats, false);
+    }
+
+    if(sheets.length > 0){
+      const avgM = calcAverageMatrix(sheets);
+      const avgStats = enrich(avgM, settings.abnormalPct);
+      await addEntry(avgM, `汇总平均（${sheets.length}片玻璃每个点位平均值）`, avgStats.stats, true);
+    }
+
+    const fname = 'ITO方阻报告_' + new Date().toISOString().slice(0,10) + '.pdf';
+    pdf.save(fname);
+    showToast('PDF已导出');
+  }catch(e){
+    showModal('PDF导出失败', e.message);
+  }
+}
+
+// ========== 初始化 ==========
+
+// 如果没有数据，自动填充示例
+if(app.globalData.sheets.length === 0){
+  const demoSheets = [
+    {name:'新1#', matrix:[[13.15,13.24,12.50,11.53],[12.74,13.11,12.70,11.26],[12.61,12.09,11.73,10.83]]},
+    {name:'新2#', matrix:[[12.10,12.40,12.80,13.10],[12.50,12.70,13.00,13.20],[12.30,12.60,12.90,13.05]]}
+  ];
+  app.globalData.sheets = demoSheets;
+  setStorage('itoSheets', demoSheets);
+}
+
+// 更新状态栏时间
+function updateTime(){
+  const now = new Date();
+  const h = now.getHours();
+  const m = now.getMinutes().toString().padStart(2,'0');
+  document.getElementById('statusTime').textContent = h + ':' + m;
+}
+updateTime();
+setInterval(updateTime, 60000);
+
+// 首次渲染
+renderPage();
+</script>
+</body>
+</html>

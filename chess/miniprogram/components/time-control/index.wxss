@@ -1,0 +1,9 @@
+.mode-row { display: flex; gap: 16rpx; margin-bottom: 20rpx; }
+.mode { flex: 1; min-height: 88rpx; background: #eee4d3; border: 2rpx solid #deceb7; color: #252c26; font-size: 28rpx; padding: 14rpx; border-radius: 12rpx; }
+.mode::after { border: 0; }
+.chosen { color: #fff9ef; background: #2f5648; border-color: #2f5648; }
+.control-row, .switch-row { display: flex; align-items: center; justify-content: space-between; min-height: 98rpx; gap: 12rpx; font-size: 26rpx; }
+.switch-row { min-height: 78rpx; font-size: 24rpx; color: #716a5f; }
+.value-row { display: flex; gap: 14rpx; align-items: center; }
+input { width: 130rpx; height: 88rpx; box-sizing: border-box; padding: 12rpx; border: 2rpx solid #deceb7; border-radius: 10rpx; background: #fffaf2; text-align: center; }
+.hint { margin-top: 20rpx; font-size: 24rpx; line-height: 1.7; color: #716a5f; }

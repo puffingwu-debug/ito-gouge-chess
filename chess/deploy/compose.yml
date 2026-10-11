@@ -1,0 +1,57 @@
+name: gouge-xiangqi
+
+services:
+  chess:
+    container_name: gouge-xiangqi-server
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 20s
+    environment:
+      DEV_MODE: "false"
+      ALLOW_LAN_DEV: "false"
+      HOST: "0.0.0.0"
+      PORT: "8787"
+      DATA_DIR: /data
+      PUBLIC_BASE_URL: https://${CHESS_DOMAIN:?请填写获批的真实域名}
+      ALLOWED_ORIGINS: https://${CHESS_DOMAIN:?请填写获批的真实域名}
+      WECHAT_APP_ID: ${WECHAT_APP_ID:?请填写真实微信AppID}
+      WECHAT_APP_SECRET: ${WECHAT_APP_SECRET:?请在私密环境文件填写微信AppSecret}
+      WECHAT_VOICE_ENABLED: ${WECHAT_VOICE_ENABLED:-false}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-flash}
+      DEEPSEEK_TIMEOUT_MS: ${DEEPSEEK_TIMEOUT_MS:-6000}
+    expose:
+      - "8787"
+    volumes:
+      - chess_data:/data
+    healthcheck:
+      test: ["CMD", "node", "--input-type=module", "-e", "const r = await fetch('http://127.0.0.1:8787/api/health'); const b = await r.json(); if (!r.ok || !b.ok || b.devMode !== false) process.exit(1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      CHESS_DOMAIN: ${CHESS_DOMAIN:?请填写获批的真实域名}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy:/etc/caddy:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      chess:
+        condition: service_healthy
+
+volumes:
+  chess_data:
+  caddy_data:
+  caddy_config:

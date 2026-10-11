@@ -1,0 +1,19 @@
+<view class="page home">
+  <view class="eyebrow">家人的棋桌</view>
+  <view class="brand serif"><view>狗哥</view><view>下象棋</view></view>
+  <view class="subtitle"><view>隔着屏幕，也能一起坐下来。</view><view>走一步棋，聊一会儿天。</view></view>
+  <view class="river serif"><text>楚 河</text><text>汉 界</text></view>
+  <view wx:if="{{development}}" class="dev-note">本地开发模式 · 此处使用开发账号</view>
+  <view wx:if="{{user}}" class="row identity">
+    <view class="row"><image wx:if="{{user.avatarUrl}}" class="avatar" src="{{user.avatarUrl}}"/><view wx:else class="avatar avatar-fallback">棋</view><view><view>{{user.name}}</view><view class="muted">今天，和谁下一盘？</view></view></view>
+    <button class="edit-button outline" data-page="settings" bindtap="navigate">改资料</button>
+  </view>
+  <button wx:else class="primary login" bindtap="login" loading="{{busy}}">{{development ? '开发账号进入' : '微信一键登录'}}</button>
+  <view wx:if="{{error}}" class="error">{{error}}</view>
+  <view wx:if="{{recentGame}}" class="panel resume-panel"><view class="row"><view><view class="panel-title">{{recentGame.label}}</view><view class="muted">{{recentGame.statusText}}</view></view><button class="green" bindtap="continueGame">继续对局</button></view></view>
+  <view wx:if="{{recentError}}" class="error">{{recentError}}<button class="outline retry-recent" bindtap="refreshRecent">重新读取对局</button></view>
+  <button class="menu-card ai" data-page="ai" bindtap="navigate" disabled="{{busy}}"><view><view class="menu-title serif">AI 对战</view><view class="menu-detail">五种难度，从初学到进阶</view></view><text class="menu-piece serif">马</text></button>
+  <button class="menu-card family" data-page="lobby" bindtap="navigate" disabled="{{busy}}"><view><view class="menu-title serif">玩家对战</view><view class="menu-detail">六张棋桌 · 入座或旁观</view></view><text class="menu-piece serif">车</text></button>
+  <button class="menu-card settings" data-page="settings" bindtap="navigate" disabled="{{busy}}"><view><view class="menu-title serif">设置</view><view class="menu-detail">头像、昵称与棋盘朝向</view></view><text class="arrow">›</text></button>
+  <view class="home-foot">红先黑后，落子有声。</view>
+</view>

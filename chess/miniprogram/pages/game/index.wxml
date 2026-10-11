@@ -1,0 +1,66 @@
+<view class="page game-page" style="padding-bottom: {{layout.safeBottom + 80}}px;">
+  <view wx:if="{{error}}" class="error compact-error">{{error}}<text wx:if="{{connection !== '已连接'}}" bindtap="connect"> · 点此重连</text></view>
+  <view wx:if="{{!game}}" class="muted connecting">正在连接棋桌…</view>
+  <block wx:if="{{game}}">
+    <view class="player top-player {{clock[topColor].active ? 'thinking' : ''}}">
+      <view class="player-info"><image wx:if="{{topPlayer.avatarUrl}}" class="avatar" src="{{topPlayer.avatarUrl}}"/><view wx:else class="avatar avatar-fallback {{topColor}}">{{topColor === 'red' ? '帅' : '将'}}</view><view class="player-name">{{topPlayer ? topPlayer.name : '等待入座'}}<text class="side-label">{{topColor === 'red' ? '红方' : '黑方'}}</text></view></view>
+      <view class="countdown {{topColor}}">{{clock[topColor].remaining}}</view><button id="game-settings-btn" class="settings-entry" bindtap="openSettings">设置</button>
+    </view>
+    <view class="chess-stage" style="width: {{layout.frameWidth}}px; height: {{layout.frameHeight}}px;">
+      <view class="board-frame" style="width: {{layout.frameWidth}}px; height: {{layout.frameHeight}}px; padding: {{layout.padding}}px;">
+        <view class="board-grid" style="width: {{layout.gridWidth}}px; height: {{layout.gridHeight}}px;">
+          <view wx:for="{{horizontal}}" wx:key="*this" class="board-line horizontal" style="top: {{item}}%;"></view>
+          <block wx:for="{{vertical}}" wx:key="*this"><view class="board-line vertical top" style="left: {{item}}%;"></view><view class="board-line vertical bottom" style="left: {{item}}%;"></view><view wx:if="{{index === 0 || index === 8}}" class="board-line vertical full" style="left: {{item}}%;"></view></block>
+          <view class="palace upper-one"></view><view class="palace upper-two"></view><view class="palace lower-one"></view><view class="palace lower-two"></view>
+          <view class="river-name serif" style="font-size: {{layout.pieceFont * .75}}px;"><text>楚 河</text><text>汉 界</text></view>
+          <view wx:for="{{cells}}" wx:key="index" class="point {{item.last ? 'last-point' : ''}}" style="left: {{item.left}}%; top: {{item.top}}%; width: {{layout.pointSize}}px; height: {{layout.pointSize}}px;" data-index="{{item.index}}" bindtap="point">
+            <view wx:if="{{item.piece}}" class="piece serif {{item.piece.color}} {{item.selected ? 'selected-piece' : ''}} {{item.destination ? 'capture-target' : ''}}" style="width: {{layout.pieceSize}}px; height: {{layout.pieceSize}}px; font-size: {{layout.pieceFont}}px;">{{item.label}}</view>
+            <view wx:elif="{{item.destination}}" class="destination"></view><view wx:elif="{{item.last}}" class="last-mark"></view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{motion}}" class="chess-motion">
+        <view class="carried-piece" style="left: {{motion.moverPoint.x}}px; top: {{motion.moverPoint.y}}px; width: {{layout.pieceSize}}px; height: {{layout.pieceSize}}px; transition-duration: {{motion.moveDuration}}ms;">
+          <view wx:if="{{motion.moverVisible}}" class="piece serif {{motion.mover.color}} lifted-piece" style="width: {{layout.pieceSize}}px; height: {{layout.pieceSize}}px; font-size: {{layout.pieceFont}}px;">{{motion.mover.label}}</view>
+          <view class="chess-hand {{motion.moverVisible ? '' : 'hand-released'}}" style="transform: translate(-47%, -100%) rotate({{motion.handRotation}}deg);"><view class="hand-wrist"></view><view class="hand-palm"></view><view class="hand-finger first-finger"></view><view class="hand-finger second-finger"></view><view class="hand-finger third-finger"></view><view class="hand-thumb"></view><view class="hand-fold"></view></view>
+        </view>
+        <view wx:if="{{motion.capturedVisible}}" class="flying-piece fly-{{motion.phase}}" style="left: {{motion.flyPoint.x}}px; top: {{motion.flyPoint.y}}px; width: {{layout.pieceSize}}px; height: {{layout.pieceSize}}px; opacity: {{motion.flyOpacity}}; transform: translate(-50%, -50%) rotate({{motion.flyRotation}}deg) scale({{motion.flyScale}}); transition-duration: {{motion.flyDuration}}ms;"><view class="piece serif {{motion.captured.color}}" style="width: {{layout.pieceSize}}px; height: {{layout.pieceSize}}px; font-size: {{layout.pieceFont}}px;">{{motion.captured.label}}</view></view>
+      </view>
+      <view wx:if="{{subtitle}}" class="chat-subtitle {{subtitle.longText ? 'long-subtitle' : ''}}" style="animation-duration: {{subtitle.duration}}ms;"><view class="subtitle-window"><view class="subtitle-content" style="animation-duration: {{subtitle.duration}}ms;"><text class="subtitle-name">{{subtitle.name}}：</text><text>{{subtitle.text}}</text></view></view></view>
+    </view>
+    <view class="player bottom-player {{clock[bottomColor].active ? 'thinking' : ''}}">
+      <view class="player-info"><image wx:if="{{bottomPlayer.avatarUrl}}" class="avatar" src="{{bottomPlayer.avatarUrl}}"/><view wx:else class="avatar avatar-fallback {{bottomColor}}">{{bottomColor === 'red' ? '帅' : '将'}}</view><view class="player-name">{{bottomPlayer ? bottomPlayer.name : '等待入座'}}<text class="side-label">{{bottomColor === 'red' ? '红方' : '黑方'}}{{spectator ? ' · 旁观' : ''}}</text></view></view><view class="countdown {{bottomColor}}">{{clock[bottomColor].remaining}}</view>
+    </view>
+    <view class="turn-row"><text class="status serif">{{statusText}}</text><text class="connection">{{connection}}</text></view>
+    <view class="main-actions"><button id="game-resign-btn" class="outline" bindtap="resign" disabled="{{busy || spectator || game.status !== 'active'}}">认输</button><button id="game-leave-btn" class="outline" bindtap="leaveTable" disabled="{{busy}}">离开</button></view>
+    <view wx:if="{{game.status === 'waiting' && !spectator}}" class="ready-row"><text bindtap="openSettings" class="rule-link">时长规则 ›</text><button id="game-ready-btn" class="green" bindtap="ready" disabled="{{busy || game.ready[myColor]}}" loading="{{busy}}">{{game.ready[myColor] ? '已准备，等待对方' : '确认并准备'}}</button></view>
+    <view wx:if="{{game.undo && !spectator}}" class="agreement"><text>{{canRespondUndo ? '对方申请悔棋' : '等待悔棋回复'}} · {{undoSeconds}} 秒</text><button wx:if="{{canRespondUndo}}" class="green" data-accept="true" bindtap="undoRespond" disabled="{{busy || !undoSeconds}}">同意</button><button wx:if="{{canRespondUndo}}" class="outline" data-accept="false" bindtap="undoRespond" disabled="{{busy || !undoSeconds}}">拒绝</button></view>
+    <view wx:if="{{game.draw && !spectator}}" class="agreement"><text>{{canRespondDraw ? '对方申请和棋' : '等待和棋回复'}} · {{drawSeconds}} 秒</text><button wx:if="{{canRespondDraw}}" class="green" data-accept="true" bindtap="drawRespond" disabled="{{busy || !drawSeconds}}">同意</button><button wx:if="{{canRespondDraw}}" class="outline" data-accept="false" bindtap="drawRespond" disabled="{{busy || !drawSeconds}}">拒绝</button></view>
+    <view wx:if="{{chatError && !chatOpen}}" class="error compact-error">{{chatError}}</view>
+    <view wx:if="{{soundError}}" class="muted sound-error">{{soundError}}</view>
+  </block>
+</view>
+<view wx:if="{{chatEnabled}}" class="chat-dock" style="padding-bottom: {{layout.safeBottom + 8}}px;">
+  <button id="chat-toggle-btn" class="outline" bindtap="toggleChat">同桌聊天 <text wx:if="{{chatUnread}}" class="chat-unread">{{chatUnread > 99 ? '99+' : chatUnread}}</text></button>
+  <button id="reaction-toggle-btn" class="outline" bindtap="openReactions" bindlongpress="openReactions" aria-label="选择互动表情">🙂</button>
+</view>
+<block wx:if="{{chatEnabled && chatOpen}}">
+  <view class="chat-backdrop" bindtap="closeChat"></view>
+  <view class="chat-panel" style="bottom: {{layout.safeBottom + 66}}px;">
+    <view class="chat-heading"><text class="serif">同桌聊天</text><button id="chat-close-btn" class="outline" bindtap="closeChat" aria-label="关闭聊天">×</button></view>
+    <scroll-view class="chat-records" scroll-y="{{true}}" scroll-into-view="{{chatScrollTo}}" scroll-with-animation="{{true}}">
+      <view wx:if="{{!chatReady}}" class="muted chat-empty">正在读取消息…</view>
+      <view wx:elif="{{!chatMessages.length}}" class="muted chat-empty">和同桌家人打个招呼吧</view>
+      <view wx:for="{{chatMessages}}" wx:key="id" id="{{item.rowId}}" class="chat-message {{item.userId === userId ? 'chat-own' : ''}}"><text class="chat-name">{{item.displayName}}</text><text class="chat-text">{{item.text}}</text></view>
+    </scroll-view>
+    <view wx:if="{{chatError}}" class="error compact-error">{{chatError}}</view>
+    <view class="chat-composer"><input id="chat-input" value="{{chatDraft}}" maxlength="200" placeholder="说点什么（最多200字）" confirm-type="send" bindinput="chatInput" bindconfirm="sendChat" disabled="{{chatBusy}}"/><button id="chat-send-btn" class="green" bindtap="sendChat" disabled="{{chatBusy || !chatDraft}}" loading="{{chatBusy}}">发送</button></view>
+  </view>
+</block>
+<block wx:if="{{chatEnabled && reactionOpen}}">
+  <view class="chat-backdrop" bindtap="closeReactions"></view>
+  <view class="reaction-menu" style="bottom: {{layout.safeBottom + 66}}px;">
+    <button wx:for="{{reactions}}" wx:key="id" class="reaction-choice outline" data-reaction="{{item.id}}" bindtap="chooseReaction" disabled="{{chatBusy}}"><text class="reaction-emoji">{{item.emoji}}</text><text>{{item.label}}</text></button>
+    <view class="reaction-hint muted">白旗是互动表情，不会认输</view>
+  </view>
+</block>

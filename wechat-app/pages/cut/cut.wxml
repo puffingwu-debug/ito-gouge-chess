@@ -1,0 +1,186 @@
+<!-- 页面头部 -->
+<view class="page-header">
+  <text class="page-title">Puff玻璃裁切计算器</text>
+  <text class="page-subtitle">原片排版优化 / 利用率计算 / 裁切预览</text>
+</view>
+
+<!-- 第一部分：原片参数 -->
+<view class="card">
+  <view class="section-title">原片参数</view>
+
+  <view class="unit-row">
+    <text class="row-label">单位</text>
+    <radio-group bindchange="onUnitChange" class="radio-group">
+      <label class="radio-label">
+        <radio value="mm" checked="{{unit === 'mm'}}" color="#3b82f6"/>
+        <text>mm</text>
+      </label>
+      <label class="radio-label">
+        <radio value="cm" checked="{{unit === 'cm'}}" color="#3b82f6"/>
+        <text>cm</text>
+      </label>
+      <label class="radio-label">
+        <radio value="in" checked="{{unit === 'in'}}" color="#3b82f6"/>
+        <text>in</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="input-row">
+    <text class="row-label">原片长度</text>
+    <input class="num-input" type="digit" value="{{sheetLen}}" bindinput="onLenInput" placeholder="输入长度"/>
+    <text class="unit-suffix">{{unit}}</text>
+  </view>
+
+  <view class="input-row">
+    <text class="row-label">原片宽度</text>
+    <input class="num-input" type="digit" value="{{sheetWid}}" bindinput="onWidInput" placeholder="输入宽度"/>
+    <text class="unit-suffix">{{unit}}</text>
+  </view>
+
+  <view class="input-row">
+    <text class="row-label">最小废边</text>
+    <input class="num-input" type="digit" value="{{wasteMin}}" bindinput="onWasteInput" placeholder="废边尺寸"/>
+    <text class="unit-suffix">{{unit}}</text>
+  </view>
+
+  <view class="sheet-area-tip">
+    <text class="muted">原片面积：{{sheetAreaM2}} m²</text>
+  </view>
+</view>
+
+<!-- 第二部分：成品列表 -->
+<view class="card">
+  <view class="section-header">
+    <text class="section-title">成品列表</text>
+    <text class="muted product-count">共 {{products.length}} 种</text>
+  </view>
+
+  <!-- 空列表提示 -->
+  <view wx:if="{{products.length === 0}}" class="empty-tip">
+    <text class="muted">暂无成品，请点击下方按钮添加</text>
+  </view>
+
+  <!-- 成品表格 -->
+  <view wx:else class="product-table">
+    <view class="table-header">
+      <text class="th col-len">长({{unit}})</text>
+      <text class="th col-wid">宽({{unit}})</text>
+      <text class="th col-num">数量</text>
+      <text class="th col-area">面积(m²)</text>
+      <text class="th col-op">操作</text>
+    </view>
+
+    <view class="table-row" wx:for="{{products}}" wx:key="id">
+      <text class="td col-len">{{item.lenDisplay}}</text>
+      <text class="td col-wid">{{item.widDisplay}}</text>
+      <view class="td col-num qty-cell">
+        <view class="qty-btn qty-minus" catchtap="changeQty" data-id="{{item.id}}" data-delta="{{-1}}">-</view>
+        <text class="qty-text">{{item.num}}</text>
+        <view class="qty-btn qty-plus" catchtap="changeQty" data-id="{{item.id}}" data-delta="{{1}}">+</view>
+      </view>
+      <text class="td col-area">{{item.areaM2}}</text>
+      <view class="td col-op op-cell">
+        <text class="op-btn edit-btn" catchtap="openEditModal" data-id="{{item.id}}">编辑</text>
+        <text class="op-btn del-btn" catchtap="deleteProduct" data-id="{{item.id}}">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="add-btn" bindtap="openAddModal">+ 添加成品</button>
+</view>
+
+<!-- 计算按钮 -->
+<button class="calc-btn" type="primary" bindtap="handleCalculate">计算裁切方案</button>
+
+<!-- 第三部分：计算结果（计算后显示） -->
+<view wx:if="{{calculated}}" class="card result-card">
+  <view class="section-title">计算结果</view>
+
+  <!-- 统计卡片 -->
+  <view class="stat-grid">
+    <view class="stat-item">
+      <text class="stat-label">利用率</text>
+      <text class="stat-value {{rate < 85 ? 'stat-warn' : 'stat-good'}}">{{rate}}%</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">已用面积</text>
+      <text class="stat-value">{{usedAreaM2}}</text>
+      <text class="stat-unit">m²</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">废料面积</text>
+      <text class="stat-value">{{wasteAreaM2}}</text>
+      <text class="stat-unit">m²</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">原片面积</text>
+      <text class="stat-value">{{sheetAreaM2}}</text>
+      <text class="stat-unit">m²</text>
+    </view>
+  </view>
+
+  <!-- 溢出警告 -->
+  <view wx:if="{{overflowList.length > 0}}" class="warning-box">
+    <view class="warning-title">溢出警告</view>
+    <view class="warning-item" wx:for="{{overflowList}}" wx:key="id">
+      <text>成品 {{item.lenDisplay}} x {{item.widDisplay}} {{unit}}：需要 {{item.requested}} 块，仅放置 {{item.placed}} 块，溢出 {{item.overflow}} 块</text>
+    </view>
+  </view>
+
+  <!-- 优化建议 -->
+  <view wx:if="{{suggestions.length > 0}}" class="suggestion-box">
+    <view class="suggestion-title">优化建议（当前利用率低于85%）</view>
+    <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="productId">
+      <text class="suggestion-text">{{item.reason}}</text>
+      <text class="apply-btn" catchtap="applySuggestion" data-id="{{item.productId}}" data-add="{{item.suggestedAdd}}">应用</text>
+    </view>
+  </view>
+
+  <view wx:if="{{overflowList.length === 0 && suggestions.length === 0 && rate >= 85}}" class="success-tip">
+    <text>排版方案良好，利用率达标</text>
+  </view>
+</view>
+
+<!-- 预览按钮 -->
+<button wx:if="{{calculated}}" class="preview-btn" bindtap="goPreview">查看裁切预览图</button>
+
+<!-- 添加/编辑成品 弹窗 -->
+<view wx:if="{{modalShow}}" class="modal-mask" bindtap="closeModal">
+  <view class="modal-content" catchtap="stopProp">
+    <view class="modal-title">{{modalEditId ? '编辑成品' : '添加成品'}}</view>
+
+    <view class="input-row">
+      <text class="row-label">长度</text>
+      <input class="num-input" type="digit" value="{{modalLen}}" bindinput="onModalLenInput" placeholder="输入长度"/>
+      <text class="unit-suffix">{{unit}}</text>
+    </view>
+
+    <view class="input-row">
+      <text class="row-label">宽度</text>
+      <input class="num-input" type="digit" value="{{modalWid}}" bindinput="onModalWidInput" placeholder="输入宽度"/>
+      <text class="unit-suffix">{{unit}}</text>
+    </view>
+
+    <view class="input-row">
+      <text class="row-label">数量</text>
+      <input class="num-input" type="digit" value="{{modalNum}}" bindinput="onModalNumInput" placeholder="输入数量"/>
+      <text class="unit-suffix">块</text>
+    </view>
+
+    <view wx:if="{{modalMaxQty > 0}}" class="max-qty-tip">
+      <text>最大裁切数：{{modalMaxQty}} 块（已自动填入）</text>
+    </view>
+
+    <view class="modal-btns">
+      <button class="modal-btn calc-max-btn" bindtap="handleCalcMaxQty">最大裁切数</button>
+      <button class="modal-btn cancel-btn" bindtap="closeModal">取消</button>
+      <button class="modal-btn save-btn" type="primary" bindtap="saveProduct">保存</button>
+    </view>
+  </view>
+</view>
+
+<!-- 页脚 -->
+<view class="footer">
+  <text class="muted">版权归Puff所有</text>
+</view>

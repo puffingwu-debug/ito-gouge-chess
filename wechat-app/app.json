@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/input/input",
+    "pages/result/result",
+    "pages/settings/settings",
+    "pages/cut/cut",
+    "pages/cut-preview/cut-preview"
+  ],
+  "subPackages": [
+    {
+      "root": "chess",
+      "pages": [
+        "pages/index/index",
+        "pages/ai/index",
+        "pages/lobby/index",
+        "pages/game/index",
+        "pages/settings/index"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTitleText": "ITO方阻热力分析",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7fa"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

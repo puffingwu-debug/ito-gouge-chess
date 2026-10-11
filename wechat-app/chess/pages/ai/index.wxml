@@ -1,0 +1,8 @@
+<view class="page">
+  <view class="eyebrow">找个棋友练一练</view><view class="title">和 AI 下一盘</view><view class="subtitle">选好难度与时长，红方先行。</view>
+  <view class="section-heading">对手难度</view>
+  <view class="difficulty-grid"><button wx:for="{{difficulties}}" wx:key="id" class="difficulty {{difficulty === item.id ? 'selected' : ''}}" data-id="{{item.id}}" bindtap="difficulty"><view><view class="level-name">{{item.name}}</view><view class="level-detail">{{item.detail}}</view></view><text>{{item.id}}</text></button></view>
+  <view class="panel"><view class="panel-title">我执哪一方</view><view class="actions"><button class="{{humanColor === 'red' ? 'primary' : 'outline'}}" data-color="red" bindtap="color">红方 · 先手</button><button class="{{humanColor === 'black' ? 'green' : 'outline'}}" data-color="black" bindtap="color">黑方 · 后手</button></view></view>
+  <view class="panel"><view class="panel-title">棋局时长</view><time-control value="{{control}}" bindchange="control" disabled="{{busy}}"/></view>
+  <view wx:if="{{error}}" class="error">{{error}}</view><button class="primary start" bindtap="start" disabled="{{busy}}" loading="{{busy}}">开始对局</button>
+</view>

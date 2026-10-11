@@ -1,0 +1,34 @@
+狗哥下象棋：线上恢复建议
+
+当前状态：线上尚未恢复。本文件仅供审阅，未部署服务、创建云资源或修改微信后台。
+
+根因：上传包仍使用 http://127.0.0.1:8787 和开发登录。现有象棋服务只用于本机开发，未部署可供正式版访问的线上后台。上传小程序代码不会同时部署 Node 后台；关闭开发工具的域名校验也不会解除正式版限制。
+
+建议范围：微信云托管运行现有 Node 的 HTTP 和长连接服务；棋局、账号、会话迁移到云数据库，头像迁移到云存储；客户端改用 callContainer 和 connectContainer，关联环境与服务。初期采用常驻单实例，处理断线、服务发布和重启后的棋局与计时恢复。不能将容器本地文件当成持久存储。
+
+开通前提：需要小程序管理员配合开通资源、授权并确认预算。服务端 AppSecret 只配置在后端，不放进小程序源码或上传包。云托管、数据库、存储和常驻实例的费用须按官方规则及实际配置确认；本建议不承诺免费或给出未核实报价。语音还需核实账号接口权限。
+
+部署边界：deploy 准备资料仅是持久单服务器部署参考，不能原样用于云托管。若采用普通服务器，应配置备案域名、有效 HTTPS/WSS、持久目录和生产微信登录，再配置小程序合法域名。
+
+恢复验收：开启正式域名校验并关闭手机调试模式；使用真实微信登录；两台真机完成玩家对战、观棋、计时、悔棋和语音；重启后台后棋局、身份、席位及计时可恢复。通过体验版验收后再上传、审核和发布新版；未通过前不能称线上已恢复。
+
+官方网络限制与调试边界：
+https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html
+
+云托管入口：
+https://cloud.weixin.qq.com/
+
+官方 Node 部署流程：
+https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/quickstart/custom/node.html
+
+小程序 HTTP 接入：
+https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/development/call/mini.html
+
+小程序长连接接入：
+https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/development/websocket/miniprogram.html
+
+容器持久化与运行限制：
+https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/guide/debug/know.html
+
+官方产品定价：
+https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloudrun/src/Billing/price.html

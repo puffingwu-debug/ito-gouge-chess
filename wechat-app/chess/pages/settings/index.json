@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "设置",
+  "usingComponents": {
+    "time-control": "/chess/components/time-control/index"
+  },
+  "navigationBarBackgroundColor": "#f6f0e5",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f6f0e5"
+}

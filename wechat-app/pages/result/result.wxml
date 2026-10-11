@@ -1,0 +1,66 @@
+<view class="card">
+  <view class="title">展示模式</view>
+  <radio-group bindchange="modeChange">
+    <label><radio value="single" checked="{{mode==='single'}}"/>单片</label>
+    <label style="margin-left:30rpx"><radio value="all" checked="{{mode==='all'}}"/>汇总</label>
+  </radio-group>
+
+  <picker wx:if="{{mode==='single'}}" range="{{names}}" value="{{idx}}" bindchange="pick">
+    <view>当前：{{names[idx]||'暂无数据'}}</view>
+  </picker>
+</view>
+
+<view class="export-bar" wx:if="{{sheetsCount>0}}">
+  <button class="export-btn pdf-btn" bindtap="exportPDF">导出PDF</button>
+  <button class="export-btn excel-btn" bindtap="exportCSV">导出Excel</button>
+  <button class="export-btn img-btn" bindtap="saveImages">导出图片</button>
+</view>
+
+<block wx:if="{{mode==='all'}}">
+  <view class="card avg-card" wx:for="{{avgGroups}}" wx:key="key">
+    <view class="title">汇总平均 {{item.key}}（{{item.count}}片玻璃每个点位平均值）</view>
+    <heatmap class="hm-comp" matrix="{{item.matrix}}" settings="{{settings}}"></heatmap>
+    <view class="color-bar"></view>
+    <view class="color-labels">
+      <text>{{settings.scaleMin}} Ω/□ (高热力)</text>
+      <text>{{settings.scaleMax}} Ω/□ (低热力)</text>
+    </view>
+    <view class="stats-row">
+      <text>平均: <text class="val">{{item.stats.avg}}</text></text>
+      <text>最大: <text class="val">{{item.stats.max}}</text></text>
+      <text>最小: <text class="val">{{item.stats.min}}</text></text>
+      <text>不均匀性: <text class="val">{{item.stats.nonUniformity}}%</text></text>
+      <text>均匀性: <text class="val">{{item.stats.uniformity}}%</text></text>
+    </view>
+  </view>
+</block>
+
+<block wx:for="{{shown}}" wx:key="name">
+  <view class="card">
+    <view class="sheet-header">
+      <view class="title">{{item.name}}</view>
+      <view class="sheet-actions" wx:if="{{mode==='all'}}">
+        <view class="action-btn" data-name="{{item.name}}" data-dir="-1" bindtap="moveSheet">↑</view>
+        <view class="action-btn" data-name="{{item.name}}" data-dir="1" bindtap="moveSheet">↓</view>
+        <view class="action-btn del-btn" data-name="{{item.name}}" bindtap="deleteSheet">✕</view>
+      </view>
+    </view>
+    <heatmap class="hm-comp" matrix="{{item.matrix}}" settings="{{settings}}"></heatmap>
+    <view class="color-bar"></view>
+    <view class="color-labels">
+      <text>{{settings.scaleMin}} Ω/□ (高热力)</text>
+      <text>{{settings.scaleMax}} Ω/□ (低热力)</text>
+    </view>
+    <view class="stats-row">
+      <text>平均: <text class="val">{{item.stats.avg}}</text></text>
+      <text>最大: <text class="val">{{item.stats.max}}</text></text>
+      <text>最小: <text class="val">{{item.stats.min}}</text></text>
+      <text>不均匀性: <text class="val">{{item.stats.nonUniformity}}%</text></text>
+      <text>均匀性: <text class="val">{{item.stats.uniformity}}%</text></text>
+    </view>
+  </view>
+</block>
+
+<view class="card" wx:if="{{sheetsCount===0}}">
+  <view class="empty">暂无玻璃数据，请先录入</view>
+</view>

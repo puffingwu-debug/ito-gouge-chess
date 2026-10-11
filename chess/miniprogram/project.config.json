@@ -1,0 +1,11 @@
+{
+  "appid": "touristappid",
+  "projectname": "狗哥下象棋",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "libVersion": "3.7.1",
+  "setting": {
+    "es6": true, "enhance": true, "postcss": true,
+    "minified": true, "urlCheck": false
+  }
+}

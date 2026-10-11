@@ -1,0 +1,40 @@
+<view class="card">
+  <view class="section-header">
+    <view class="section-title">裁切排版预览图</view>
+    <button wx:if="{{hasData}}" class="refresh-btn" bindtap="handleRefresh" size="mini">刷新预览</button>
+  </view>
+
+  <view class="canvas-wrapper">
+    <view wx:if="{{!hasData}}" class="empty-tip">
+      <text class="empty-text">{{emptyTip}}</text>
+    </view>
+    <canvas wx:else type="2d" id="cutCanvas" class="cut-canvas"></canvas>
+  </view>
+
+  <view class="legend">
+    <view class="legend-item">
+      <view class="legend-color legend-blue"></view>
+      <text class="legend-text">成品玻璃</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color legend-gray"></view>
+      <text class="legend-text">废料区域</text>
+    </view>
+    <view class="legend-item">
+      <view class="legend-color legend-red"></view>
+      <text class="legend-text">切割线</text>
+    </view>
+  </view>
+
+  <block wx:if="{{hasData}}">
+    <view class="info-box">
+      <text class="info-text">原片尺寸: {{sheetLen}}×{{sheetWid}} mm</text>
+      <text class="info-text">已排布: {{placedCount}} 块成品</text>
+      <text class="info-text">利用率: {{rate}}%</text>
+    </view>
+  </block>
+</view>
+
+<view class="footer">
+  <text class="footer-text">版权归Puff所有</text>
+</view>

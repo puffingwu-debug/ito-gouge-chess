@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "tool": "wechatide upload",
+  "project": "/Users/kunpengwu/Desktop/Desktop/2026年PV销售/00 BIPV项目工程 AI文件夹/ITO玻璃方阻热力值绘图/ITO方阻热力分析_微信小程序源码包",
+  "appid": "wxbb23c109d761ccbd",
+  "version": "2026.10.11",
+  "description": "隐私整改：移除预留文件接口，增加隐私授权及指引入口；保留ITO工具、象棋对战和同桌文字聊天。",
+  "success": true,
+  "sizeBytes": {
+    "total": 233125,
+    "main": 98110,
+    "chess": 135015
+  },
+  "build": {
+    "javascriptFiles": 32,
+    "mainPages": 6,
+    "chessPages": 5,
+    "wcc": "通过",
+    "wcsc": "通过"
+  },
+  "privacyDeclarationUpdated": false,
+  "auditSubmitted": false,
+  "productionReleased": false
+}

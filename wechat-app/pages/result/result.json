@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText":"热力分布",
+  "usingComponents":{"heatmap":"/components/heatmap/heatmap"}
+}

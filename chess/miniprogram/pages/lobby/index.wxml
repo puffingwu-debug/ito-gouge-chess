@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="row"><view class="eyebrow">六张桌，等家人来</view><view class="pill">{{connection}}</view></view><view class="title">家人棋室</view><view class="subtitle">入座对弈，或坐旁边看看。下拉可刷新。</view>
+  <view wx:if="{{error}}" class="error">{{error}}</view><button wx:if="{{error}}" class="outline" bindtap="open">重新连接棋室</button>
+  <view wx:for="{{tables}}" wx:key="id" class="panel table-card">
+    <view class="row"><view class="table-name serif">第 {{item.id}} 桌</view><view class="pill">{{item.statusText}}</view></view>
+    <view class="seats"><view class="seat"><text class="seat-label red">红方</text><text>{{item.seats.red ? item.seats.red.name : '空位'}}</text></view><text class="vs serif">对</text><view class="seat"><text class="seat-label black">黑方</text><text>{{item.seats.black ? item.seats.black.name : '空位'}}</text></view></view>
+    <view class="muted">{{item.spectatorCount}} 人旁观</view>
+    <view class="actions">
+      <button wx:if="{{!item.seats.red}}" class="primary" data-id="{{item.id}}" data-action="join" data-color="red" bindtap="table" disabled="{{busy}}">坐红方</button>
+      <button wx:if="{{!item.seats.black}}" class="green" data-id="{{item.id}}" data-action="join" data-color="black" bindtap="table" disabled="{{busy}}">坐黑方</button>
+      <button wx:if="{{item.gameId}}" class="outline" data-id="{{item.id}}" data-action="watch" bindtap="table" disabled="{{busy}}">观棋</button>
+    </view>
+  </view>
+  <view wx:if="{{!tables.length && !error}}" class="panel muted">正在连接棋室…</view>
+</view>

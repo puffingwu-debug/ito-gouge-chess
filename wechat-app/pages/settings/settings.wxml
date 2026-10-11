@@ -1,0 +1,30 @@
+<view class="card">
+  <view class="title">热力色标固定量程</view>
+  <view>最小值（Ω/□）</view>
+  <input type="digit" value="{{scaleMin}}" bindinput="minInput"/>
+  <view>最大值（Ω/□）</view>
+  <input type="digit" value="{{scaleMax}}" bindinput="maxInput"/>
+</view>
+
+<view class="card">
+  <view class="title">异常点阈值</view>
+  <view>超出单片平均方阻 ± {{abnormalPct}}% 时，数值标红加粗</view>
+  <slider min="1" max="50" step="1" value="{{abnormalPct}}" show-value bindchange="pctChange"/>
+</view>
+
+<view class="card">
+  <view>热力方向：<text class="danger">方阻越低 → 热力越高</text></view>
+  <button type="primary" bindtap="save">保存设置</button>
+</view>
+
+<view class="card">
+  <view class="title">隐私与数据</view>
+  <view class="muted">查看照片选择、图片保存与象棋资料的使用说明。</view>
+  <button id="privacy-guide-btn" bindtap="privacy">用户隐私保护指引</button>
+</view>
+
+<view class="card">
+  <view class="title">数据管理</view>
+  <view class="muted">当前共 {{sheetCount}} 片玻璃数据</view>
+  <button type="warn" bindtap="clearAllData" style="margin-top:20rpx">一键清空所有数据</button>
+</view>

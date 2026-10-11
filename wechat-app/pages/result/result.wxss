@@ -1,0 +1,24 @@
+radio{transform:scale(.85)}
+picker{margin-top:22rpx}
+
+.sheet-header{display:flex;justify-content:space-between;align-items:center}
+.sheet-actions{display:flex;gap:12rpx}
+.action-btn{width:48rpx;height:48rpx;line-height:48rpx;text-align:center;border-radius:8rpx;background:#f2f3f5;font-size:28rpx}
+.action-btn:active{opacity:.6}
+.del-btn{color:#d71920;background:#fef2f2}
+
+.color-bar{width:100%;height:24rpx;border-radius:6rpx;margin:16rpx 0 6rpx;background:linear-gradient(to right,rgb(30,100,220),rgb(70,180,245),rgb(245,245,120),rgb(255,150,30),rgb(215,25,32))}
+.color-labels{display:flex;justify-content:space-between;font-size:20rpx;color:#6b7280}
+
+.stats-row{display:flex;flex-wrap:wrap;gap:16rpx;font-size:24rpx;color:#4b5563;padding:12rpx 0}
+.stats-row .val{font-weight:600;color:#172033}
+
+.avg-card{background:#fff7ed;border:1rpx solid #fed7aa}
+.empty{text-align:center;padding:60rpx 0;color:#9ca3af;font-size:28rpx}
+
+.export-bar{display:flex;gap:16rpx;padding:0 30rpx 20rpx}
+.export-btn{flex:1;font-size:26rpx;border-radius:12rpx;line-height:76rpx;height:76rpx}
+.pdf-btn{background:#ef4444;color:#fff}
+.excel-btn{background:#10b981;color:#fff}
+.img-btn{background:#3b82f6;color:#fff}
+.export-btn:active{opacity:.85}
