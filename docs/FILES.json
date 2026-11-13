@@ -1,0 +1,1704 @@
+{
+  "repository": "puffingwu-debug/ito-gouge-chess",
+  "visibility": "public",
+  "category": "微信应用与象棋服务",
+  "source_commit": "0b602884d200e6660a6a30d91944fbc41c0246da",
+  "files": [
+    {
+      "path": ".gitignore",
+      "organized_path": ".gitignore",
+      "category": "版本管理与配置",
+      "bytes": 270,
+      "blob_sha": "78bef6bed49425487790324c43d53f7bfe894583",
+      "content_read": false
+    },
+    {
+      "path": "README.md",
+      "organized_path": "README.md",
+      "category": "仓库说明",
+      "bytes": 2263,
+      "blob_sha": "4d3a266e12c52b9edfc65b602e987a7d2eeaf365",
+      "content_read": true
+    },
+    {
+      "path": "chess/.dockerignore",
+      "organized_path": "chess/.dockerignore",
+      "category": "版本管理与配置",
+      "bytes": 188,
+      "blob_sha": "2568c46b4b74c653c341869d761e6044f6d5f998",
+      "content_read": false
+    },
+    {
+      "path": "chess/.env.example",
+      "organized_path": "chess/.env.example",
+      "category": "版本管理与配置",
+      "bytes": 787,
+      "blob_sha": "62f7ef2ca83f4fa24f95f9dba966d30df2874a31",
+      "content_read": false
+    },
+    {
+      "path": "chess/.gitignore",
+      "organized_path": "chess/.gitignore",
+      "category": "版本管理与配置",
+      "bytes": 145,
+      "blob_sha": "ed52e5dc990da4af8317bb629bb2d94a8429f0be",
+      "content_read": false
+    },
+    {
+      "path": "chess/Dockerfile",
+      "organized_path": "chess/Dockerfile",
+      "category": "象棋开发工程",
+      "bytes": 382,
+      "blob_sha": "5dd441b64e146cf3cccb34c3082445a4808603ec",
+      "content_read": false
+    },
+    {
+      "path": "chess/README.md",
+      "organized_path": "chess/README.md",
+      "category": "象棋开发工程",
+      "bytes": 7084,
+      "blob_sha": "85293582bb2e3f4a5d176c5dc6e19420e4994bf8",
+      "content_read": true
+    },
+    {
+      "path": "chess/cloudfunctions/gouge-chess-chat/config.json",
+      "organized_path": "chess/cloudfunctions/gouge-chess-chat/config.json",
+      "category": "象棋开发工程",
+      "bytes": 67,
+      "blob_sha": "c9e86477d557cd8a9c004d036d1577573d7911bb",
+      "content_read": true
+    },
+    {
+      "path": "chess/cloudfunctions/gouge-chess-chat/handler.cjs",
+      "organized_path": "chess/cloudfunctions/gouge-chess-chat/handler.cjs",
+      "category": "象棋开发工程",
+      "bytes": 8279,
+      "blob_sha": "92e623f3d004dc3037bd1a7941a8b7e03aa7088a",
+      "content_read": true
+    },
+    {
+      "path": "chess/cloudfunctions/gouge-chess-chat/index.js",
+      "organized_path": "chess/cloudfunctions/gouge-chess-chat/index.js",
+      "category": "象棋开发工程",
+      "bytes": 4214,
+      "blob_sha": "4de803925fe1946a84026cfaec1137dcf00cb4cb",
+      "content_read": true
+    },
+    {
+      "path": "chess/cloudfunctions/gouge-chess-chat/package.json",
+      "organized_path": "chess/cloudfunctions/gouge-chess-chat/package.json",
+      "category": "象棋开发工程",
+      "bytes": 202,
+      "blob_sha": "d894aff059656f2a3a1060cbf9385a59242d688f",
+      "content_read": true
+    },
+    {
+      "path": "chess/core/clock.js",
+      "organized_path": "chess/core/clock.js",
+      "category": "象棋开发工程",
+      "bytes": 2636,
+      "blob_sha": "ed3900c31dccb403616a1ecb1de69c70ce30bd47",
+      "content_read": true
+    },
+    {
+      "path": "chess/core/xiangqi.js",
+      "organized_path": "chess/core/xiangqi.js",
+      "category": "象棋开发工程",
+      "bytes": 16394,
+      "blob_sha": "f820631ea8c7948a6f492466e89d438cfb398e72",
+      "content_read": true
+    },
+    {
+      "path": "chess/deploy/.gitignore",
+      "organized_path": "chess/deploy/.gitignore",
+      "category": "版本管理与配置",
+      "bytes": 25,
+      "blob_sha": "be21e45700c00df7aa25da2c172dce276b293e3b",
+      "content_read": false
+    },
+    {
+      "path": "chess/deploy/README.md",
+      "organized_path": "chess/deploy/README.md",
+      "category": "象棋开发工程",
+      "bytes": 5919,
+      "blob_sha": "e14289f69f73452c8f5c29ecd440f2a4e5b1722a",
+      "content_read": true
+    },
+    {
+      "path": "chess/deploy/caddy/Caddyfile",
+      "organized_path": "chess/deploy/caddy/Caddyfile",
+      "category": "象棋开发工程",
+      "bytes": 117,
+      "blob_sha": "8a3f2a302c096075536b414fabc91be3b0f810a0",
+      "content_read": false
+    },
+    {
+      "path": "chess/deploy/compose.yml",
+      "organized_path": "chess/deploy/compose.yml",
+      "category": "象棋开发工程",
+      "bytes": 1722,
+      "blob_sha": "24d89cf859fcb9e4f1f44b7ae93492ff15c05cd3",
+      "content_read": true
+    },
+    {
+      "path": "chess/deploy/production.env.example",
+      "organized_path": "chess/deploy/production.env.example",
+      "category": "版本管理与配置",
+      "bytes": 633,
+      "blob_sha": "58bb69c44307e4e8e21cbc72e8d066a63264d748",
+      "content_read": false
+    },
+    {
+      "path": "chess/docs/CONTRACT.md",
+      "organized_path": "chess/docs/CONTRACT.md",
+      "category": "象棋开发工程",
+      "bytes": 5949,
+      "blob_sha": "c49ba0ad04d6dbc00c16686cccf517c9900ac514",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/DESIGN.md",
+      "organized_path": "chess/docs/DESIGN.md",
+      "category": "象棋开发工程",
+      "bytes": 1410,
+      "blob_sha": "155cdf98fbea30444b258c0430d72b74652f7084",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/LOW-BUDGET-RECOVERY.txt",
+      "organized_path": "chess/docs/LOW-BUDGET-RECOVERY.txt",
+      "category": "象棋开发工程",
+      "bytes": 3564,
+      "blob_sha": "bc47ff7e2d23770945443d022ffb388b244666f8",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/ONLINE-RECOVERY.txt",
+      "organized_path": "chess/docs/ONLINE-RECOVERY.txt",
+      "category": "象棋开发工程",
+      "bytes": 2573,
+      "blob_sha": "3a9a55dfeca39b939be52585dca822511496d0db",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/RULES.md",
+      "organized_path": "chess/docs/RULES.md",
+      "category": "象棋开发工程",
+      "bytes": 6434,
+      "blob_sha": "8737cbe2afb74bb0bf1a91f79e0f9b3c3ee7e2cb",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/UI.md",
+      "organized_path": "chess/docs/UI.md",
+      "category": "象棋开发工程",
+      "bytes": 2491,
+      "blob_sha": "3fd42f88dc328d8a3abf8ad31310379fbdc853f4",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/VERIFICATION.md",
+      "organized_path": "chess/docs/VERIFICATION.md",
+      "category": "象棋开发工程",
+      "bytes": 8406,
+      "blob_sha": "4c3404a362c33f3ee3b2c0c2c700da356db9a45a",
+      "content_read": true
+    },
+    {
+      "path": "chess/docs/WECHAT.md",
+      "organized_path": "chess/docs/WECHAT.md",
+      "category": "象棋开发工程",
+      "bytes": 12766,
+      "blob_sha": "8e85a02c48b057e7663df1f5d170e045f3a86ed6",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/app.js",
+      "organized_path": "chess/miniprogram/app.js",
+      "category": "象棋开发工程",
+      "bytes": 1607,
+      "blob_sha": "45e1249ce5f6046849a2303bef339784c38992d2",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/app.json",
+      "organized_path": "chess/miniprogram/app.json",
+      "category": "象棋开发工程",
+      "bytes": 428,
+      "blob_sha": "8df37ebabc77d44d9e7e2060fa6951d4ac5ec2bf",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/app.wxss",
+      "organized_path": "chess/miniprogram/app.wxss",
+      "category": "象棋开发工程",
+      "bytes": 2341,
+      "blob_sha": "5469ef01acb1b6a96e0b6e9b59ea65bb6d900516",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/assets/move.wav",
+      "organized_path": "chess/miniprogram/assets/move.wav",
+      "category": "象棋开发工程",
+      "bytes": 3792,
+      "blob_sha": "4c83b965d8d2011f43dbd962c973f2990d41c316",
+      "content_read": false
+    },
+    {
+      "path": "chess/miniprogram/components/time-control/index.js",
+      "organized_path": "chess/miniprogram/components/time-control/index.js",
+      "category": "象棋开发工程",
+      "bytes": 1104,
+      "blob_sha": "6edbca7f701573fd5a007b20a32b672a5d33b2bc",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/components/time-control/index.json",
+      "organized_path": "chess/miniprogram/components/time-control/index.json",
+      "category": "象棋开发工程",
+      "bytes": 22,
+      "blob_sha": "67f8e032f11eb302ba2afd878eb7562e88537de2",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/components/time-control/index.wxml",
+      "organized_path": "chess/miniprogram/components/time-control/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 2121,
+      "blob_sha": "09fe3c4c024b35da800e63872516a390f7a16436",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/components/time-control/index.wxss",
+      "organized_path": "chess/miniprogram/components/time-control/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 853,
+      "blob_sha": "13b95ca2c1e7a355001116b420c7b1e95ac2941f",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/config.js",
+      "organized_path": "chess/miniprogram/config.js",
+      "category": "象棋开发工程",
+      "bytes": 156,
+      "blob_sha": "a53106b2c19c53f4ee7c41de291176b5b437377a",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/ai/index.js",
+      "organized_path": "chess/miniprogram/pages/ai/index.js",
+      "category": "象棋开发工程",
+      "bytes": 1573,
+      "blob_sha": "57f0e01ab7bc58bb22f9c58747b7c0b39a77cdd0",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/ai/index.json",
+      "organized_path": "chess/miniprogram/pages/ai/index.json",
+      "category": "象棋开发工程",
+      "bytes": 115,
+      "blob_sha": "7980f249edfe9dc895be10502ae6d274d7d9b9f2",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/ai/index.wxml",
+      "organized_path": "chess/miniprogram/pages/ai/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 1247,
+      "blob_sha": "a3961a2f1c7effccd2722e3a682a73486a9e3e99",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/ai/index.wxss",
+      "organized_path": "chess/miniprogram/pages/ai/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 659,
+      "blob_sha": "eb4f6e210a6274537c9d4671d4a53f5ca5a706b6",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/game/index.js",
+      "organized_path": "chess/miniprogram/pages/game/index.js",
+      "category": "象棋开发工程",
+      "bytes": 25538,
+      "blob_sha": "55aa4a572fd0b42a33e61a148ac4c6cb165b6a59",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/game/index.json",
+      "organized_path": "chess/miniprogram/pages/game/index.json",
+      "category": "象棋开发工程",
+      "bytes": 39,
+      "blob_sha": "70be91231c13dfeb68d6bc47a0b4b894ccac1cf2",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/game/index.wxml",
+      "organized_path": "chess/miniprogram/pages/game/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 9654,
+      "blob_sha": "45a37eba76e1c68bda0365c8e0d97cf7d712d836",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/game/index.wxss",
+      "organized_path": "chess/miniprogram/pages/game/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 10129,
+      "blob_sha": "f9b1caa2b4bc17072c1a16d4867c2e7e25d1c4bc",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/index/index.js",
+      "organized_path": "chess/miniprogram/pages/index/index.js",
+      "category": "象棋开发工程",
+      "bytes": 2466,
+      "blob_sha": "fafcdaadd96bdf6a465e0432d311f7b2a20d48c4",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/index/index.json",
+      "organized_path": "chess/miniprogram/pages/index/index.json",
+      "category": "象棋开发工程",
+      "bytes": 48,
+      "blob_sha": "b4896d723a7245b171c9adc237ec575bfda18259",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/index/index.wxml",
+      "organized_path": "chess/miniprogram/pages/index/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 2364,
+      "blob_sha": "75cffd7b4a69f9fdeec02c4a0139dc76e6950578",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/index/index.wxss",
+      "organized_path": "chess/miniprogram/pages/index/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 1556,
+      "blob_sha": "a023301415ee06abaf3cf43dad9d53a78c2b1153",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/lobby/index.js",
+      "organized_path": "chess/miniprogram/pages/lobby/index.js",
+      "category": "象棋开发工程",
+      "bytes": 2120,
+      "blob_sha": "1ee7ea0ebc81beba0dec4056e9ad783aa8582102",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/lobby/index.json",
+      "organized_path": "chess/miniprogram/pages/lobby/index.json",
+      "category": "象棋开发工程",
+      "bytes": 107,
+      "blob_sha": "6bafe185069700f90c43619c169d44c9c0bc27e6",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/lobby/index.wxml",
+      "organized_path": "chess/miniprogram/pages/lobby/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 1646,
+      "blob_sha": "82df3d92f180102e0790c50873a995202ce29453",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/lobby/index.wxss",
+      "organized_path": "chess/miniprogram/pages/lobby/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 484,
+      "blob_sha": "023e034dfc2dcc7967e0d3ab981ee922438fe6b4",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/settings/index.js",
+      "organized_path": "chess/miniprogram/pages/settings/index.js",
+      "category": "象棋开发工程",
+      "bytes": 14660,
+      "blob_sha": "14a983dfd966dbc8ec1d39906dae3304b0efead1",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/settings/index.json",
+      "organized_path": "chess/miniprogram/pages/settings/index.json",
+      "category": "象棋开发工程",
+      "bytes": 112,
+      "blob_sha": "a3aa7297f29af40e70ea8c53cd47b80e937c392d",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/settings/index.wxml",
+      "organized_path": "chess/miniprogram/pages/settings/index.wxml",
+      "category": "象棋开发工程",
+      "bytes": 8810,
+      "blob_sha": "82f7dc4c3a32dd1ba5a0eb5f9b32f44eab954fd4",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/pages/settings/index.wxss",
+      "organized_path": "chess/miniprogram/pages/settings/index.wxss",
+      "category": "象棋开发工程",
+      "bytes": 1267,
+      "blob_sha": "0a9daa82d671dc190c5cfa779dd4f11ced87df64",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/project.config.json",
+      "organized_path": "chess/miniprogram/project.config.json",
+      "category": "象棋开发工程",
+      "bytes": 261,
+      "blob_sha": "76c80e4d96666202658d529f9446c259e0894cb2",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/services/api.js",
+      "organized_path": "chess/miniprogram/services/api.js",
+      "category": "象棋开发工程",
+      "bytes": 1482,
+      "blob_sha": "8f174e3ccaee154dc8707ea50d63145fbac6d08a",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/services/chat.js",
+      "organized_path": "chess/miniprogram/services/chat.js",
+      "category": "象棋开发工程",
+      "bytes": 5393,
+      "blob_sha": "acbbf78bbb8eb53cc477a8ff6311e8378e1a794e",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/services/socket.js",
+      "organized_path": "chess/miniprogram/services/socket.js",
+      "category": "象棋开发工程",
+      "bytes": 2087,
+      "blob_sha": "e0e0c756622d8a777e870fce1fd63b8e6659e2da",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/services/voice-controller.js",
+      "organized_path": "chess/miniprogram/services/voice-controller.js",
+      "category": "象棋开发工程",
+      "bytes": 4607,
+      "blob_sha": "72c10b3a0773b57a9bb8d048b4c48d104ddd16d1",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/services/voice.js",
+      "organized_path": "chess/miniprogram/services/voice.js",
+      "category": "象棋开发工程",
+      "bytes": 7371,
+      "blob_sha": "a63f875172b9ed682e4d8f616e7e2bc68ebdf5cc",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/sitemap.json",
+      "organized_path": "chess/miniprogram/sitemap.json",
+      "category": "象棋开发工程",
+      "bytes": 104,
+      "blob_sha": "894cd7b18fa6cebd19b67173b0904392335b2bf6",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/board.js",
+      "organized_path": "chess/miniprogram/utils/board.js",
+      "category": "象棋开发工程",
+      "bytes": 965,
+      "blob_sha": "6559214c098a772a87b7e9eeb129fb74354dcf77",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/chess-motion.js",
+      "organized_path": "chess/miniprogram/utils/chess-motion.js",
+      "category": "象棋开发工程",
+      "bytes": 3267,
+      "blob_sha": "75484b3e8cdc3a282f54803563e317535fde5772",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/preferences.js",
+      "organized_path": "chess/miniprogram/utils/preferences.js",
+      "category": "象棋开发工程",
+      "bytes": 546,
+      "blob_sha": "9c40fc4e4c0dc3a1fff857cfa94ce0623a9d52f8",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/privacy.js",
+      "organized_path": "chess/miniprogram/utils/privacy.js",
+      "category": "象棋开发工程",
+      "bytes": 350,
+      "blob_sha": "33b84906a46111644c640e81d104a034297f0505",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/recent-game.js",
+      "organized_path": "chess/miniprogram/utils/recent-game.js",
+      "category": "象棋开发工程",
+      "bytes": 891,
+      "blob_sha": "88662b6adcc758b6d947e196e81617b5406cfe7a",
+      "content_read": true
+    },
+    {
+      "path": "chess/miniprogram/utils/time.js",
+      "organized_path": "chess/miniprogram/utils/time.js",
+      "category": "象棋开发工程",
+      "bytes": 1865,
+      "blob_sha": "d04a73c403fa050738e13fd72479d36898a06f8f",
+      "content_read": true
+    },
+    {
+      "path": "chess/package-lock.json",
+      "organized_path": "chess/package-lock.json",
+      "category": "象棋开发工程",
+      "bytes": 25166,
+      "blob_sha": "9f09d32d67d45976e1eb6febb909447e1f0246c9",
+      "content_read": true
+    },
+    {
+      "path": "chess/package.json",
+      "organized_path": "chess/package.json",
+      "category": "象棋开发工程",
+      "bytes": 641,
+      "blob_sha": "bcbb136a2b7df7b8fa111d934157040dd58bae79",
+      "content_read": true
+    },
+    {
+      "path": "chess/project.config.json",
+      "organized_path": "chess/project.config.json",
+      "category": "象棋开发工程",
+      "bytes": 558,
+      "blob_sha": "81d82353c83dc9280463cd16af9faf19e7d9a980",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/browser-acceptance.mjs",
+      "organized_path": "chess/scripts/browser-acceptance.mjs",
+      "category": "象棋开发工程",
+      "bytes": 30419,
+      "blob_sha": "a5b1a394cfa70f8cf49a72f608da0f85198bee79",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/build-host.mjs",
+      "organized_path": "chess/scripts/build-host.mjs",
+      "category": "象棋开发工程",
+      "bytes": 4166,
+      "blob_sha": "54dd22183c8a3db1d9ff300cc84e211bee794499",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/build.js",
+      "organized_path": "chess/scripts/build.js",
+      "category": "象棋开发工程",
+      "bytes": 3528,
+      "blob_sha": "e080e39a813f5b57c06738cf2cfb9152590a41a1",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/check-release.mjs",
+      "organized_path": "chess/scripts/check-release.mjs",
+      "category": "象棋开发工程",
+      "bytes": 3908,
+      "blob_sha": "7dbd770884fcc6226bd6f02557f36fe4c4a5c6ec",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/verify-native-connection.py",
+      "organized_path": "chess/scripts/verify-native-connection.py",
+      "category": "象棋开发工程",
+      "bytes": 1309,
+      "blob_sha": "88be3ec72d3a15d2e6fd13dd3e43233eb24ede82",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/wechat-cloud-ai-smoke.fn.js",
+      "organized_path": "chess/scripts/wechat-cloud-ai-smoke.fn.js",
+      "category": "象棋开发工程",
+      "bytes": 13044,
+      "blob_sha": "a801f5ba8423459b1204421c518c9b80a3ba56b6",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/wechat-cloud-smoke.fn.js",
+      "organized_path": "chess/scripts/wechat-cloud-smoke.fn.js",
+      "category": "象棋开发工程",
+      "bytes": 5962,
+      "blob_sha": "183a2a89b041d7d2d955478be86c37b7c90b8e6d",
+      "content_read": true
+    },
+    {
+      "path": "chess/scripts/wechat-host-acceptance.py",
+      "organized_path": "chess/scripts/wechat-host-acceptance.py",
+      "category": "象棋开发工程",
+      "bytes": 17915,
+      "blob_sha": "ba51560cb37a72017c9630f32c9f962993255570",
+      "content_read": true
+    },
+    {
+      "path": "chess/server/ai.js",
+      "organized_path": "chess/server/ai.js",
+      "category": "象棋开发工程",
+      "bytes": 5106,
+      "blob_sha": "2297aa090f0683adb51beddf5ba2b3a5476070f0",
+      "content_read": true
+    },
+    {
+      "path": "chess/server/app.js",
+      "organized_path": "chess/server/app.js",
+      "category": "象棋开发工程",
+      "bytes": 43227,
+      "blob_sha": "5b5f67613436f263fed2e40dc4fde448ec3c598b",
+      "content_read": true
+    },
+    {
+      "path": "chess/server/cloud-storage.js",
+      "organized_path": "chess/server/cloud-storage.js",
+      "category": "象棋开发工程",
+      "bytes": 7593,
+      "blob_sha": "c31ba0862c08586953fb6b6123a8b8d1671f3bc3",
+      "content_read": true
+    },
+    {
+      "path": "chess/server/index.js",
+      "organized_path": "chess/server/index.js",
+      "category": "象棋开发工程",
+      "bytes": 1091,
+      "blob_sha": "be15a7dbce2748e7fcbddc7d10f3345b1f61f650",
+      "content_read": true
+    },
+    {
+      "path": "chess/server/search-worker.js",
+      "organized_path": "chess/server/search-worker.js",
+      "category": "象棋开发工程",
+      "bytes": 238,
+      "blob_sha": "56521cd539b0a1e85a9e3903bc4cb57ad591ee67",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/ai.test.js",
+      "organized_path": "chess/tests/ai.test.js",
+      "category": "象棋开发工程",
+      "bytes": 4227,
+      "blob_sha": "0844010f9715f4bdfb51af605cf42e286d82002d",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/chat-backend.test.js",
+      "organized_path": "chess/tests/chat-backend.test.js",
+      "category": "象棋开发工程",
+      "bytes": 17976,
+      "blob_sha": "80898ae633d114f3d138de9567e37cd50c9a9983",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/chat-client.test.js",
+      "organized_path": "chess/tests/chat-client.test.js",
+      "category": "象棋开发工程",
+      "bytes": 11357,
+      "blob_sha": "7a1ab4130cc52f55a47a8da9529b2b518ac3ac63",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/chat-ui.test.js",
+      "organized_path": "chess/tests/chat-ui.test.js",
+      "category": "象棋开发工程",
+      "bytes": 14068,
+      "blob_sha": "d2ec483e1cf01143fc836bf2029f065a83c42eb9",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/cloud-storage.test.js",
+      "organized_path": "chess/tests/cloud-storage.test.js",
+      "category": "象棋开发工程",
+      "bytes": 19369,
+      "blob_sha": "1362dc62f0d8a2a7f7c3f631633969b9c11c5939",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/core.test.js",
+      "organized_path": "chess/tests/core.test.js",
+      "category": "象棋开发工程",
+      "bytes": 46753,
+      "blob_sha": "98594ac6db04f228d0d4daa49a104d9dac603d35",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/deploy.test.js",
+      "organized_path": "chess/tests/deploy.test.js",
+      "category": "象棋开发工程",
+      "bytes": 8500,
+      "blob_sha": "6d533ba3c4d610e5588656f47e1e72e4fec6fdbf",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/host-privacy.test.js",
+      "organized_path": "chess/tests/host-privacy.test.js",
+      "category": "象棋开发工程",
+      "bytes": 5946,
+      "blob_sha": "5148998c952fa20ccd9752ba6a0af9567d6aa1f2",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-chess-behavior.test.js",
+      "organized_path": "chess/tests/integration-chess-behavior.test.js",
+      "category": "象棋开发工程",
+      "bytes": 10117,
+      "blob_sha": "bfc218950516780d37db9503a43a9185e5b6086e",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-chess-races.test.js",
+      "organized_path": "chess/tests/integration-chess-races.test.js",
+      "category": "象棋开发工程",
+      "bytes": 15988,
+      "blob_sha": "3990b50b9318e6b89a7c6c5dc37abaf74141fc05",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-cloud-ai-smoke.test.js",
+      "organized_path": "chess/tests/integration-cloud-ai-smoke.test.js",
+      "category": "象棋开发工程",
+      "bytes": 17838,
+      "blob_sha": "462b9a62c3fa7b7ef311bacf917025a10abf7637",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-cloud-client.test.js",
+      "organized_path": "chess/tests/integration-cloud-client.test.js",
+      "category": "象棋开发工程",
+      "bytes": 29445,
+      "blob_sha": "f7a418ec4c98bae144a741c6d2e6906b9a5adc24",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-cloud-release.test.js",
+      "organized_path": "chess/tests/integration-cloud-release.test.js",
+      "category": "象棋开发工程",
+      "bytes": 3085,
+      "blob_sha": "d72e7650fe62472c3dd34494a4e5fa66e73890f6",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-cloud-smoke.test.js",
+      "organized_path": "chess/tests/integration-cloud-smoke.test.js",
+      "category": "象棋开发工程",
+      "bytes": 5092,
+      "blob_sha": "24e74b1de9a0d302b2f051f23adcf7a45ff64f36",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-host.test.js",
+      "organized_path": "chess/tests/integration-host.test.js",
+      "category": "象棋开发工程",
+      "bytes": 15887,
+      "blob_sha": "9c2f052f6b2c5970d866e43d63235bf55382eda6",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/integration-release.test.js",
+      "organized_path": "chess/tests/integration-release.test.js",
+      "category": "象棋开发工程",
+      "bytes": 7123,
+      "blob_sha": "e53abbc391c0844c2ce3bb09c74d48ff9f8c5423",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/miniprogram-motion.test.js",
+      "organized_path": "chess/tests/miniprogram-motion.test.js",
+      "category": "象棋开发工程",
+      "bytes": 18034,
+      "blob_sha": "62a588ee67638657db6dfc8e4eb1aab94137aecb",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/miniprogram.test.js",
+      "organized_path": "chess/tests/miniprogram.test.js",
+      "category": "象棋开发工程",
+      "bytes": 32717,
+      "blob_sha": "8dfdb256bd220b3f98e72adc84532aa799db925c",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/profile-privacy.test.js",
+      "organized_path": "chess/tests/profile-privacy.test.js",
+      "category": "象棋开发工程",
+      "bytes": 6953,
+      "blob_sha": "b9a0b81566fc4317b18b3816409cea8caa3023d2",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/server.test.js",
+      "organized_path": "chess/tests/server.test.js",
+      "category": "象棋开发工程",
+      "bytes": 44200,
+      "blob_sha": "6ce8ec3d8477a8cf3f51dd410d6bf77e0c1efde6",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/voice.test.js",
+      "organized_path": "chess/tests/voice.test.js",
+      "category": "象棋开发工程",
+      "bytes": 17984,
+      "blob_sha": "ba2eaf840427c28b8bb599d097d397f3863cd414",
+      "content_read": true
+    },
+    {
+      "path": "chess/tests/web-motion.test.js",
+      "organized_path": "chess/tests/web-motion.test.js",
+      "category": "象棋开发工程",
+      "bytes": 4801,
+      "blob_sha": "9eb911222b28be6b8f7d5170f6d8af679d03a47b",
+      "content_read": true
+    },
+    {
+      "path": "chess/web/app.js",
+      "organized_path": "chess/web/app.js",
+      "category": "象棋开发工程",
+      "bytes": 54292,
+      "blob_sha": "0c613d4ce481916ce7869f558db83055c02e8589",
+      "content_read": true
+    },
+    {
+      "path": "chess/web/chess-motion.js",
+      "organized_path": "chess/web/chess-motion.js",
+      "category": "象棋开发工程",
+      "bytes": 3735,
+      "blob_sha": "ca2f93a2c3415204b26a90caae1e948cc999a62d",
+      "content_read": true
+    },
+    {
+      "path": "chess/web/favicon.svg",
+      "organized_path": "chess/web/favicon.svg",
+      "category": "象棋开发工程",
+      "bytes": 276,
+      "blob_sha": "6d7022624e8a1451a1d003013809744ae17ea1d0",
+      "content_read": false
+    },
+    {
+      "path": "chess/web/hand.svg",
+      "organized_path": "chess/web/hand.svg",
+      "category": "象棋开发工程",
+      "bytes": 661,
+      "blob_sha": "16e5e44d21866ccc6c7de60eaecbca47bd6762f8",
+      "content_read": false
+    },
+    {
+      "path": "chess/web/index.html",
+      "organized_path": "chess/web/index.html",
+      "category": "象棋开发工程",
+      "bytes": 1389,
+      "blob_sha": "4ef90ab7373ebc956e8e6d49026d21892b159e47",
+      "content_read": true
+    },
+    {
+      "path": "chess/web/style.css",
+      "organized_path": "chess/web/style.css",
+      "category": "象棋开发工程",
+      "bytes": 19480,
+      "blob_sha": "fb6d6f6d29d7b851500c28dcd98e93cf79cbee63",
+      "content_read": true
+    },
+    {
+      "path": "docs/git-validation-20261011.json",
+      "organized_path": "docs/archive/2026-10-11/git-validation-20261011.json",
+      "category": "历史交付证据",
+      "bytes": 486,
+      "blob_sha": "98ee0018b14abdc58c97c293b57144ddb9e602b2",
+      "content_read": true
+    },
+    {
+      "path": "docs/source-manifest-20261011.json",
+      "organized_path": "docs/archive/2026-10-11/source-manifest-20261011.json",
+      "category": "历史交付证据",
+      "bytes": 32869,
+      "blob_sha": "dc203f0da7f52509a196652a9650093b5e378b8d",
+      "content_read": true
+    },
+    {
+      "path": "docs/wechat-upload-20261011.json",
+      "organized_path": "docs/archive/2026-10-11/wechat-upload-20261011.json",
+      "category": "历史交付证据",
+      "bytes": 770,
+      "blob_sha": "b34a49407665c7fafde8ff6e87cddf5d8262a4d4",
+      "content_read": true
+    },
+    {
+      "path": "docs/隐私整改与重新审核说明.txt",
+      "organized_path": "docs/archive/2026-10-11/隐私整改与重新审核说明.txt",
+      "category": "历史交付证据",
+      "bytes": 2833,
+      "blob_sha": "74e14e5abb65857e48570edf830c73afe8f08378",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/.env.example",
+      "organized_path": "wechat-app/.env.example",
+      "category": "版本管理与配置",
+      "bytes": 127,
+      "blob_sha": "07159137c292b806b9606c746565a25647ebdfee",
+      "content_read": false
+    },
+    {
+      "path": "wechat-app/README.md",
+      "organized_path": "wechat-app/README.md",
+      "category": "合并小程序",
+      "bytes": 5731,
+      "blob_sha": "1659c875c1723f9a85cf285137e432713828d54b",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/analysis.js",
+      "organized_path": "wechat-app/analysis.js",
+      "category": "合并小程序",
+      "bytes": 2132,
+      "blob_sha": "010d8c30f620775305ab62debc18ea8c86640db8",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/app.js",
+      "organized_path": "wechat-app/app.js",
+      "category": "合并小程序",
+      "bytes": 998,
+      "blob_sha": "fb3e3f181c55a20db963dc381bb406767c916ce7",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/app.json",
+      "organized_path": "wechat-app/app.json",
+      "category": "合并小程序",
+      "bytes": 660,
+      "blob_sha": "1ca1bbedd5d1041b39fed548e79935d4866ed429",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/app.wxss",
+      "organized_path": "wechat-app/app.wxss",
+      "category": "合并小程序",
+      "bytes": 290,
+      "blob_sha": "bf356a7dc1271430176e7df845f1031bcfe027f1",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/assets/move.wav",
+      "organized_path": "wechat-app/chess/assets/move.wav",
+      "category": "合并小程序",
+      "bytes": 3792,
+      "blob_sha": "4c83b965d8d2011f43dbd962c973f2990d41c316",
+      "content_read": false
+    },
+    {
+      "path": "wechat-app/chess/common.wxss",
+      "organized_path": "wechat-app/chess/common.wxss",
+      "category": "合并小程序",
+      "bytes": 2341,
+      "blob_sha": "5469ef01acb1b6a96e0b6e9b59ea65bb6d900516",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/components/time-control/index.js",
+      "organized_path": "wechat-app/chess/components/time-control/index.js",
+      "category": "合并小程序",
+      "bytes": 1104,
+      "blob_sha": "6edbca7f701573fd5a007b20a32b672a5d33b2bc",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/components/time-control/index.json",
+      "organized_path": "wechat-app/chess/components/time-control/index.json",
+      "category": "合并小程序",
+      "bytes": 22,
+      "blob_sha": "67f8e032f11eb302ba2afd878eb7562e88537de2",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/components/time-control/index.wxml",
+      "organized_path": "wechat-app/chess/components/time-control/index.wxml",
+      "category": "合并小程序",
+      "bytes": 2121,
+      "blob_sha": "09fe3c4c024b35da800e63872516a390f7a16436",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/components/time-control/index.wxss",
+      "organized_path": "wechat-app/chess/components/time-control/index.wxss",
+      "category": "合并小程序",
+      "bytes": 853,
+      "blob_sha": "13b95ca2c1e7a355001116b420c7b1e95ac2941f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/config.js",
+      "organized_path": "wechat-app/chess/config.js",
+      "category": "合并小程序",
+      "bytes": 177,
+      "blob_sha": "568e3d01fbb18470474816f9b2ee767eccf4000f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/ai/index.js",
+      "organized_path": "wechat-app/chess/pages/ai/index.js",
+      "category": "合并小程序",
+      "bytes": 2320,
+      "blob_sha": "821b1af7858b0ce77957a46ae1f6daea6626a5cc",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/ai/index.json",
+      "organized_path": "wechat-app/chess/pages/ai/index.json",
+      "category": "合并小程序",
+      "bytes": 245,
+      "blob_sha": "968119d7f81a1584cf23a55f1185c389fd0fbd82",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/ai/index.wxml",
+      "organized_path": "wechat-app/chess/pages/ai/index.wxml",
+      "category": "合并小程序",
+      "bytes": 1247,
+      "blob_sha": "a3961a2f1c7effccd2722e3a682a73486a9e3e99",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/ai/index.wxss",
+      "organized_path": "wechat-app/chess/pages/ai/index.wxss",
+      "category": "合并小程序",
+      "bytes": 776,
+      "blob_sha": "056b151c98ddf0ccf717211a3320440739428d51",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/game/index.js",
+      "organized_path": "wechat-app/chess/pages/game/index.js",
+      "category": "合并小程序",
+      "bytes": 27386,
+      "blob_sha": "b39192307749f953ffc52e0d3dc039f2026ba2d1",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/game/index.json",
+      "organized_path": "wechat-app/chess/pages/game/index.json",
+      "category": "合并小程序",
+      "bytes": 155,
+      "blob_sha": "8c7611bed1630af2a6e1d33892259f3f03eadf74",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/game/index.wxml",
+      "organized_path": "wechat-app/chess/pages/game/index.wxml",
+      "category": "合并小程序",
+      "bytes": 9654,
+      "blob_sha": "45a37eba76e1c68bda0365c8e0d97cf7d712d836",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/game/index.wxss",
+      "organized_path": "wechat-app/chess/pages/game/index.wxss",
+      "category": "合并小程序",
+      "bytes": 10158,
+      "blob_sha": "fe142d621d14072c228a0972ce98686899cb1a1e",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/index/index.js",
+      "organized_path": "wechat-app/chess/pages/index/index.js",
+      "category": "合并小程序",
+      "bytes": 4287,
+      "blob_sha": "869772508174e46d904445f80605dc7258ee0b67",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/index/index.json",
+      "organized_path": "wechat-app/chess/pages/index/index.json",
+      "category": "合并小程序",
+      "bytes": 164,
+      "blob_sha": "0f6d1523eee20e26636011535c64d05cb454ca9a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/index/index.wxml",
+      "organized_path": "wechat-app/chess/pages/index/index.wxml",
+      "category": "合并小程序",
+      "bytes": 2497,
+      "blob_sha": "587c0b93be91c8f1d56e41a992fdbdfbc48bb025",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/index/index.wxss",
+      "organized_path": "wechat-app/chess/pages/index/index.wxss",
+      "category": "合并小程序",
+      "bytes": 1849,
+      "blob_sha": "5254541683b01f19936dd5598fc37518b742550a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/lobby/index.js",
+      "organized_path": "wechat-app/chess/pages/lobby/index.js",
+      "category": "合并小程序",
+      "bytes": 3411,
+      "blob_sha": "7b478507ed5e03638ede9718b3275c714adc07be",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/lobby/index.json",
+      "organized_path": "wechat-app/chess/pages/lobby/index.json",
+      "category": "合并小程序",
+      "bytes": 227,
+      "blob_sha": "ae39cd212c2c2c02a1e87aaea47be63be60a21a4",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/lobby/index.wxml",
+      "organized_path": "wechat-app/chess/pages/lobby/index.wxml",
+      "category": "合并小程序",
+      "bytes": 1646,
+      "blob_sha": "82df3d92f180102e0790c50873a995202ce29453",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/lobby/index.wxss",
+      "organized_path": "wechat-app/chess/pages/lobby/index.wxss",
+      "category": "合并小程序",
+      "bytes": 513,
+      "blob_sha": "6eaa4b049903eb03b38380e541f2fea65d4adc5e",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/settings/index.js",
+      "organized_path": "wechat-app/chess/pages/settings/index.js",
+      "category": "合并小程序",
+      "bytes": 16977,
+      "blob_sha": "8f8b595bd0c55c2a5c5c7d0db43107b1e640fcc3",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/settings/index.json",
+      "organized_path": "wechat-app/chess/pages/settings/index.json",
+      "category": "合并小程序",
+      "bytes": 242,
+      "blob_sha": "ed5ebfc63527ba775bda0ad016d34549c821af34",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/settings/index.wxml",
+      "organized_path": "wechat-app/chess/pages/settings/index.wxml",
+      "category": "合并小程序",
+      "bytes": 8857,
+      "blob_sha": "059b35b81edf4654c9a98c5f7cad36a91a71cc88",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/pages/settings/index.wxss",
+      "organized_path": "wechat-app/chess/pages/settings/index.wxss",
+      "category": "合并小程序",
+      "bytes": 1492,
+      "blob_sha": "b4e10e5577e9f09679b658b1d14ba8239455a5b5",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/api.js",
+      "organized_path": "wechat-app/chess/services/api.js",
+      "category": "合并小程序",
+      "bytes": 2175,
+      "blob_sha": "51987c557e55eeff54e185e213d35ff7c02542fc",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/avatars.js",
+      "organized_path": "wechat-app/chess/services/avatars.js",
+      "category": "合并小程序",
+      "bytes": 1723,
+      "blob_sha": "63bb631a90bd278a49615f2fe09006c4f416ae0a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/chat.js",
+      "organized_path": "wechat-app/chess/services/chat.js",
+      "category": "合并小程序",
+      "bytes": 5450,
+      "blob_sha": "b60b0ddb7c884dbd4b8ee85bfc65bc4a9426ffa6",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/cloud.js",
+      "organized_path": "wechat-app/chess/services/cloud.js",
+      "category": "合并小程序",
+      "bytes": 462,
+      "blob_sha": "ec9c53660fb0492fc00f9d37415214119b8da9fa",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/deployment.js",
+      "organized_path": "wechat-app/chess/services/deployment.js",
+      "category": "合并小程序",
+      "bytes": 2685,
+      "blob_sha": "113cc2d7f5ea64de92cb23d7851da47e264ed7f5",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/socket.js",
+      "organized_path": "wechat-app/chess/services/socket.js",
+      "category": "合并小程序",
+      "bytes": 5695,
+      "blob_sha": "3737f51b9e1d0d08b6629bd1b26539455f990211",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/voice-controller.js",
+      "organized_path": "wechat-app/chess/services/voice-controller.js",
+      "category": "合并小程序",
+      "bytes": 4607,
+      "blob_sha": "72c10b3a0773b57a9bb8d048b4c48d104ddd16d1",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/services/voice.js",
+      "organized_path": "wechat-app/chess/services/voice.js",
+      "category": "合并小程序",
+      "bytes": 7473,
+      "blob_sha": "308bdf50fb0f8752d73360d77d44d1cd4c4c100e",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/session.js",
+      "organized_path": "wechat-app/chess/session.js",
+      "category": "合并小程序",
+      "bytes": 3129,
+      "blob_sha": "5d29a7869981fc80373614802ce646e935e55174",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/board.js",
+      "organized_path": "wechat-app/chess/utils/board.js",
+      "category": "合并小程序",
+      "bytes": 965,
+      "blob_sha": "6559214c098a772a87b7e9eeb129fb74354dcf77",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/chess-motion.js",
+      "organized_path": "wechat-app/chess/utils/chess-motion.js",
+      "category": "合并小程序",
+      "bytes": 3267,
+      "blob_sha": "75484b3e8cdc3a282f54803563e317535fde5772",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/preferences.js",
+      "organized_path": "wechat-app/chess/utils/preferences.js",
+      "category": "合并小程序",
+      "bytes": 546,
+      "blob_sha": "9c40fc4e4c0dc3a1fff857cfa94ce0623a9d52f8",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/privacy.js",
+      "organized_path": "wechat-app/chess/utils/privacy.js",
+      "category": "合并小程序",
+      "bytes": 350,
+      "blob_sha": "33b84906a46111644c640e81d104a034297f0505",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/recent-game.js",
+      "organized_path": "wechat-app/chess/utils/recent-game.js",
+      "category": "合并小程序",
+      "bytes": 1798,
+      "blob_sha": "7e46ec2ecbdf7b20a41ac4376d7b7e869330c5e9",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/chess/utils/time.js",
+      "organized_path": "wechat-app/chess/utils/time.js",
+      "category": "合并小程序",
+      "bytes": 1865,
+      "blob_sha": "d04a73c403fa050738e13fd72479d36898a06f8f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/gouge-chess-chat/config.json",
+      "organized_path": "wechat-app/cloudfunctions/gouge-chess-chat/config.json",
+      "category": "合并小程序",
+      "bytes": 67,
+      "blob_sha": "c9e86477d557cd8a9c004d036d1577573d7911bb",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/gouge-chess-chat/handler.cjs",
+      "organized_path": "wechat-app/cloudfunctions/gouge-chess-chat/handler.cjs",
+      "category": "合并小程序",
+      "bytes": 8279,
+      "blob_sha": "92e623f3d004dc3037bd1a7941a8b7e03aa7088a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/gouge-chess-chat/index.js",
+      "organized_path": "wechat-app/cloudfunctions/gouge-chess-chat/index.js",
+      "category": "合并小程序",
+      "bytes": 4214,
+      "blob_sha": "4de803925fe1946a84026cfaec1137dcf00cb4cb",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/gouge-chess-chat/package.json",
+      "organized_path": "wechat-app/cloudfunctions/gouge-chess-chat/package.json",
+      "category": "合并小程序",
+      "bytes": 202,
+      "blob_sha": "d894aff059656f2a3a1060cbf9385a59242d688f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/ocr/index.js",
+      "organized_path": "wechat-app/cloudfunctions/ocr/index.js",
+      "category": "合并小程序",
+      "bytes": 2740,
+      "blob_sha": "80537e69e43cb2d12f4a945d4494b83ba15d7165",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/cloudfunctions/ocr/package.json",
+      "organized_path": "wechat-app/cloudfunctions/ocr/package.json",
+      "category": "合并小程序",
+      "bytes": 188,
+      "blob_sha": "4ca1976b2ee61ae1f3abd863115919f118a32d74",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/components/heatmap/heatmap.js",
+      "organized_path": "wechat-app/components/heatmap/heatmap.js",
+      "category": "合并小程序",
+      "bytes": 3645,
+      "blob_sha": "262a3d91e82e9493aa7bcbffdab76700eba6574f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/components/heatmap/heatmap.json",
+      "organized_path": "wechat-app/components/heatmap/heatmap.json",
+      "category": "合并小程序",
+      "bytes": 18,
+      "blob_sha": "a8456c1f8bcabca37881e5cc62769b22f234971d",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/components/heatmap/heatmap.wxml",
+      "organized_path": "wechat-app/components/heatmap/heatmap.wxml",
+      "category": "合并小程序",
+      "bytes": 80,
+      "blob_sha": "0e0f6057e1d4a0fb025a144d2fbf5ac1e63b7b61",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/components/heatmap/heatmap.wxss",
+      "organized_path": "wechat-app/components/heatmap/heatmap.wxss",
+      "category": "合并小程序",
+      "bytes": 66,
+      "blob_sha": "245ff1457df0bd4279c7909bd693f0c1b3b09836",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/index.js",
+      "organized_path": "wechat-app/index.js",
+      "category": "合并小程序",
+      "bytes": 418,
+      "blob_sha": "f82601116122c5c41fdef551de2d6a3cef107d72",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/input.js",
+      "organized_path": "wechat-app/input.js",
+      "category": "合并小程序",
+      "bytes": 6761,
+      "blob_sha": "f84445ec1a190da22dc0e0e8e703267faa078ad2",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut-preview/cut-preview.js",
+      "organized_path": "wechat-app/pages/cut-preview/cut-preview.js",
+      "category": "合并小程序",
+      "bytes": 3553,
+      "blob_sha": "dd5538b8bdd9498a39785d95a07417058f38699a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut-preview/cut-preview.json",
+      "organized_path": "wechat-app/pages/cut-preview/cut-preview.json",
+      "category": "合并小程序",
+      "bytes": 48,
+      "blob_sha": "41832ffc5e04494ee49533e5a2dbc94b90d27c15",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut-preview/cut-preview.wxml",
+      "organized_path": "wechat-app/pages/cut-preview/cut-preview.wxml",
+      "category": "合并小程序",
+      "bytes": 1327,
+      "blob_sha": "c7ee00c2af96d0428015502844a5f39e43b13108",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut-preview/cut-preview.wxss",
+      "organized_path": "wechat-app/pages/cut-preview/cut-preview.wxss",
+      "category": "合并小程序",
+      "bytes": 1061,
+      "blob_sha": "97ecb4c4ef234ab6f2d185f488ecbf293128f28f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut/cut.js",
+      "organized_path": "wechat-app/pages/cut/cut.js",
+      "category": "合并小程序",
+      "bytes": 12739,
+      "blob_sha": "3b8306f44faf9e199263a0b76ae750778d68c063",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut/cut.json",
+      "organized_path": "wechat-app/pages/cut/cut.json",
+      "category": "合并小程序",
+      "bytes": 48,
+      "blob_sha": "00f67f5524d75985851ced2e2e76ca10e7700000",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut/cut.wxml",
+      "organized_path": "wechat-app/pages/cut/cut.wxml",
+      "category": "合并小程序",
+      "bytes": 7288,
+      "blob_sha": "619e95611a8fe4288bf8b45f1d28c118d60ddbb2",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/cut/cut.wxss",
+      "organized_path": "wechat-app/pages/cut/cut.wxss",
+      "category": "合并小程序",
+      "bytes": 7011,
+      "blob_sha": "714d3e153cad9c750ab84eb5544bcc5f24727d1f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/index/index.js",
+      "organized_path": "wechat-app/pages/index/index.js",
+      "category": "合并小程序",
+      "bytes": 480,
+      "blob_sha": "4a8bf181d2227c6758d4cf238cfa66b0ae47080b",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/index/index.json",
+      "organized_path": "wechat-app/pages/index/index.json",
+      "category": "合并小程序",
+      "bytes": 22,
+      "blob_sha": "025da7afe0860871db2c5e4aa885466a3ca2de2d",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/index/index.wxml",
+      "organized_path": "wechat-app/pages/index/index.wxml",
+      "category": "合并小程序",
+      "bytes": 1070,
+      "blob_sha": "c814c48b35018420bd77b2af125578d2ca1e6410",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/index/index.wxss",
+      "organized_path": "wechat-app/pages/index/index.wxss",
+      "category": "合并小程序",
+      "bytes": 862,
+      "blob_sha": "3e69a5986f877e669fa297f5d492091f9f1194ed",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/input/input.js",
+      "organized_path": "wechat-app/pages/input/input.js",
+      "category": "合并小程序",
+      "bytes": 6774,
+      "blob_sha": "30e67e1d3338d2f4ee40d44e97d7a1dae7128ee7",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/input/input.json",
+      "organized_path": "wechat-app/pages/input/input.json",
+      "category": "合并小程序",
+      "bytes": 41,
+      "blob_sha": "a5637e34191437d6c06c698b97f2c6ac225565c1",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/input/input.wxml",
+      "organized_path": "wechat-app/pages/input/input.wxml",
+      "category": "合并小程序",
+      "bytes": 2602,
+      "blob_sha": "131160ea3bb9014fcc294da941df4f1b0f89a40e",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/input/input.wxss",
+      "organized_path": "wechat-app/pages/input/input.wxss",
+      "category": "合并小程序",
+      "bytes": 1170,
+      "blob_sha": "45cf4d0b58ee12ff0818f5247e7bbdaa3f59796d",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/result/result.js",
+      "organized_path": "wechat-app/pages/result/result.js",
+      "category": "合并小程序",
+      "bytes": 18871,
+      "blob_sha": "f47d8a1461eb377cd0a984d8706b6820a86ac838",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/result/result.json",
+      "organized_path": "wechat-app/pages/result/result.json",
+      "category": "合并小程序",
+      "bytes": 108,
+      "blob_sha": "44a584674c1cf72faeb4268e1d9847926798ec21",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/result/result.wxml",
+      "organized_path": "wechat-app/pages/result/result.wxml",
+      "category": "合并小程序",
+      "bytes": 3091,
+      "blob_sha": "1d1bc891e170ef8ac19ed0e39753f7760b5eb603",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/result/result.wxss",
+      "organized_path": "wechat-app/pages/result/result.wxss",
+      "category": "合并小程序",
+      "bytes": 1226,
+      "blob_sha": "6758801df942ec72d174ee46b7f9ab50246163f0",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/settings/settings.js",
+      "organized_path": "wechat-app/pages/settings/settings.js",
+      "category": "合并小程序",
+      "bytes": 2213,
+      "blob_sha": "5187d9fa477631201a36dde70f8a2c74fc143e26",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/settings/settings.json",
+      "organized_path": "wechat-app/pages/settings/settings.json",
+      "category": "合并小程序",
+      "bytes": 41,
+      "blob_sha": "7a367d036b5086fc8d4bdb8c72fc3f1df4c9595f",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/settings/settings.wxml",
+      "organized_path": "wechat-app/pages/settings/settings.wxml",
+      "category": "合并小程序",
+      "bytes": 1222,
+      "blob_sha": "5fa54bd2fbed63fbd73f378e8776c1b28803ba38",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/pages/settings/settings.wxss",
+      "organized_path": "wechat-app/pages/settings/settings.wxss",
+      "category": "合并小程序",
+      "bytes": 54,
+      "blob_sha": "c10128ac40ea148e1bdb00da8678bdf6e1c91590",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/preview.html",
+      "organized_path": "wechat-app/preview.html",
+      "category": "合并小程序",
+      "bytes": 52103,
+      "blob_sha": "40e67a57d442c2e60d3648af3796816a0166a030",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/project.config.json",
+      "organized_path": "wechat-app/project.config.json",
+      "category": "合并小程序",
+      "bytes": 1223,
+      "blob_sha": "7b9d9f98d830478c70896cc999baaf674b13ad4c",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/result.js",
+      "organized_path": "wechat-app/result.js",
+      "category": "合并小程序",
+      "bytes": 18570,
+      "blob_sha": "617bdb1f3b85fcaee2397674a64b991bdf5e5f59",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/result.wxml",
+      "organized_path": "wechat-app/result.wxml",
+      "category": "合并小程序",
+      "bytes": 3091,
+      "blob_sha": "1d1bc891e170ef8ac19ed0e39753f7760b5eb603",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/server.py",
+      "organized_path": "wechat-app/server.py",
+      "category": "合并小程序",
+      "bytes": 3718,
+      "blob_sha": "e8b7c80d8cc14f0fb4c0d254655eadcf49513ed9",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/settings.js",
+      "organized_path": "wechat-app/settings.js",
+      "category": "合并小程序",
+      "bytes": 1966,
+      "blob_sha": "4da125877903a4c8fe0ae55393b475d76704337a",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/sitemap.json",
+      "organized_path": "wechat-app/sitemap.json",
+      "category": "合并小程序",
+      "bytes": 58,
+      "blob_sha": "896c7feaa5664b6648f590ca01223290529adc39",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/utils/analysis.js",
+      "organized_path": "wechat-app/utils/analysis.js",
+      "category": "合并小程序",
+      "bytes": 2132,
+      "blob_sha": "010d8c30f620775305ab62debc18ea8c86640db8",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/utils/calculation.js",
+      "organized_path": "wechat-app/utils/calculation.js",
+      "category": "合并小程序",
+      "bytes": 7857,
+      "blob_sha": "714d6c46d7a856cf1641da954418d5f4e4549ee5",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/utils/importer.js",
+      "organized_path": "wechat-app/utils/importer.js",
+      "category": "合并小程序",
+      "bytes": 393,
+      "blob_sha": "a1d2c0c3222d08278b7872f1a616f59f4f754e3b",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/utils/pdf-maker.js",
+      "organized_path": "wechat-app/utils/pdf-maker.js",
+      "category": "合并小程序",
+      "bytes": 2841,
+      "blob_sha": "7f36893e682060caa05816e17703837e8392abab",
+      "content_read": true
+    },
+    {
+      "path": "wechat-app/utils/privacy.js",
+      "organized_path": "wechat-app/utils/privacy.js",
+      "category": "合并小程序",
+      "bytes": 350,
+      "blob_sha": "33b84906a46111644c640e81d104a034297f0505",
+      "content_read": true
+    }
+  ]
+}
